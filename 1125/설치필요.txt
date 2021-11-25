@@ -1,0 +1,77 @@
+웹개발시 새컴퓨터에 설치해야할 것
+
+1. VScode
+2. git.com 가입(server)
+3. git client(git-scm.com) - main으로, credential manager : none
+ - cmd 창에서 git --version 입력해서 설치제대로 됐나 확인 
+사용자/git(디렉토리생성)
+git clone https://github.com/ranolina/bitcamp-study
+
+복사해오기
+git clone https://github.com/ranolina/bitcamp-study
+<깃디렉토리에 깃데릭토리에 올려서>
+C:\Users\forjo\git\bitcamp-study>git add .
+C:\Users\forjo\git\bitcamp-study>git commit -m "test1"
+
+
+4. java 개발도구설치 (jdk) graalVM ( v17) -C:\tools설치(graalvm)
+-환경변수(path,JAVA_HOME)
+
+5.이클립스설치
+설치 후, 설정잡기 
+
+6. git 저장소
+
+---------------------------------------------------------------------------
+1. VScode
+2. git.com 가입(server)
+3. git client(git-scm.com) - main으로, credential manager : none
+ - cmd 창에서 git --version 입력해서 설치제대로 됐나 확인 
+4. java 개발도구설치 (jdk) graalVM ( v17)
+-환경변수 설정잡기 
+-디버그확인 
+*jdk가 여러개 잡혀있다고 하더라도 가장먼저 설정된 것의 경로를 찾는다.
+JAVA_HOME : 설치된 프로그램을 넣어준다,. 자바가 필요한 프로그램들을 위해 
+echo %JAVA_HOME%
+
+* 일일이 주소찾아서 매번 드어갈 수 없으므로 경로잡아주기 
+<1>변수로 값저장 - 이름
+set path=c:\tools\graalvm-ce-java17-21.3.0\bin;%path%
+<2> 잘됐는지 꼭 확인해줘라. 문제를 찾을떄 가장 문제가될 수 있는 것을 찾아줘라.
+광랜확인-노트북확인 문제가있으면 유플러스에 전화
+단자확인- 전원, 단자위치확인 추적을 해나가라 
+마구잡이식으로 하면 손발이 고생한다. 
+
+디버그 해봐라 
+echo %path% : 변수 path에 저장값이 무어냐 
+javac -version
+java -version
+
+cmd 창입력은 cmd창 입력창 안에서만 유효하다 껐다다시키면 사라짐
+매번 칠수 없으므로 환경변수를 잡는 것
+
+path는 여러개가 아닌 1개만 둘것, 나중에 문제 생겼을때 잡기힘들다. 
+될때까지 연습해라. 똘끼있게 공부해라 
+
+5.이클립스설치
+
+mkdir git
+cd git
+git --version 
+
+(그 프로그램의 사용법에 따라 다른것
+개발 세계에 들어오면 
+사용법은 비슷비슷하지만 똑같진않음
+시설마다 문방식이 다다른다. 통일성과 일반성찾지마라 인종마다 언어가 통일되나 영어도 다다른데)
+
+복사해오기
+git clone https://github.com/ranolina/bitcamp-study
+<깃디렉토리에 깃데릭토리에 올려서>
+C:\Users\forjo\git\bitcamp-study>git add .
+C:\Users\forjo\git\bitcamp-study>git commit -m "test1"
+
+이클립스실행은 내일
+
+이미존재할때는 클론이 아님. 
+존재한것을 갱신하는 것 (서버에 존재하는 내용을 갱신할때는): git pull
+
