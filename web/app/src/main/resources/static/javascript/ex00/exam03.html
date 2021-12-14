@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>exam</title>
+</head>
+<body>
+  <h1>요점 정리 - 3.함수 정의와 호출</h1>
+
+<script>
+function plus(a, b) { //var a x, a,b 파라미터(agument를 받는 변수) 자바스크립트는 함수도 객체로 다루므로 알고보면 plus 변수
+  return a + b;
+}
+console.log(plus(10, 20));//실행순서)plus 함수 호출 -> console.log
+
+var ok;//값을 변수에 넣는 순간 변수의 타입이 결정, 변수타입은 값에 따라 바뀐다.
+console.log(ok);
+
+ok = plus; //함수 객체에 주소를 복사  둘은 똑같은 함수 객체를 가리킨다.
+console.log(ok(100, 200));//함수객체에 접근 가능
+
+var haha = ok;
+console.log(haha(1000, 2000));//함수객체 주소를 갖고있을때 함수처럼 쓸 수 있다.
+
+ok="hello";//String 객체
+//ok(100,200);//에러 ok is not a function
+
+</script>
+</body>
+</html>

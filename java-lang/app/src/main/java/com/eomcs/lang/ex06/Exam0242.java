@@ -10,7 +10,7 @@ public class Exam0242 {
   //    그래서 static을 생략해도 된다.
   //
   enum Level {
-    GUEST, MEMBER, ADMIN
+    GUEST, MEMBER, ADMIN//반드시 Level에 선언된 값만와야함
   }
 
   public static void main(String[] args) {
@@ -22,8 +22,9 @@ public class Exam0242 {
     // enum을 사용하는 주된 이유는?
     // => 100, 200, "admin" 과 같이 값을 직접 지정할 필요가 없다.
     // => enum 변수에는 그 타입에 정의된 값만 저장할 수 있다.
+    // => 안전한 코드를 작성 할 수 있다.
     //
-    Level level = Level.MEMBER;
+    Level level = Level.MEMBER; //반드시 Level에 선언된 값만와야함
 
     // 다음과 같이 switch나 case 값으로 enum 타입의 값이 올 수 있다.
     switch (level) {
@@ -39,4 +40,4 @@ public class Exam0242 {
     }
   }
 }
-
+//장점-코드의 안정성까지 확보 + 보기더 편한 코드 직관적임

@@ -2,7 +2,7 @@ package com.eomcs.lang.ex04;
 
 //# 형변환 - 정수 변수 ==> 부동소수점 변수
 //
-public class Exam0910 {
+public class Exam0920 {
   public static void main(String[] args) {
     byte b = 100;
     short s = 100;

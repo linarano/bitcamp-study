@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>exam</title>
+</head>
+<body>
+  <h1>요점 정리 - 4.객체와 프로퍼티</h1>
+
+<script>
+//Object라는  틀을 기반으로 기본 객체를 생성한다.
+var obj1 = new Object(); // => HashMap<String,Object> obj1 = new HashMap<>();
+//var name = 우헤헤;
+//기본 객체에 프로퍼티를 덧붙인다.
+obj1.name = "홍길동"; // => obj1.put("name", "홍길동");
+obj1.age = 20; // => obj1.put("age", 20);
+obj1.working = true; // => obj1.put("working", true);
+obj1.hello = function() {
+//  var name = 오호라;
+  console.log("안녕하세요, " + this.name + "님!"); //함수가 속해있는 상자가 obj1 함수가 같이 소속되어있는 객체안에서 찾음name
+  // this빼면 안에서 로컬name 찾고  밖에 선언되어있는지 함수 찾아본다. var name
+}; // => obj1.put("hello", 함수);
+
+console.log(obj1);
+obj1.hello(); // obj1.get("hello")(); //함수 객체임으로 함수처럼 쓸 수 있다.
+
+// 자바스크립트 객체 정의 단축 표기법(실무)- 2가지 방법 다 알아도 쓰느 사람마다 다름
+// => JavaScript Object Notation(JSON) 데이터 포맷의 근원이다.
+var obj2 = {
+    name:"임꺽정",
+    age:30,
+    working:true,
+    hello:function() {
+      console.log("안녕하세요, " + this.name + "님!")
+    },
+    hello2() {//function hello2(): 에러
+      console.log("안녕하세요, " + this.name + "님2!")
+    }
+};
+
+console.log(obj2);
+obj2.hello();//obj2 소속인 것을 명시해줘야함
+obj2.hello2();
+
+
+</script>
+</body>
+</html>

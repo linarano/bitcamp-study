@@ -11,6 +11,7 @@ public class Exam0450 {
     // for (배열에서 꺼낸 값을 저장할 변수 선언 : 배열주소) 문장;
     for (String name : names)
       System.out.println(name);
+    System.out.println(names[0]);
   }
 }
 

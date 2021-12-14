@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>exam</title>
+</head>
+<body>
+  <h1>요점 정리 - 5.HTML 태그와 DOM 트리 객체</h1>
+  <p id="p1">오호라!</p>
+  <button id="btn1">확인</button>
+
+<script>
+var tag1 = document.getElementById("btn1");
+
+tag1.onclick = function() { // Observer 패턴: 리스너 => 이벤트 리스너 , 이벤트핸들러=> 콜백함수(callback; cb) ,이벤트가 발생했을때 귀를 기울이고 있다가 동작, tag에 서로 약속된 이름으로 등록 'onclick'- 클릭했을때 웨브라우저가 호출하는 함수에 대해서 붙이는 이름
+  var tag2 = document.getElementById("p1");
+  tag2.innerHTML = "비트캠프!";
+};
+
+</script>
+</body>
+</html>

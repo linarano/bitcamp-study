@@ -13,7 +13,7 @@ public class Exam0330 {
       while (y <= 9) {
         System.out.printf("%d * %d = %d\n", x, y, x * y);
         if (x == 5 && y == 5)
-          break; // 이 break는 자신이 소속된 가장 가까운 반복문을 나간다.
+          break; // 이 break는 자신이 소속된 가장 가까운 반복문을 나간다.(지금은WHILE)
         y++;
       }
 

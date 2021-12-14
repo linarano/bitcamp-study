@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>exam</title>
+  <style>
+    div {
+      border: 1px solid red;
+      min-height: 100px;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>요점 정리 - 7.AJAX-클라이언트 측 렌더링 방식</h1>
+  <div>
+    <ul id="x-name-list">
+    </ul>
+  </div>
+
+  <button id="btn1">데이터 가져오기</button>
+
+<script>
+var tag1 = document.getElementById("btn1");//1)버튼태그찾고
+
+tag1.onclick = function() {//2)함수등록
+  // 서버에 요청(실무에서 많이씀)
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "/javascript/ex00/exam07", false);//false 서버가 응답하면 그 다음으로 가라, 동기모드, 현재동적리소스(리턴)
+  xhr.send();
+
+//서버에서 보낸 JSON 형식의 데이터를 자바스크립트 객체로 변환한다.
+var names = JSON.parse(xhr.responseText);//배열을 받아
+console.log(names);
+  // 서버가 보낸 데이터를 가지고, 클라이언트 측에서 <li></li> 태그로 만들어 <ul></ul> 태그에 넣기
+  var ul = document.getElementById("x-name-list");//메소드가 ID /쿼리셀렉터와 다름
+
+  for(var name of names){
+    var li = document.createElement("li");
+    li.innerHTML = name;
+    ul.appendChild(li);
+  }
+};
+
+</script>
+</body>
+</html>

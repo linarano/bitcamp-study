@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>exam</title>
+  <style>
+    div {
+      border: 1px solid red;
+      min-height: 100px;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>요점 정리 - 6.AJAX-서버측 렌더링방식</h1>
+  <div id="d1"></div>
+  <button id="btn1">HTML 가져오기</button>
+
+<script>
+var tag1 = document.getElementById("btn1");//1)버튼태그찾고
+
+tag1.onclick = function() {//2)함수등록
+  // 서버에 요청(실무에서 많이씀)
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "/javascript/ex00/exam06", false);//false 서버가 응답하면 그 다음으로 가라, 동기모드, 현재동적리소스(리턴)
+  xhr.send();
+
+  // 서버가 보낸 데이터를 div 태그에 넣기
+  var tag2 = document.getElementById("d1");
+  tag2.innerHTML = xhr.responseText;//이 객체 안에 서버가 보낸 값이 들어있다 content에 넣어라
+};
+
+</script>
+</body>
+</html>

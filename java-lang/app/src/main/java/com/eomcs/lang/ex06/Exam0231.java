@@ -14,7 +14,10 @@ public class Exam0231 {
     int x = 1, y = 300;
     switch (x) {
       case 1 * 300: // OK
-        //      case 1 * y: // 컴파일 오류!
+        //      case 1 * y: // 컴파일 오류!-변수안됨
     }
+    //if(x==(1*y))
+    //System.out.println("ok"); 복잡조건은 if 써라
+
   }
 }

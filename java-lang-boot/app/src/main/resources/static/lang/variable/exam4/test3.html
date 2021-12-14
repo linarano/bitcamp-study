@@ -2,44 +2,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>변수활용</title>
+<title>변수 활용</title>
 </head>
 <body>
+
 <h1>배열 다루기</h1>
 <button type="button" id="x-btn">배열 가져오기</button>
-
 <ul id="x-namelist">
 </ul>
 
 <script>
-var xNamelist=document.querySelector("#x-namelist");
+var xNamelist = document.querySelector("#x-namelist");
 var xBtn = document.querySelector("#x-btn");
 
-xBtn.addEventListener ("click", function(){
-	var xhr = new XMLHttpRequest();
-	xhr.onload= function(){
-	//서버에서 받은 JSON 형식의 배열을 자바스크립트 에서 제공해주는 JSON객체로 배열로 변환한다.
-		var names = JSON.parse(xhr.responseText);
-	for(var name of names){
-		var li = document.createElement("li");//태그를 만드는함수<li></li>
-		li.innerHTML = name;
-		xNamelist.appendChild(li);
-	}
-	};
-	
-    //즉 URL 인코딩 
-	xhr.open("GET", "/lang/variable/exam4/test3",true); 
-    xhr.send();
-
-	});
-
-
-
-
-
-
-
+xBtn.addEventListener("click", function() {
+ //현재 요청한 자원의 경로를 기준으로 상대경로를 지정하는 것이 유지보수에 더 좋다 
+	fetch("test3")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(names) {
+      names.forEach(function(name) {
+        var li = document.createElement("li");
+        li.innerHTML = name;
+        xNamelist.appendChild(li);
+      });
+    });
+});
 </script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

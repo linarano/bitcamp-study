@@ -5,9 +5,9 @@ package com.eomcs.lang.ex06;
 public class Exam0241 {
 
   public static void main(String[] args) {
-    int level = 1;
+    int level = 1;//7을 집어넣는 것을 막을 방법이 없다
 
-    // 상수를 사용하면 주석없이 바로 이해할 수 있다.
+    // 상수를 사용하면 주석없이 바로 이해할 수 있다.(상수는 값이 안바뀜),따로주석필요없음
     // => case 문자의 값으로 변수를 사용할 수 없다.
     // => 단 값이 변경되지 않는 final 변수라면 사용할 수 있다.
     //
@@ -26,3 +26,7 @@ public class Exam0241 {
     }
   }
 }
+
+//0,1,2 외의 값을 넣는 것을 막을 방법이 없다. 그래서 Enum사용
+//항상 짜는 것보다 문제를 찾는게 더 시간이 오래걸려
+//실수 줄이는게 잘짜는 것
