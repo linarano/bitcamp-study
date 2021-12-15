@@ -10,11 +10,11 @@
 "use strict"
 
 // 배열을 만들 때 크기를 결정하지 않는다.
-// 배열에 추가된 값에 따라 배열 크기(length)가 결정된다.
-// => 자바스크립트의 배열은 자바의 ArrayList와 비슷하게 동작한다. 
+// 배열에 추가된 값에 따라 배열 크기(length)가 결정된다.(자바스크립트는 느슨한 언어)
+// => 자바스크립트의 배열은 자바의 ArrayList와 비슷하게 동작한다.
 var arr = new Array();
 
-// 단 자바의 ArrayList와 다른 점은 대괄호 []를 이용하여 배열 값을 넣을 수 있다. 
+// 단 자바의 ArrayList와 다른 점은 대괄호 []를 이용하여 배열 값을 넣을 수 있다.
 arr[0] = "aaa";
 arr[1] = "bbb";
 arr[2] = "ccc";
@@ -28,22 +28,21 @@ console.log("----------------------");
 arr[7] = "eee";
 console.log(arr.length);
 console.log(arr);
+//console.log(new object());
+//console.log(var obj2 = new Array());//이 객체를 마지막에  초기화시킨 생성자 array
+
+//해당객체에 값이 저장된적 없으면 undefined - 자바스크립트엔진(구분하고 싶었나봐)
+//console.log(window.v1);//undefined- 구체적으로 물었을때 이름 문법적약속
+//console.log(v1);//- 일단 이변수가 스크립트태그안에 선언이 판단 , 안되있으면 is not defind 약속
+//var v1; 객체에 변수가없으면   undefined
+
+//노드와 구분하려고(브라우저내의 윈도우객체가 없음, )
+
+// 규칙1: script 태그에 변수가 선언되어 잇지않으면, is not defined
+// 규칙2: script 태그에 변수는 있지만 값을 설정하지 않았으면, undefined
+//규칙3: 객체에 변수가 없으면(값이 할당되어있지않으면 ), undefined 
+
 
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
