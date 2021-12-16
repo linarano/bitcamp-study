@@ -7,33 +7,86 @@
 <body>
 <h1>함수 - 함수 아규먼트와 함수 내장 변수 arguments</h1>
 <script>
-// 자바스크립트의 함수는 함수를 호출할 때 전달한 값들을 보관하는 배열과 유사한 변수를 내장하고 있다. 
-// => 그 내장 변수의 이름은 "arguments" 이다.
-function f1(a) { 
+// 자바스크립트의 함수는 함수를 호출할 때 전달한 값들을 보관하는 배열과 유사한 변수를 내장하고 있다.
+// => 그 내장 변수의 이름은 "arguments" 이다.(자바스크립트의 모든함수가 갖고있다. 배열과 비슷함, 함수에 전달하는 값이 들어있다.)
+
+var arr = new Array(); //var arr= [];
+arr[0]= 200;
+console.log(arr);
+
+
+
+
+function f1(a) { //파라미터1개
 	console.log("a =", a);
+	console.log(arguments);//객체에 대한 간략한정보, 내용물을 보여줌
+
+	//argument의 프로토타입은  object
+	//argument는 모든 값이 다들어간다.
+ // 함수 호출시 들어오는 모든 값이 저장된다.
+ //파라미터1개, 들어온 값 4개 -> 함수호출을 실행하면 1개가 들어와있지만, argument는 모든걸 다 받아서 가지고있다.
+}
+
+f1();
+console.log("----------------");
+
+f1(100);
+console.log("----------------");
+
+f1(100, 200, 300, 400)
+console.log("----------------");
+
+
+function f2(a){ // 배열은 아니지만 렝스라는 변수가 있으므로 꺼낼수있다.
+	for (var i = 0; i < arguments.length; i++) {
+		console.log(arguments[i]);
+	}
+}
+f2(100, 200, 300, 400)
 	console.log("----------------");
-	
-	console.log(arguments.length);
-	
-  for (var value of arguments) {
+
+
+
+function f3(a){
+  for (var value of arguments) { //밸류값을 꺼낼수있다. 배열처럼
     console.log(value);
   }
+}
+f3(100, 200, 300, 400)
   console.log("----------------");
+
+
+	function f4(a){
   for (var i in arguments) {
     console.log(arguments[i]);
   }
-  console.log("----------------");
-  for (var i = 0; i < arguments.length; i++) {
-    console.log(arguments[i]);
-  }
 }
+f4(100, 200, 300, 400)
+  console.log("----------------");
+
+
+	function f5(a){
+arguments.forEach(function(value)){
+//argumets는 내장 변ㅅㅜ는 Array() 초기화시킨 배열객체가 아니기 때문에
+//forEach함수 없다.
+	  console.log(value); // 값을 꺼내서 내가 준 함수를 호출하고 //오류
+		//
+});
+
+  }
+
+f5(100, 200, 300, 400)
+  console.log("----------------");
+
+
+
 
 //f1();
 //f1(100);
-f1(100, 200, 300, 400, 500);
+
 
 // 주의!
-// => 자바스크립트는 파라미터의 개수와 상관없이 아규먼트를 넘길 수 있기 때문에 
+// => 자바스크립트는 파라미터의 개수와 상관없이 아규먼트를 넘길 수 있기 때문에
 //    자바의 오버로딩 문법이 자바스크립트에서는 없다.
 // => 자바는 메서드를 찾을 때 값의 타입과 개수를 이용하여 찾는다.
 //    그러나 자바스크립트는 값의 타입이 없고 아규먼트의 개수도 의미가 없다.
@@ -41,8 +94,3 @@ f1(100, 200, 300, 400, 500);
 </script>
 </body>
 </html>
-
-
-
-
-

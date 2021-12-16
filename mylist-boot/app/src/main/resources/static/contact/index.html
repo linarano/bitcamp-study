@@ -28,7 +28,7 @@
       return response.json();
     })
     .then(function(contacts) {
-      console.log(contacts)
+      console.log(contacts);
       for (var contact of contacts) {
         var values = contact.split(",");
         var tr = document.createElement("tr");
@@ -40,3 +40,4 @@
       }
     });
 </script>
+

@@ -8,9 +8,9 @@
 <h1>함수 - 애로우(arrow) 함수를 아규먼트로 전달하기</h1>
 <script>
 "use strict"
-// arrow 함수이든 일반 함수이든 결국 같은 함수이다. 
+// arrow 함수이든 일반 함수이든 결국 같은 함수이다.
 //
-// 
+//
 
 function play(fn) {
 	console.log("함수가 리턴한 값 =", fn(100, 200));
@@ -24,10 +24,11 @@ function plus(a, b) {
 //그러면 play()는 그 함수를 호출하여 리턴 값을 출력할 것이다.
 play(plus);
 
-//또는 다음과 같이 익명 함수를 정의하여 바로 아규먼트로 넘길 수 있을 것이다.
-play(function(a, b) {return a - b;});
+//또는 다음과 같이 익명 함수를 정의하여 바로 아규먼트로 넘길 수 있을 것이다.(왜냐하면 굳이 1번쓸 변수를 만들지말고 ,함수를 따로 정의해서 넘겨주는 방법이나 이거나 동일)
+play(function(a, b) {return a - b;});//함수정의한 것 호출이아님에 중요 play(함수주소를 넣는 것) pluy(plus) / play(plus(100,200))
+//play((a, b) => a - b);
 
-//또한 arrow function을 정의하여 바로 아규먼트로 넘길 수 있다. 
+//또한 arrow function을 정의하여 바로 아규먼트로 넘길 수 있다.(arrow function일나 문법으로 함수정의한 것 함수주소가 넣인것)
 play((a, b) => a * b);
 
 //물론 arrow function이 여러 문장으로 구성된 경우도 있을 것이다.
@@ -39,12 +40,12 @@ play((a, b) => {
 	return sum;
 });
 
+//play(ok)
+//객체인지 함수객체인지, 일반변수인지 궁금함
+//그냥 play(function ok(a,b){})
+//간단한 정의를 넘어서 직관적이며 코드의 가독성을 높인 것
+
 </script>
 
 </body>
 </html>
-
-
-
-
-

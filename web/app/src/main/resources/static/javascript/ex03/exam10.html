@@ -9,23 +9,23 @@
 <script>
 "use strict"
 // 함수는 객체이기 때문에 주소를 주고 받을 수 있다.
-// 
+//
 
 // 함수 안에서 함수를 만들어 리턴할 수 있다.
-function interestCalculator(type) {
+function createInterestCalculator(type) {
     switch (type) {
     case "보통예금":
-    	return function(money, month) {return money + (money * 0.0011 * month);};
+    	return function(money, month) {return money + (money * 0.0011 * month);};//함수객체를 정의한 후, 함수객체의 주소를 리턴하는 것 => 결과값을 리턴한다.
     case "정기예금":
-    	return function(money, month) {return money + (money * 0.0014 * month);};
+    	return function(money, month) {return money + (money * 0.0014 * month);};//ㅋ,ㄹ로저
     default:
-    	return function(money, month) {return money;};
+    	return function(money, month) {return money;};//클로저
     }
 }
 
-// interestCalculator() 함수가 리턴하는 것은 내부에서 정의한 함수의 주소이다.
+// createInterestCalculator() 함수가 리턴하는 것은 내부에서 정의한 함수의 주소이다.
 // => 이렇게 함수 안에서 정의한 함수를 '클로저(closure)'라 부른다.
-var fn = interestCalculator("보통예금");
+var fn = createInterestCalculator("정기예금"); // 이자계산기함수 리턴 케이스에 따라 다름(2번째함수를 가리킬것) - 함수를 만든후에 함수주소를 리턴
 
 console.log("100억 7달 =", fn(10000000000, 7));
 
@@ -34,8 +34,3 @@ console.log("100억 7달 =", fn(10000000000, 7));
 
 </body>
 </html>
-
-
-
-
-

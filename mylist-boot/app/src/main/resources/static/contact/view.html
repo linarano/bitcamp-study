@@ -34,14 +34,8 @@
   console.log(qs);
 
   // 2) 쿼리 스트링에서 email 값을 추출한다.
-  var email = null;
-  var values = qs.split("&");
-  for (var value of values) {
-    if (value.startsWith("email=")) {
-      email = value.split("=")[1];
-      break;
-    }
-  }
+  var params = new URLSearchParams(qs);
+  var email = params.get("email");
 
   if (email == null) {
     alert("이메일 값이 없습니다.");
@@ -70,7 +64,7 @@
     });
 
   document.querySelector("#x-update-btn").onclick = function() {
-    if (xName.value == ""  || xTel.value == "") {
+    if (xName.value == "" || xTel.value == "") {
       window.alert("필수 입력 항목이 비어 있습니다.");
       return;
     }
@@ -89,16 +83,17 @@
     window.location.href = "index.html";
   };
 
-  document.querySelector("#-delete-btn").onclick = function(){
-    fetch(`/contact/delete?email${email}`)
-    .then(function(response){
-      return response.json();
-    })
-    .then(function(result){
-      console.log(result)
-      window.href ="index.html"
-    })
+  document.querySelector("#x-delete-btn").onclick = function() {
+    fetch(`/contact/delete?email=${email}`)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(result) {
+        console.log(result);
+        location.href = "index.html";
+      });
   };
+
 </script>
 
 </body>

@@ -10,28 +10,32 @@
 "use strict"
 // 익명 함수를 정의할 때 arrow function 문법을 사용할 수 있다.
 // 문법:
-//    (파라미터,파라미터,...) => 문장 
+//    (파라미터,파라미터,...) => 문장
 //    (파라미터,파라미터,...) => {문장1; 문장2;}
 //
-// 
+//
 
-var f1 = function() {
-	return "안녕";
+function f0 (a,b){
+  return a + b;
+}
+console.log(f0(1,2));
+
+var f1 = function(a,b){
+  return a + b;
 };
-console.log(f1());
+console.log(f1(10,20)); //파라미터 값을 줘야지
+//익명함수인 경우에는 세미콜론 붙여라 변수= 값이므로
 
-// 한 문장만 있을 때는 
-// 그 문장의 실행 결과가 자동으로 리턴된다.  
-var f2 = () => "안녕";
-console.log(f2());
+var f2 = (a, b) =>{
+  return a + b;
+}; // 애로우 펑션 촌스로움 문장한개일때는 중괄호 생략, 리턴생략
+console.log(f2(100, 200));
 
-// 만약에 arrow 함수가 값을 리턴하지 않는다면?
-f2 = () => console.log("값을 리턴하지 않는다.");
-console.log(f2()); // 값을 리턴하지 않는 함수에 대해 리턴 값을 출력하려고 한다면 undefined가 된다.
-f2();
+var f3 = (a,b) => a + b;
+console.log(f3(1000,2000));
 
 // 파라미터를 받는 arrow function
-var f3 = (a, b) => a + b; 
+var f3 = (a, b) => a + b;
 console.log(f3(100, 200));
 
 // 여러 개의 문장을 가질 때는 블록{}으로 묶는다.
@@ -44,8 +48,3 @@ console.log(f4(100, 200));
 
 </body>
 </html>
-
-
-
-
-
