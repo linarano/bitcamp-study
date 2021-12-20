@@ -11,12 +11,13 @@ public class Exam0220 {
     // 파라미터?
     // - 메서드를 실행할 때 사용할 값을 외부로부터 받기 위해 선언한 로컬 변수.
     // - 메서드를 실행할 때 생성되고 메서드 실행이 끝나면 제거된다.
+    //-(개발자는 이걸 보고 String 값과 int값을 순서대로 줘야하는 구나 라고 알수있음
     System.out.printf("%d살 %s님 반갑습니다.\n", age, name);
 
     //    System.out.println(age + "살 " + name + "님 반갑습니다.");
   }
 
-  public static void main(String[] args) {
+  public static void main(String[] args) {//프로그램 진입점 program entrypoint
 
     System.out.println("main()11111");
 

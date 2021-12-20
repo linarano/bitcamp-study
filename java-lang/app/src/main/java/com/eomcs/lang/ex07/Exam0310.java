@@ -20,10 +20,15 @@ public class Exam0310 {
     // => 그래서 "call by value"라 부른다.
     // => 비록 swap()에서 a와 b라는 이름의 변수가 있지만,
     //    이 변수는 main()에 있는 변수와 다른 변수이다.
-    swap(a, b);
+    swap(a, b); //(100,200)
     System.out.printf("main(): a=%d, b=%d\n", a, b);
   }
 }
+
+//main과 swqp에서 쓰는 변수를 전혀 상관이없는 함수다.****
+//콜할때 넘겨주는 값은 값이다.
+//swap 해서 값을 바꿨다고 하더라도  main에 영향이 없다.
+
 
 // call by value
 // => 아규먼트가 primitive data type인 경우,

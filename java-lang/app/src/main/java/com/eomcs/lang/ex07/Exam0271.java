@@ -14,6 +14,9 @@ public class Exam0271 {
 
   public static void main(String[] args) {
     // 컴파일 확인하라!
+
+    // 가변 파라미터 사용예
+    System.out.printf("==> %s|%s\n","aaa", "bbb"); // 숫자든 뭐든 올수 있다 ->object : 두번째 파라미터가 가변파라미터
   }
 }
 

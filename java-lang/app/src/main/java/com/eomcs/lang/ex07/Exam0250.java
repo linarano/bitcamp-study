@@ -11,7 +11,7 @@ public class Exam0250 {
   //
   // 다음은 hello()를 호출할 때 String 값을 0개 이상 전달할 수 있다.
   static void hello(String... names) {
-    for (int i = 0; i < names.length; i++) {
+    for (int i = 0; i < names.length; i++) {// 내부적으로 배열처럼 쓴다.
       System.out.printf("%s님 반갑습니다.\n", names[i]);
     }
   }
@@ -28,11 +28,11 @@ public class Exam0250 {
     System.out.println("-------------------");
 
     // 가변 파라미터 자리에 배열을 직접 넣어도 된다.
-    String[] arr = {"김구", "안중근", "윤봉길", "유관순"};
+    String[] arr = {"김구", "안중근", "윤봉길", "유관순"}; //낱개를 4개 만들어 준것과 같다.
 
     hello(arr);
     System.out.println("-------------------");
 
-    //    hello("홍길동", 20, "오호라"); // 다른 타입은 안된다. 컴파일 오류!
+    //        hello("홍길동", 20, "오호라"); // 다른 타입은 안된다. 컴파일 오류!
   }
 }
