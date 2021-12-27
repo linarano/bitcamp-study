@@ -6,7 +6,7 @@
 <style>
 body, div {
     border: 1px solid red;
-    padding: 30px; 
+    padding: 30px;
 }
 button {padding: 30px;}
 </style>
@@ -24,30 +24,49 @@ button {padding: 30px;}
 
 // 커스텀 이벤트에 데이터를 첨부해서 보내기
 // => CustomEvent() 생성자를 사용해서 이벤트 객체를 만들어야 한다.
-// 
+//
 document.getElementById("btn1").addEventListener("click", function(e) {
 	// #btn1을 눌렀을 때 #btn2에 "ohora" 이벤트를 발생시키기
 	// 1) CustomEvent 만들기
 	// => 이벤트 객체에 데이터를 첨부할 때는 "detail"이라는 이름으로 데이터를 첨부하라!
-	var myEvent = new CustomEvent("ohora", 
-	    {detail: "hello!!"}); 
-	
+
+  /* 과거방식
+  var data = new Objdect();
+  data.detail = "hello!";//
+  var myEvent = new CustomEvent("ohora", data);
+*/
+
+/*과거방식
+var data ={
+detail : "hello!"
+};
+var myEvent = new CustomEvent("ohora", data);
+데이터가 무엇인지는 멀리떨어진 소스까지 가봐야안다.
+
+
+*/
+
+  var myEvent = new CustomEvent("ohora", {
+    detail2: "hello!!"
+
+  }); //이벤트이름과 객체를 만들어 담아서보낸다.=
+      //객체를 주고받을 수없다. 리턴받을수도없고, 파라미터로 던질 수도없다. 그 진짜의미는 객체의주소(단축표기법사용, 굳이변수사용 안함, 객체주소가 넘어간다.) 이벤트를 받는 그쪽에서 문자열 데이터를 그냥보내는게아니라
+      //객체는 한번 Heap에 만들어지면 그 주소를 주고받는 것
+      //변수명이 없으므로 한번만 사용 , 객체주소를 알 길이 없으니까 ** 그 객체를 다른데 쓸일 이없다면 소스코드 유지보수에 낫다. 왜? 직관적이므로
+      //먼데서 찾을 필요없이 바로 이 안에서 해결한다.
+      //유명한책들 보면 이런식의 예제
+      //
 	// 2) 위에서 생성한 이벤트 객체를 #btn2에 보낸다.
 	document.getElementById("btn2").dispatchEvent(myEvent);
 });
 
-// "ohora" 이벤트를 처리하고 싶다면, 
+// "ohora" 이벤트를 처리하고 싶다면,
 // 다음과 같이 이벤트 이름을 "ohora"로 지정하라!
 document.getElementById("btn2").addEventListener("ohora", function(e) {
-    console.log("버튼2...", e.detail);
+    console.log("버튼2...", e.detail2);
 });
 
 
 </script>
 </body>
 </html>
-
-
-
-
-

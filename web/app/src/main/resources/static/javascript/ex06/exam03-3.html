@@ -18,25 +18,23 @@
 // 리스너가 호출될 때 어떤 태그인지 알아내는 방법!
 
 var el = document.querySelectorAll(".b1");
-var el2 = document.querySelectorAll(".b2");
+var el2 = document.querySelectorAll(".b2"); //b2소속 그룹의 목록
 
 var btnClick = function(e) {
-	alert("===> " + this.getAttribute("data-no"));
-	alert("===> " + e.target.getAttribute("data-no"));
+	alert("===> " + this.getAttribute("data-no")); //이벤트가 발생한객체 알아낼수있다.
+	alert("===> " + e.target.getAttribute("data-no"));//결과동일 (추천하는방법)
 	for (var e of el2) {
-		e.style["background-color"] = "yellow";
+	//	e.style["background-color"] = "yellow";//css 스타일 - 포함하는 경우가있으므로 [], 일관성이없음
+	 	e.style.backgroundColor = "gray"; //원래 스타일에는 이런게 없는데 편의성,일관성을 위해 자바스크립트 객체를 다룰때 이렇게 할 수 있음
+		e.style.color = "green";
+		e.style.border = "5px dashed red"; // 
 	}
 };
 
 for (var e of el) {
-	  e.addEventListener("click", btnClick);
+	  e.addEventListener("click", btnClick);//함수주소 \ 함수호출()
 }
 
 </script>
 </body>
 </html>
-
-
-
-
-

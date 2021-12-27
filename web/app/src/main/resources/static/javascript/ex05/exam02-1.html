@@ -20,26 +20,24 @@
 <script>
 "use strict"
 
+//elemetn
+//content
+
 // Element.innerHTML : DOMString
 // => Element() 생성자가 추가한 프로퍼티이다.
 // => 태그의 콘텐트를 HTML 코드 그대로 리턴한다.
-// 
+//
 var e = document.querySelector("article:first-child > p");
 console.log(e)
-console.log(e.innerHTML)
+console.log(e.innerHTML) //p태그 그대로 꺼내고 싶으면
 console.log("----------------------")
 
 // Node.textContent
 // => Node() 생성자가 추가한 프로퍼티이다.
-// => 태그의 콘텐트에서 HTML 코드를 제거한 후 텍스트만 리턴한다.
+// => 태그의 콘텐트에서 HTML 코드를 제거한 후 순수한 텍스트만 리턴한다.
 console.log(e.textContent)
 console.log("----------------------")
 
 </script>
 </body>
 </html>
-
-
-
-
-

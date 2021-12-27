@@ -13,26 +13,28 @@
 <script>
 "use strict"
 
-// 태그 객체의 onclick 프로퍼티에 리스너 등록하고 이벤트 정보 추출
-/*
-document.getElementById("btn1").onclick = function(e) {
+// 태그 객체의 onclick 프로퍼티에 리스너 등록하고 이벤트 정보 추출(대부분 이렇게 작성)
+
+document.getElementById("btn1").onclick = function(e) { //로컬변수임으로 충돌안일어남. 이벤트를 받고싶으면 파라미터를 선언 , agument에서 꺼내는 것보다 직접받는법
 	console.log(
-			e.altKey, e.ctrlKey, e.button, 
-			e.offsetX, e.offsetY, 
-			e.clientX, e.clientY, 
+			e.altKey, e.ctrlKey, e.button,
+			e.offsetX, e.offsetY,
+			e.clientX, e.clientY,
 			e.screenX, e.screenY)
 };
-*/
+
 
 // id가 부여된 태그는 window 객체를 통해 바로 접근할 수 있다.
-window.btn1.onclick = function() {
-	console.log("test..ok!");
+/*
+window.btn1.onclick = function() { //window객체가 웹브라우저
+		console.log("test..ok!");
 };
+*/
+// 잘못된 사용으로 글로벌변수로 선언한경우와 태그의 아이디과 동일한 경우 변수가 태그 아이디를 덮어쓸수 있으므로 위험해서 잘안씀
+//실무는 자바스크립트 코드가 길어서 안보일 수 있음.
+//varx let을 쓰는이유
+//태그를 정식으로 찾아서 등록하라. 간편하다고 막쓰지말고 (혹시 실무에서 사용예가 있을까 알려주는 것)
+
 </script>
 </body>
 </html>
-
-
-
-
-

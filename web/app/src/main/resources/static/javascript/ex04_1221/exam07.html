@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex04</title>
+</head>
+<body>
+<h1>객체 - {}을 이용하여 기본 객체에 함수를 추가하는 또 다른 방법</h1>
+<script>
+"use strict"
+
+var obj = {
+	name: "홍길동",
+	kor: 100,
+	eng: 90,
+	math:80,
+	/*
+  sum: function() {
+	  return this.kor + this.eng + this.math;
+  },
+  */
+ //아래를 더 많이 사용 하지만 신입개발자는 유지보수를 위해서라도 2가지를 다 알아야함
+	sum() {
+	    return this.kor + this.eng + this.math;
+	},
+	aver() {
+	    return this.sum() / 3;
+	}
+};
+
+console.log(obj.sum(), obj.aver());
+console.log(obj)
+
+</script>
+</body>
+</html>

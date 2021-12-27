@@ -12,18 +12,14 @@
 "use strict"
 
 // addEventListener() 사용
-document.getElementById("btn1").addEventListener("click", function(e) {
+// 태그찾아서
+document.getElementById("btn1").addEventListener("click", function(e) { //리턴값이 태그임으로 거기에 리스너등록가능, 클릭이벤트가 발생했을때 이벤트객체(정보가필요하면)를 받을 파라미터를 지정한것, 필요없으면 안받으면됨 -지정안하면 arument에서 반복문돌려서 꺼내야됨
 	console.log(
-		e.altKey, e.ctrlKey, e.button, 
-		e.offsetX, e.offsetY, 
-		e.clientX, e.clientY, 
+		e.altKey, e.ctrlKey, e.button,
+		e.offsetX, e.offsetY,
+		e.clientX, e.clientY,
 		e.screenX, e.screenY)
 });
 </script>
 </body>
 </html>
-
-
-
-
-

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex05</title>
+</head>
+<body>
+<h1>DOM API - document 객체</h1>
+
+<script>
+"use strict"
+
+// 자바스크립트는 태그를 다루는 도구(규칙)를 제공한다.
+// 그 도구를 "DOM(Document Object Model) API"라 부른다.
+//
+// document 객체
+// => 웹브라우저에서 기본으로 제공하는 객체이다.(내장객체)
+// => 태그를 찾고, 생성하고, 제어하는 함수를 갖고 있다.
+// => var document = new HTMLDocument();
+//
+
+//document의 타입은?
+console.log(Document.prototype)
+console.log(document.constructor.name);
+
+//document 객체를 통해 사용할 수 있는 함수나 변수는?
+//=>HTMLDocument 생성자가 추가한 함수나 변수이다.
+//=> 어떤 함수와 변수가 있는지 알고 싶다면 문서보세요.
+//=> HTMLDocument 생성자의 문서를 보라
+//=> 상속관계
+//Document () ----> Node() ----> EventTarget() ---> Object()
+
+
+console.log(document);
+
+// Document()의 함수
+console.log(document.createElement); //document객체 --->없으면 상위생성자인 Document.prototype
+
+// Node()의 함
+console.log(document.appendChild);//document ---->Document.prptotype --->Node.prototype
+
+// EventTarget()의 함수
+console.log(document.toString);//document ---->Document.prptotype --->Node.prototype---->EventTarget.prptotype
+
+//Object()gkatn
+console.log(document.addEventListener);//document ---->Document.prptotype --->Node.prototype---->EventTarget.prptotype--->Object.prototype
+
+
+//자바스크립트에는 객체, 객체를 초기화시키는생성자가 있는데, 가장 상위 생성자는 Object다
+// 이 함수를 추가시키는 생성자가 있다.
+//객체를 생성하면 초기화된다.(변수나함수를 추가하는 것, 준비시키는 것)슈퍼 생성자 -Object()
+
+</script>
+</body>
+</html>

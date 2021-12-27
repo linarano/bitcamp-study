@@ -17,25 +17,18 @@
 <script>
 "use strict"
 
-// 자바스크립트는 태그를 다룰 때 사용할 도구를 제공한다.
-// 그 도구를 "DOM(Document Object Model) API"라 부른다.
-//
-// document 객체
-// => 웹브라우저에서 기본으로 제공하는 객체이다.
-// => 태그를 찾고 생성하는 것과 관련된 함수를 갖고 있다.
-// => var document = new Document();
-//
-// getElementById("태그아이디")
-// => Element 객체 리턴
-var e1 = document.getElementById("header4");
+// getElementById("태그아이디") - Inerface란  규약으로 되어있기때문에 prototype 생략. 문서볼떄 조심
+// => 리턴 값: HTMLElement 하위 생성자에 의해 초기화된 객체 리턴
+var e1 = document.getElementById("header4");//객체가 있어야만 호출됨 //document와 Documemt와 다름 함수 //HTMLHeadingElement--->HTML
 
 console.log(e1);
 console.log(e1.name); // undefined
 console.log(e1.localName); // 태그명
 console.log(e1.constructor.name); // 객체의 생성자 이름
-
 console.log("----------------------------");
 
+
+// => 생성자 상속관계
 console.log(e1 instanceof HTMLHeadingElement); // true
 console.log(e1 instanceof HTMLElement); // true
 console.log(e1 instanceof Element); // true
@@ -45,8 +38,3 @@ console.log(e1 instanceof Object); // true
 </script>
 </body>
 </html>
-
-
-
-
-

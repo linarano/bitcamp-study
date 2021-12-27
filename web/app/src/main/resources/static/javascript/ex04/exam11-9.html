@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex04</title>
+</head>
+<body>
+<h1>생성자8 - 생성자상속과 instanceof 222</h1>
+<script>
+"use strict"
+
+//이 객체를 누가 생성시켰느냐를 알려줌
+//상위생성자는 당연히 true
+
+
+var obj0= new Object();
+console.log(obj0);
+console.log(obj0.constructor);
+
+function f1() {
+  this.name = "홍길동";
+}
+
+
+function f2() {
+  f1.call(this); // 상위 생성자를 호출해야한다.
+  this.email = "hong@test.com";
+}
+f2.prototype = Object.create(f1.prototype); // 0
+//f2.prototype.constructor = f2;
+f2.prototype.test2 = function() {
+  console.log("test2().....")
+}
+
+function f3() {
+  f2.call(this);
+  this.tel = "010-111-111";
+}
+
+f3.prototype = Object.create(f2.prototype);
+//f3.prototype.constructor = f3;
+f3.prototype.test3 = function() {
+  console.log("test3().....")
+}
+
+var obj0 = new Object();
+var obj1 = new f1();
+var obj2 = new f2();
+var obj3 = new f3();
+
+console.log(obj0);
+console.log(obj1);
+console.log(obj2);
+console.log(obj3);
+console.log("-----------------------");
+
+
+
+obj3.test1();
+obj3.test2();
+obj3.test3();
+console.log("-----------------------");
+
+
+
+console.log(obj0 instanceof Object)
+console.log(obj0 instanceof f1);
+console.log(obj0 instanceof f2);
+console.log(obj0 instanceof f3);
+console.log("-----------------------");
+
+console.log(obj1 instanceof Object)
+console.log(obj1 instanceof f1);
+console.log(obj1 instanceof f2);
+console.log(obj1 instanceof f3);
+console.log("-----------------------");
+
+
+console.log(obj2 instanceof Object)
+console.log(obj2 instanceof f1);
+console.log(obj2 instanceof f2);
+console.log(obj2 instanceof f3);
+console.log("-----------------------");
+
+
+
+console.log(obj3 instanceof Object)
+console.log(obj3 instanceof f1);
+console.log(obj3 instanceof f2);
+console.log(obj3 instanceof f3);
+console.log("-----------------------");
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -17,7 +17,7 @@
 <script>
 "use strict"
 
-// querySelectorAll("CSS selector 문법")
+// querySelectorAll("CSS selector 문법") 가장 편한방법 , 정교하게 찾을 수 있음 
 // => NodeList 객체 리턴
 //
 // 1) 아이디로 찾기
@@ -26,7 +26,7 @@ console.log("1) for...of ---------------------");
 for (var e of list) {
     console.log(e);
 }
-// NodeList는 배열이 아니다. 따라서 다음 반복문을 사용하면 필요없는 프로퍼티까지 반복하게 된다.
+// NodeList는 배열이 아니다. 따라서 다음 반복문을 사용하면 필요없는 프로퍼티까지 반복하게 된다. - 객체에 대해서 for in을 쓰면 프로퍼티이름을 다 인덱스로 간주
 console.log("1) for...in ---------------------");
 for (var i in list) {
     console.log(list[i]);
@@ -69,8 +69,3 @@ for (var e of list) {
 </script>
 </body>
 </html>
-
-
-
-
-

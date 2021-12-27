@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex04</title>
+</head>
+<body>
+<h1>생성자2 - 객체의 생성자 정보</h1>
+<script>
+"use strict"
+
+
+// 생성자는 그냥 일반 함수이다.
+// new 명령 다음에 즉시 함수를 호출하면 생성자로서 역할을 한다.
+
+
+function f1() {
+
+}
+
+var obj1 = new Object();
+var obj2 = new f1();
+
+//객체의 constroctor 프로퍼티에는 생성자 정보가 들어있다.
+// 그래서 해당객체가 어떤 생성자를 통해 초기화되었는지 알 수 있다.
+console.log(obj1.constructor);
+console.log(obj1)
+
+
+console.log("---------------------------")
+
+console.log(obj2.constructor);
+console.log(obj2)
+</script>
+</body>
+</html>

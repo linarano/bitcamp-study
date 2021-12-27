@@ -6,7 +6,7 @@
 <style>
 body, div {
     border: 1px solid red;
-    padding: 30px; 
+    padding: 30px;
 }
 button {padding: 30px;}
 </style>
@@ -23,16 +23,16 @@ button {padding: 30px;}
 "use strict"
 
 // 이벤트가 발생하면 capture-target-bubble 단계로 진행한다.
-// target 단계에서 bubble 단계로 진행하는 것을 막지 않으면 
-// 부모 태그에 등록된 리스너까지 호출되는 문제가 발생한다.
-// 
+// target 단계에서 bubble 단계로 진행하는 것을 막지 않으면
+// 부모 태그에 등록된 리스너까지 호출되는 문제가 발생한다.(기본등록일때)
+//
 // 방법1: Event.stopPropagation()을 호출하라!
-// => 이벤트 bubbling을 막는다. 
+// => 이벤트 bubbling을 막는다.
 // => 단 target에 등록된 함수는 모두 호출된다.
 //
-document.getElementById("btn1").addEventListener("click", function(e) {
+document.getElementById("btn1").addEventListener("click", function(e) { //호출될 함수등록하는 역할
 	console.log("버튼1...1");
-	e.stopPropagation();
+	e.stopPropagation(); //버블을 막는거. 같은 객체에 등록된 리스너는 실행 - 버블링을 하지않도록 설정한다.(실행중단이아님)
 });
 document.getElementById("btn1").addEventListener("click", function(e) {
     console.log("버튼1...2");
@@ -42,12 +42,12 @@ document.getElementById("btn1").addEventListener("click", function(e) {
 });
 
 //방법2: Event.stopImmediatePropagation()을 호출하라!
-//=> 이벤트 bubbling을 막는다. 
+//=> 이벤트 bubbling을 막는다.
 //=> target에 등록된 함수라도 즉시 현 함수에서 실행을 마감한다.
 //
 document.getElementById("btn2").addEventListener("click", function(e) {
     console.log("버튼2...1");
-    e.stopImmediatePropagation(); // 이 리스너까지만 실행한다.
+    e.stopImmediatePropagation(); // 현재실행중인 리스너만 , 나머지는 막아 이 리스너까지만 실행한다.
 });
 document.getElementById("btn2").addEventListener("click", function(e) {
     console.log("버튼2...2");
@@ -70,8 +70,3 @@ document.body.addEventListener("click", function(e) {
 </script>
 </body>
 </html>
-
-
-
-
-
