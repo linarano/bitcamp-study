@@ -8,15 +8,13 @@ public class Exam0111 {
     int kor;
     int eng;
     int math;
-    int sum;
-    float aver;
 
     name = "홍길동";
     kor = 100;
     eng = 90;
     math = 85;
 
-    // 메서드 추출
+    // 메서드 추출(유지보수에 더 낫다)
     // - 학생 정보를 출력하는 명령어를 별도의 블록으로 뺐다.
     // - 성적을 출력하는 명령어를 별도의 블록으로 빼는 이유는 유지보수를 쉽게 하기 위함이다.
     // - 출력 형식을 바꾸고 싶으면 그 블록으로 가서 변경하면 된다.
@@ -24,7 +22,7 @@ public class Exam0111 {
     printScore(name, kor, eng, math);
   }
 
-  static void printScore(String name, int kor, int eng, int math) {
+  static void printScore(String name, int kor, int eng, int math) { //항상 메서드는 static이 기본
     int sum = kor + eng + math;
     float aver = sum / 3f;
     System.out.printf("%s: %d, %d, %d, %d, %.1f\n", name, kor, eng, math, sum, aver);
@@ -45,7 +43,7 @@ public class Exam0111 {
 // - 즉 byte, short, int, long, float, double, boolean, char 외에
 // 새 형식의 새로운 메모리 구조를 갖는 데이터 타입을 정의할 수 있다.
 // - 이렇게 정의한 새 데이터 타입을
-// "사용자 정의 데이터 타입(user defined data type)" 이라 한다.
+// "사용자 정의 데이터 타입(user defined data type)" 이라 한다.(언어를 사용하는 개발자가 정의한 데이터타입)
 //
 // 사용자?
 // - 아니~~ 자바 언어를 사용하는 사람이 누군가?

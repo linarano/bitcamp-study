@@ -2,17 +2,17 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <title>연락처</title>
+  <title>게시글</title>
 </head>
 <body>
 
-<h1>연락처 상세</h1>
+<h1>게시글 상세</h1>
 
 <form>
-이메일*: <input id="x-email" type="text" readonly><br>
-이름*: <input id="x-name" type="text"><br>
-전화*: <input id="x-tel" type="text"><br>
-회사: <input id="x-company" type="text"><br>
+제목*: <input id="x-title" type="text"><br>
+내용*: <textarea id="x-content" cols="60" rows="10"></textarea><br>
+조회수: <span id="x-viewCount"></span><br>
+등록일: <span id="x-createdDate"></span><br>
 별표(*) 항목은 필수 입력입니다.<br>
 <button id="x-update-btn" type="button">변경</button>
 <button id="x-delete-btn" type="button">삭제</button>
@@ -35,39 +35,39 @@
 
   // 2) 쿼리 스트링에서 email 값을 추출한다.
   var params = new URLSearchParams(qs);
-  var email = params.get("email");
+  var index = params.get("index");
 
-  if (email == null) {
-    alert("이메일 값이 없습니다.");
+  if (index == null) {
+    alert("게시물 번호가 없습니다.");
     throw "파라미터 오류!";
   }
-  console.log(email);
+  console.log(index);
 
-  var xName = document.querySelector("#x-name");
-  var xEmail = document.querySelector("#x-email");
-  var xTel = document.querySelector("#x-tel");
-  var xCompany = document.querySelector("#x-company");
+  var xTitle = document.querySelector("#x-title");
+  var xContent = document.querySelector("#x-content");
+  var xViewCount = document.querySelector("#x-viewCount");
+  var xCreatedDate = document.querySelector("#x-createdDate");
 
   // 3) 서버에서 데이터 가져오기
-  fetch(`/contact/get?email=${email}`)
+  fetch(`/board/get?index=${index}`)
     .then(function(response) {
-      return response.json();//json 응답데이터를 자바스크립트객체로
-})
-    .then(function(contact) {
+      return response.json();
+    })
+    .then(function(board) {
       // 4) 연락처 상세 정보를 화면에 출력한다.
-      xName.value = contact.name;
-      xEmail.value = contact.email;
-      xTel.value = contact.tel;
-      xCompany.value = contact.company;
+      xTitle.value = board.title;
+      xContent.value = board.content;
+      xViewCount.innerHTML = board.viewCount;
+      xCreatedDate.innerHTML = board.createdDate;
     });
 
   document.querySelector("#x-update-btn").onclick = function() {
-    if (xName.value == "" || xTel.value == "") {
+    if (xTitle.value == "" || xContent.value == "") {
       window.alert("필수 입력 항목이 비어 있습니다.");
       return;
     }
 
-    fetch(`/contact/update?name=${xName.value}&email=${xEmail.value}&tel=${xTel.value}&company=${xCompany.value}`)
+    fetch(`/board/update?index=${index}&title=${xTitle.value}&content=${xContent.value}`)
       .then(function(response) {
         return response.text();
       })
@@ -82,7 +82,7 @@
   };
 
   document.querySelector("#x-delete-btn").onclick = function() {
-    fetch(`/contact/delete?email=${email}`)
+    fetch(`/board/delete?index=${index}`)
       .then(function(response) {
         return response.json();
       })
