@@ -1,4 +1,4 @@
-package com.eomcs.mylist.domain;
+package com.eomcs.mylist;
 
 public class Todo {
   String title;

@@ -9,7 +9,7 @@ public class Exam0220 {
   // - 소스 코드를 유지보수하기 쉬워진다.
   // - 코드 재사용성이 높아진다.
   // 
-  static class Calculator {
+  static class Calculator { //class 이름을 지을때 적당한 이름을 짓는다. -> 명사구형태 
     static int plus(int a, int b) {
       return a + b;
     }
@@ -27,7 +27,7 @@ public class Exam0220 {
     }
 
     static int abs(int a) {
-      //
+      //  필요 기능이 있으면 그때그때 추가 가능 
       // if (a >= 0) 
       //   return a; 
       // else 
@@ -49,7 +49,7 @@ public class Exam0220 {
     result = Calculator.plus(2, 3);
     result = Calculator.minus(result, 1);
     result = Calculator.multiple(result, 7);
-    result = Calculator.divide(result, 3);
+    result = Calculator.divide(result, 3);// 클래스이름을 준다. 
 
     System.out.printf("result = %d\n", result);
   }
@@ -59,5 +59,12 @@ public class Exam0220 {
 // - 즉 새로운 구조의 메모리를 설계할 때 사용한다.
 // 2) 메서드를 묶을 때
 // - 서로 관련된 기능을 관리하기 쉽게 묶고 싶을 때 사용한다.
+
+
+//복잡한 과정이 보인다. 클래스변수로 선언해버리자.  내부로 변수를 넣자.
+//계산 결과를 밖으로 리턴할 필요없다. 내부에 저장할꺼니까. 
+
+//장점- 바깥에서 계산결과를 관리할 필요없음 
+//일하는 애한테 준다. 그리고 값만 리턴받자. 
 
 

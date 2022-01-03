@@ -17,7 +17,7 @@ public class Exam0720 {
     // 문법:
     //      import 패키지명.클래스명;
     //
-    Y2 obj;
+    Y2 obj;//컴파일러가 자동으로 경로를 붙여준다.
     obj = new Y2();
   }
 }

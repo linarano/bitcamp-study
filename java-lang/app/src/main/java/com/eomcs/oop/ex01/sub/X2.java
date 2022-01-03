@@ -7,7 +7,7 @@ package com.eomcs.oop.ex01.sub;
 
 // 비공개 패키지 멤버 클래스
 // - 같은 패키지에 소속된 클래스만이 이 클래스를 사용할 수 있다.
-class X2 {
+class X2 { //sub패키지에서만 사용가능
 
 }
 
