@@ -16,7 +16,7 @@ public class Exam0110 {
     // - 낱개의 데이터를 저장할 변수를 여러 개 선언하는 수 밖에 없다!
     // - 그래서 성적 데이터를 저장할 변수를 다음과 같이 낱개로 선언한다.
     //
-    String name; //값을 저장하려면 적절한 타입과 변수를 만들어야된다. JVM이 연산시 4byte
+    String name;
     int kor;
     int eng;
     int math;

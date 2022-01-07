@@ -1,6 +1,5 @@
 package com.eomcs.lang.ex07;
 
-
 //# 메서드 : 스택 오버플로우 오류!
 //
 public class Exam0461 {
@@ -20,7 +19,6 @@ public class Exam0461 {
     System.out.println(sum(19000, 0, 0, 0, 0, 0));
   }
 }
-
 
 
 

@@ -5,14 +5,14 @@ package com.eomcs.lang.ex07;
 public class Exam0260 {
 
   // 가변 파라미터
-  static void hello(String... names) { // 0 개이상의 문자열을 받겠다 또는 주소를 받을 수도있다.
+  static void hello(String... names) {
     for (int i = 0; i < names.length; i++) {
       System.out.printf("%s님 반갑습니다.\n", names[i]);
     }
   }
 
   // 배열 파라미터
-  static void hello2(String[] names) { // 배열 주소를 받곘다.
+  static void hello2(String[] names) {
     for (int i = 0; i < names.length; i++) {
       System.out.printf("%s님 반갑습니다.\n", names[i]);
     }

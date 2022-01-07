@@ -2,8 +2,7 @@ package com.eomcs.lang.ex06;
 
 import java.util.Scanner;
 
-//# 흐름 제어문 - switch 사용 후(만약 조건이 숫자라면-단순조건)
-//만일 값이 조건>19 이런식이라면 if
+//# 흐름 제어문 - switch 사용 후
 //
 public class Exam0221 {
   public static void main(String[] args) {

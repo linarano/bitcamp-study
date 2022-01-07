@@ -2,8 +2,6 @@ package com.eomcs.lang.ex06;
 
 // # 흐름 제어문 - for 중첩과 break
 //
-
-/*
 public class Exam0432 {
   public static void main(String[] args) {
     // break 라벨명;
@@ -21,4 +19,5 @@ public class Exam0432 {
     System.out.println("loop1 밖!");
   }
 }
- */
+
+

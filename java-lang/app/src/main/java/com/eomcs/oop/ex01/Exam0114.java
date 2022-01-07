@@ -8,7 +8,7 @@ public class Exam0114 {
     String name;
     int kor;
     int eng;
-    int math; 
+    int math;
     int sum;
     float aver;
   }
@@ -17,10 +17,8 @@ public class Exam0114 {
 
     // 클래스를 이용하면 성적 정보와 같은 여러 개의 값을 한 번에 리턴 받을 수 있다.
     Score s = createScore("홍길동", 100, 100, 100);
-    //  Score s2 = createScore("임꺽정", 100, 100, 100); // 인스턴스생성과정이 복잡할때 
-    //Score s3 = createScore("안중근", 100, 100, 100); //인스턴스를 만들어주는 메서드를 통해서 객체 생성- 팩토리메서드
 
-    printScore(s); //별도의 메서드에서 객체 생성해서 리턴해준다.
+    printScore(s);
   }
 
   static void printScore(Score s) {
@@ -31,9 +29,8 @@ public class Exam0114 {
   // 클래스를 이용하면 성적 정보를 하나로 묶어 리턴할 수 있다.
   // - Score 인스턴스를 생성하여 리턴한다.
   // - 더 정확하게 표현하면, Score 인스턴스를 생성한 후 그 주소를 리턴한다.
-  static Score createScore(String name, int kor, int eng, int math) { //객체를 만든느것도 메서드로 분류
-    //이 메소드는 return타입이 Score(또는 그 하위)
-    Score s = new Score(); //Heap에 메모리만들어진다. 인스턴스
+  static Score createScore(String name, int kor, int eng, int math) {
+    Score s = new Score();
 
     s.name = name;
     s.kor = kor;

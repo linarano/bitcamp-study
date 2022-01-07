@@ -22,7 +22,7 @@ public class Exam0240 {
     // => 리팩토링 기법 중에서 "replace temp with query" 라 부른다.
     System.out.println(hello("홍길동", 20));
 
-    // 리턴 값을 안 받아도 된다. 리턴받는 변수없으므로
+    // 리턴 값을 안 받아도 된다.
     hello("임꺽정", 30); // 리턴 값은 버려진다.
   }
 }

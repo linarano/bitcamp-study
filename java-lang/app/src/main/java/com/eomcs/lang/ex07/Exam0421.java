@@ -28,13 +28,13 @@ public class Exam0421 {
     }
 
   }
-  //배열을 만들어서 넘겨주나
+
   static void compute(int[] moneys, float[] totals, float interest) {
     for (int i = 0; i < moneys.length; i++) {
       totals[i] = moneys[i] + (moneys[i] * interest);
     }
   }
-  //내부에서 배열을 만들어서 리턴
+
   static float[] compute2(int[] moneys, float interest) {
     float[] totals = new float[moneys.length];
     for (int i = 0; i < moneys.length; i++) {
@@ -45,9 +45,7 @@ public class Exam0421 {
 
 }
 
-//어디서 만드는건 중요한게 ㅏ니라
-//어느방법으로 만들엇 ㅓ소스코드가 더 좋으냐의 문제
-//new => heap
+
 
 
 

@@ -2,7 +2,7 @@ package com.eomcs.oop.ex01;
 
 // # 레퍼런스 배열 - 사용 전
 //
-public class Exam0210 { // main안에 있으면 그 안에서만 사용가능 
+public class Exam0210 {
   public static void main(String[] args) {
     // 여러 개의 인스턴스 주소 저장하기
 

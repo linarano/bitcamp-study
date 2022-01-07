@@ -8,7 +8,7 @@ public class Exam0120 {
   static class Score {
 
     // 2) 여러 명의 구별되는 성적 데이터를 저장해야 하기 때문에
-    // 인스턴스 변수로 메모리를 설계하라! 각각 구분되는 데이터로 만들기 때문에 스태틱이 아니라 인스턴스로 만든 것.(인스턴스는 메소드와 상관없다)
+    // 인스턴스 변수로 메모리를 설계하라!
     String name;
     int kor;
     int eng;
@@ -23,7 +23,7 @@ public class Exam0120 {
     Score s1 = new Score(); // 1명 분의 성적 데이터를 저장할 메모리
     Score s2 = new Score();
     Score s3 = new Score();
-    // s1= null; 레퍼런스에 주소가 안들어있다. -NullpointExeption
+
     // 각 인스턴스에 한 명의 성적 데이터를 저장하라!
     s1.name = "홍길동";
     s1.kor = 100;
@@ -46,7 +46,7 @@ public class Exam0120 {
     s3.sum = s3.kor + s3.eng + s3.math;
     s3.average = s3.sum / 3f;
 
-  } // s1= null; 레퍼런스에 주소가 안들어있다. -NullpointExeption
+  }
 }
 
 

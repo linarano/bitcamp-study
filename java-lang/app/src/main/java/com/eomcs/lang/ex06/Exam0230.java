@@ -29,7 +29,7 @@ public class Exam0230 {
       default:
     }
 
-    char c = 'A'; // A문자의 유니코드 값(UTF-16) 0x41(65)-숫자을 c에 저장한다.
+    char c = 'A'; // A문자의 유니코드 값(UTF-16) 0x41(65)을 c에 저장한다.
     switch (c) {
       // case 의 값도 int 값이면 무엇이든 된다.
       case 'A': // 0x41 = 65

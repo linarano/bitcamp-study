@@ -21,7 +21,6 @@ public class Exam0110 {
   }
 
   public static void main(String[] args) {
-
     // 사용자 정의 데이터 타입을 사용하는 방법
     // - new 명령을 사용하여 설계도에 기술된 대로 메모리를 준비한다.
     // - 메모리는 Heap 영역에 생성된다.

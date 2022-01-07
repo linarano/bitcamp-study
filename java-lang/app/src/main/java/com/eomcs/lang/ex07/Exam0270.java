@@ -8,8 +8,8 @@ public class Exam0270 {
   //    => 아규먼트의 시작과 끝을 구분할 수 없다.
   //       예) m1("aaa", "bbb", "aaa@test.com", "bbb@test.com");
   //       어느 값이 names 배열에 들어가고, 어느 값이 emails 배열에 들어가는가?
-  static void m1(String... names, String... emails) {} // 컴파일 오류! - 가변 파라미터는 1개만 가능 
-  //  static void m1(String[] names, String[] emails) {} // OK! - 배열파라미터는 주소를 각각 주니까 여러개 배열파라미터 선언가능
+  //    static void m1(String... names, String... emails) {} // 컴파일 오류!
+  //    static void m1(String[] names, String[] emails) {} // OK!
   //
   //    => 중간에 다른 타입이 온다 하더라도 안된다.
   //  static void m1(String... names, int a, String... emails) {}// 컴파일 오류!
@@ -27,12 +27,15 @@ public class Exam0270 {
   // 2) 가변 파라미터는 반드시 맨 끝에 와야 한다.
   // => 아규먼트의 시작과 끝을 구분할 수 없다.
   // 예) m2("aaaa");
-  static void m2(String... names, String a) {} // 컴파일 오류! // 맨처음
-  //  static void m2(boolean b, String... names, int a) {} // 컴파일 오류! // 중간에도 안됨
-  static void m2(int a, String... names) {} // OK! // 맨끝에 와야함
+  //  static void m2(String... names, String a) {} // 컴파일 오류!
+  //  static void m2(boolean b, String... names, int a) {} // 컴파일 오류!
+  static void m2(int a, String... names) {} // OK!
 
   public static void main(String[] args) {
     // 컴파일 확인하라!
+
+    // 가변 파라미터 사용 예:
+    System.out.printf("==> %s|%s\n", "aaa", "bbb");
   }
 }
 

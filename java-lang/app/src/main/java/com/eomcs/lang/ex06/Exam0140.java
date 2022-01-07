@@ -12,7 +12,7 @@ public class Exam0140 {
 
     // else문을 사용하는 아주 모범적인 예!
     if (age >= 19) // 조건이 거짓이면 다음 else 문을 실행한다.
-      System.out.println("성인입니다.1");
+      System.out.println("성인입니다.2");
     else
       System.out.println("미성년입니다.2");
 
@@ -34,7 +34,7 @@ public class Exam0140 {
     else
       System.out.println("미성년입니다.4");
 
-    // 한 문장일 때는 블록으로 묶지 않아도 된다.(일반개발자는 안묶지만 실수가 있으므로 구글에선느 묶는다)
+    // 한 문장일 때는 블록으로 묶지 않아도 된다.
     if (age >= 19)
       System.out.println("성인입니다.5");
     else {

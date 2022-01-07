@@ -1,6 +1,6 @@
 package com.eomcs.oop.ex01;
 
-//# 레퍼런스 배열 - 사용 후(레퍼런스가 여러개라면?)
+//# 레퍼런스 배열 - 사용 후
 //
 public class Exam0220 {
   public static void main(String[] args) {
@@ -21,9 +21,9 @@ public class Exam0220 {
     // - 주의!
     //   레퍼런스 배열이다. 인스턴스 배열이 아니다!
     //
-    Score[] arr = new Score[3]; //new명령은 Heap에 만들어진다.
+    Score[] arr = new Score[3];
     // 강사님, 인스턴스 배열을 만들 수는 없나요?
-    // => 자바는 인스턴스 배열이 없다!
+    // => 없다!
 
     // 레퍼런스 배열을 생성하면 모든 항목이 null로 초기화 된다.
     // 아직 레퍼런스 배열의 각 항목에 인스턴스 주소가 없는 상태이다.
@@ -49,7 +49,7 @@ public class Exam0220 {
 //   레퍼런스 배열을 사용하는 게 편하다.
 //
 // 잊지말자!
-// - 자바는 인스턴스 배열을 만들 수 없다.
+// - 인스턴스 배열을 만들 수 없다.
 // - 레퍼런스 배열만 가능하다.
 // - 단 자바 기본 타입(byte, short, int, long, float, double, boolean, char)은
 //   해당 타입의 메모리를 배열로 만들 수 있다.

@@ -1,12 +1,8 @@
 package com.eomcs.oop.ex01;
 
-
-
 // # import - 사용 후 II
 //
-import com.eomcs.oop.ex01.sub.*;//원래이거 자동변경해줌 이클래스가
-//정확하게 지정해라- 하위패키지고려안함.
-//import com.*;
+import com.eomcs.oop.ex01.sub.*; 
 
 public class Exam0730 {
   public static void main(String[] args) {

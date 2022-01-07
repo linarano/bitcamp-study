@@ -9,10 +9,10 @@ public class Exam0250 {
     System.out.print("나이, 이름, 취업여부? ");
     int age = keyboardScanner.nextInt();
 
-    // 한 개의 토큰을 읽을 때 유용하다.(앞쪽의 공백무시한다 여러개도 상관없음)
+    // 한 개의 토큰을 읽을 때 유용하다.
     String name = keyboardScanner.next();
 
-    boolean working = keyboardScanner.nextBoolean();//토큰앞쪽공백 무시
+    boolean working = keyboardScanner.nextBoolean();
 
     keyboardScanner.close();
 
