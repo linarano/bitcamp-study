@@ -14,6 +14,7 @@ public class CarTest1 {
 
   }
 
+  // 메서드 호출시 값을 파라미터로 넘기도록 설계했기 때문에 값을 넣어줘야함.
   static void testSedan(Sedan sedan) {
     sedan.start();
     sedan.openSunroof(true);

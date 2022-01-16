@@ -10,6 +10,7 @@ public class Sedan extends Car {
 
   }
 
+  //메소드 호출시 직접 값을 넣어주도록 설계 - Suv와 비교(생성자로 값 초기화) 
   public void openSunroof(boolean openedSunroof) {
     if(openedSunroof) {
       System.out.println("썬루프 오픈");
