@@ -1,7 +1,9 @@
 package com.eomcs.mylist.controller;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.sql.Date;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,30 +11,28 @@ import com.eomcs.mylist.domain.Board;
 import com.eomcs.util.ArrayList;
 
 @RestController 
-public class BoardController  {
+public class BoardController {
 
   ArrayList boardList = new ArrayList();
 
+  // 데이터읽고
+  // 파일을 모아서 주는 것. (버퍼가 데이터를 읽을 수 없으므로 하나로 모아줌)- 엔터를 만나면 버퍼에담은 걸 리턴 
   public BoardController() throws Exception {
     System.out.println("BoardController() 호출됨!");
-    FileReader in = new FileReader("boards.csv");
 
-    StringBuilder buf = new StringBuilder();
-    int c;
-    while ((c = in.read()) != -1) {
+    //1) 주 작업 객체(concrete component) 준비
+    FileReader in = new FileReader("boards.csv"); // 파일 읽어오는 기능만있음
 
-      if (c == '\n') { // 만약 읽은 문자가 줄바꿈 명령이라면, 지금까지 읽은 CSV 데이터를 분석하여 Contact 객체에 담는다.
-        boardList.add(Board.valueOf(buf.toString()));//스태틱 메소드의 전형적인 에 - 복잡한걸 감추고, 단지 호출만하면된다.
-        buf.setLength(0); // 다음 데이터를 읽기 위해 버퍼를 초기화시킨다.
+    //2) 한 줄 단위로 데이터를 읽는 작업을 수행하는 데코레이터 준비
+    BufferedReader in2 = new BufferedReader(in);
 
-      } else { // 문자를 읽을 때 마다 버퍼이 임시 보관한다.
-        buf.append((char) c);
-      }
-    }
-
-    in.close();
+    String line;
+    while ((line = in2.readLine()) != null) {  // 한 줄의 문자열을 읽었으면,
+      boardList.add(Board.valueOf(line)); 
+    } // 버퍼드리더의 리드라인은 스트링리턴이 아니고 null을 리턴한다. 
+    in2.close(); //데코레이터와 그 연결된 객체 모두 클로즈
+    //in.close();  //in.close(); // 데코레이터를 close() 하면 그 데코레이터와 연결된 객체들도 모두 close() 된다.
   }
-
 
   @RequestMapping("/board/list")
   public Object list() {
@@ -66,26 +66,11 @@ public class BoardController  {
     }
 
     Board old = (Board) boardList.get(index);
-    board.setViewCount(old.getViewCount()); //인스턴스변수에 다이렉트로 접근하지않도록, 메소드로 접근,(시스템운영에 더 안정적)
+    board.setViewCount(old.getViewCount());
     board.setCreatedDate(old.getCreatedDate());
 
     return boardList.set(index, board) == null ? 0 : 1;
   }
-
-  @RequestMapping("/board/save")
-  public Object save() throws Exception {
-    FileWriter out = new FileWriter("boards.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
-
-    Object[] arr = boardList.toArray();
-    for (Object obj : arr) {
-      Board board = (Board) obj;
-      out.write(board.toCsvString() + "\n");
-    }
-
-    out.close();
-    return  arr.length;
-  }
-
 
   @RequestMapping("/board/delete")
   public Object delete(int index) {
@@ -94,8 +79,24 @@ public class BoardController  {
     }
     return boardList.remove(index) == null ? 0 : 1;
   }
+
+
+  @RequestMapping("/board/save")
+  public Object save() throws Exception {
+    // 1) 주 작업객체 준비  
+    FileWriter out = new FileWriter("boards.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+
+    //2) 한 줄 단위로 출력하는 데코레이터 객체 준비 
+    PrintWriter out2 = new PrintWriter(out); //생성자에 객체를 넘겨준다. 
+    Object[] arr = boardList.toArray();
+    for (Object obj : arr) {
+      Board board = (Board) obj;
+      out2.println(board.toCsvString());
+    }
+
+    out2.close();
+    return arr.length;
+  }
 }
-
-
 
 

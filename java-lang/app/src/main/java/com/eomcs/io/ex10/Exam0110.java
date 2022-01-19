@@ -6,6 +6,9 @@ import java.io.FileOutputStream;
 
 public class Exam0110 {
 
+  //이제부터 java.io클래스를 쓰자. - 왜 데이터아웃풋스트림에서 파일아웃풋스트림 주소를 받느냐 왜 이렇게 해오느냐 **
+  //단순히 클래스사용법을 익히는게 중요한게 아니라, 설계기법에 관한 원리, 이점을 이해하는게 중요
+  //
   public static void main(String[] args) throws Exception {
     FileOutputStream fileOut = new FileOutputStream("temp/members.data");
     DataOutputStream out = new DataOutputStream(fileOut);

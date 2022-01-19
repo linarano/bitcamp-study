@@ -4,13 +4,14 @@ package com.eomcs.oop.ex06.c;
 
 public class Exam0310 {
 
-  //멤버의 접근 범위
+  //멤버의 접근 범위 (클래스 멤버에 대해서)
   //private      : 같은 클래스
   //(default)    : 같은 클래스 + 같은 패키지
-  //protected    : 같은 클래스 + 같은 패키지 + 서브 클래스
+  //protected    : 같은 클래스 + 같은 패키지 + 서브 클래스 // 아빠+가족+따로독립해나간 자식접근가능
   //public       : 모두
   //
 
+  //변수선언 , 메서드 정의 앞에 접근범위를 붙인다.
   static class C {
     //private 접근 범위:
     //=> 현재 클래스
@@ -36,8 +37,8 @@ public class Exam0310 {
     // - C의 m1()은 private이기 때문에 오직 C에서만 사용할 수 있다.
     // - C2에서 접근할 수 없다. 접근할 수 없으니, 오버라이딩은 불가능하다!
     //
-    //    @Override
-    private void m1() {} // 컴파일 오류!
+    //Override
+    private void m1() {} // 컴파일 오류! // 슈퍼클래스의 m1 못보겠다 ,private은 오버라이딩안된다.(불가)
 
     // 어? 강사님! @Override 빼니까 m1() 정의할 수 있는데요?
     // => 이건 오버라이딩이 아니라 C2에 새로 메서드가 추가된 것이다.
@@ -47,7 +48,7 @@ public class Exam0310 {
     // 결론! 접근 권한이 없는 메서드는 오버라이딩 불가!
 
     // 다음은 전형적인 오버라이딩의 예이다.
-    @Override void m2() {} // OK
+    @Override void m2() {} // OK - 슈퍼클래스 C의 메서드 정상적으로 오버라이드했다. 
     @Override protected void m3() {} // OK
     @Override public void m4() {} // OK
   }

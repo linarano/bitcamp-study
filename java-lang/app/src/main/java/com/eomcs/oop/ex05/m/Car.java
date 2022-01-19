@@ -27,7 +27,7 @@ package com.eomcs.oop.ex05.m;
 // => 문법:
 //      abstract class 클래스명 {...}
 //
-public abstract class Car {
+public abstract class Car { //변경자 MODIFIER - 서브클래스관리용이므로 직접쓸 필요없다. 이 키워드를 만다면 서브클래스를 써라 
 
   public Car() {
     super();
@@ -41,8 +41,16 @@ public abstract class Car {
     System.out.println("시동 끈다!");
   }
 
-  public void run() {
+  public void run() {  
+    // 해당 메서드는 각각 서브클래스에서 메서드재정의 필요 - 세단과 트럭
     System.out.println("달린다.");
   }
 
 }
+
+
+// 추상메서드는 굳이 슈퍼클래스에서 정의할 필요가 없다. 단지 run() 이라는 메서드가 있다고 선언만 하면된다. 
+//  정의(메서드구현)와 선언(메서드형식만 정하는 것)은 다르다. 
+//  추상메서드(메서드선언) - 메서드시그너처만 작성한다. (리턴타입,메서드명,파라미터) - 서브클래스에게 구현을 강요하는 문법
+//  메서드의 몸체를 만들지않기 때문에 {...} 인스턴스를 생성해서 메서드를 호출하는 일반클래스에는 둘 수 없다. 
+// 오직 추상클래스(또는 인터페이스)만이 추상메서드를 가질 수 있다. 

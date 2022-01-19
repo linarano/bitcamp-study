@@ -1,4 +1,4 @@
-// FileInputStream 활용 - JPEG 파일 읽기
+// FileInputStream 활용 - JPEG 파일 읽기(규칙에 따라서 읽어야한다.)-파일 포맷
 package com.eomcs.io.ex02;
 
 import java.io.File;

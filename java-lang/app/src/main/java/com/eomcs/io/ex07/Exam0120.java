@@ -4,7 +4,7 @@ package com.eomcs.io.ex07;
 public class Exam0120 {
 
   public static void main(String[] args) throws Exception {
-    DataBufferedFileOutputStream out = new DataBufferedFileOutputStream("temp/members.data");
+    DataBufferedFileOutputStream out = new DataBufferedFileOutputStream("temp/members.data"); //버퍼기능 추가
 
     Member member = new Member();
     member.name = "AB가각간";
@@ -28,3 +28,5 @@ public class Exam0120 {
   }
 
 }
+
+//버퍼 쓰고 안쓰고 하늘꽈 땅차이

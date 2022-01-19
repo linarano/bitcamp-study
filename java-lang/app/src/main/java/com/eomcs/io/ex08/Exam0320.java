@@ -18,7 +18,7 @@ public class Exam0320 {
       member = new Member();
       member.name = in2.readUTF();
       member.age = in2.readInt();
-      member.gender = in2.readBoolean();
+      member.gender = in2.readBoolean(); // 출력파일 순서대로 읽어야함. 형식대로 - 파일포맷 pdf-pdf 출력,입력 
     }
 
     long end = System.currentTimeMillis();

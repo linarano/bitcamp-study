@@ -13,7 +13,7 @@ public class Exam0310 {
     Member member = new Member();
     member.name = "AB가각간";
     member.age = 27;
-    member.gender = true;
+    member.gender = true; //속도체크위해 백만정보 
 
     long start = System.currentTimeMillis();
 

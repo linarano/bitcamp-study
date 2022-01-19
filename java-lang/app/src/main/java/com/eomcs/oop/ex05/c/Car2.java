@@ -5,8 +5,8 @@ public class Car2 {
   public String model;
   String maker;
   public int capacity;
-  public boolean sunroof;
-  public boolean auto;
+  public boolean sunroof;//추가
+  public boolean auto;//추가
 
   public Car2() {}
 
@@ -17,7 +17,7 @@ public class Car2 {
   }
 
   public Car2(String model, String maker, int capacity,
-      boolean sunroof, boolean auto) {
+      boolean sunroof, boolean auto) {// 추가
     this(model, maker, capacity);
 
     this.sunroof = sunroof;

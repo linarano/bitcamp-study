@@ -11,7 +11,7 @@ public class Exam0110 {
     Truck truck = new Truck();
 
     // 레퍼런스는 같은 타입의 객체를 가리킬 수 있을 뿐만아니라
-    // 그 클래스의 서브클래스 객체까지 가리킬 수 있다.
+    // 상위클래스의 레퍼런스는  서브클래스 객체까지 가리킬 수 있다.
     // 왜? 
     // - 서브 클래스는 항상 상위 클래스의 모든 것을 사용할 수 있기 때문이다.
     // - 서브 클래스의 인스턴스를 만들 때 상위 클래스의 인스턴스 변수도 만든다.
@@ -32,7 +32,7 @@ public class Exam0110 {
     //    car2 = bike; // Error!
 
     Bike bike2 = null;
-    //    bike2 = car; // Error!
+    //      bike2 = car; // Error!
     //    bike2 = sedan; // Error!
     //    bike2 = truck; // Error!
   }

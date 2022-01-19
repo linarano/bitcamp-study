@@ -1,4 +1,4 @@
-// 오버라이딩(overriding) - 필드 오버라이딩
+// 오버라이딩(overriding) - 필드 오버라이딩 : 실무에서 잘안씀 
 package com.eomcs.oop.ex06.c;
 
 public class Exam0130 {
@@ -11,8 +11,7 @@ public class Exam0130 {
     void print() {
       System.out.println("A.print():");
       System.out.printf("  => this.name(%s)\n", this.name);
-      System.out.printf("  => this.tel(%s)\n", this.tel);
-      System.out.printf("  => this.working(%s)\n", this.working);
+      System.out.printf("  => this.tel(%s)\n", this.tel); //A 설계도에 따른 객체의 주소가담겨있는 THIS
     }
   }
 
@@ -20,15 +19,15 @@ public class Exam0130 {
     // 필드 오버라이딩
     // - 필드 오버라이딩은 메서드와 달리 변수의 타입이 달라도 된다.
     //
-    String working;
+    String working; // 수퍼클래스  boolean working;
   }
 
 
   public static void main(String[] args) {
-    A4 obj = new A4();
+    A4 obj = new A4(); //A4의 설계도에 따라서만든 인스턴스임으로 먼저 찾음
     obj.name = "홍길동"; // A의 name
     obj.tel = "1111-1111"; // A의 tel
-    //    obj.working = true; // A4의 working : obj의 클래스에서 먼저 필드를 찾기 때문이다.
+    //        obj.working = true; // A4의 working : obj의 클래스에서 먼저 필드를 찾기 때문이다.
     obj.working = "취업";
 
     obj.print(); 
@@ -40,3 +39,5 @@ public class Exam0130 {
 
   }
 }
+
+//C++에서는 참고 A4의 필드찾음 그러니까 쓰지말라(언어가 너무 유연함)

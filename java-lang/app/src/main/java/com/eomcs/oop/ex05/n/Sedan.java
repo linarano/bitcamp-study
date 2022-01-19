@@ -1,7 +1,8 @@
 package com.eomcs.oop.ex05.n;
 
 public class Sedan extends Car {
-  public void run() {
+
+  public void run() { //abstract 메서드는 꼭 구현해줘여한다. 컴파일 오류!
     System.out.println("쌩쌩 달린다.");
   }
 

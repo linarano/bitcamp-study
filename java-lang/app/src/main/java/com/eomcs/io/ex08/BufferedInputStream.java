@@ -4,14 +4,14 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class BufferedInputStream {
-  InputStream in;
-
+  InputStream in; // 추상클래스의 레퍼런스 - 추상클래스를 상속받아서 만든 서브클래스가 있다면 객체주소 서브클래스를 받겠다.(가리키겠다): 다형적변수 
+  // 유연함
   byte[] buf = new byte[8192];
   int size; // 배열에 저장되어 있는 바이트의 수
   int cursor; // 바이트 읽은 배열의 위치
 
-  public BufferedInputStream(InputStream in) {
-    this.in = in;
+  public BufferedInputStream(InputStream in) { //생성자에서 받음
+    this.in = in; 
   }
 
   public int read() throws IOException {

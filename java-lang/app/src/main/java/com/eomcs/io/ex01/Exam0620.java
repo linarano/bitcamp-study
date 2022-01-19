@@ -9,9 +9,9 @@ public class Exam0620 {
 
   public static void main(String[] args) throws Exception {
 
-    class JavaFilter implements FileFilter {
+    class JavaFilter implements FileFilter { //규칙에 따라서 자바필터구현
       @Override
-      public boolean accept(File file) {
+      public boolean accept(File file) { // 파라미터가 하나의 파일객체가 넘어옴 , 파일경로와 파일 모두 합쳐져서 
         // 이 메서드는 listFiles() 메서드에서 호출한다.
         // 지정한 폴더에 들어 있는 파일이나 디렉토리를 찾을 때 마다 호출한다.
         // 리턴 값 File[] 에 찾은 파일 정보를 포함시킬지 여부를 결정한다.
@@ -31,8 +31,7 @@ public class Exam0620 {
     JavaFilter javaFilter = new JavaFilter();
 
     // 2) 필터를 사용하여 디렉토리의 목록을 가져오기
-    File[] files = dir.listFiles(javaFilter);
-
+    File[] files = dir.listFiles(javaFilter); // list에 못꼽고 리스트파일스에 꼽아야함 
     for (File file : files) {
       System.out.printf("%s %12d %s\n", 
           file.isDirectory() ? "d" : "-", 

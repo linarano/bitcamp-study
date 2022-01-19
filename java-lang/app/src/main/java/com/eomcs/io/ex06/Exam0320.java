@@ -32,6 +32,9 @@ public class Exam0320 {
 
 }
 
+//우리가 만들면
+//버퍼관리 필요 
+
 // 데이터 읽기 시간 = average seek time + data transfer time
 // 퀀텀 HDD 예)
 // average seek time = 0.0105 초

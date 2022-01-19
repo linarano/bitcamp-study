@@ -14,7 +14,7 @@ public class Exam0513 {
 
     // => UTF-16LE로 인코딩 하기
     System.out.printf("file.encoding=%s\n", System.getProperty("file.encoding"));
-    byte[] bytes = str.getBytes("UTF-16LE"); // UCS2 ==> UTF-16LE
+    byte[] bytes = str.getBytes("UTF-16LE"); // UCS2 ==> UTF-16LE //작은숫자가 앞에 오는방법 , 자바는 빅엔드
 
     for (byte b : bytes) {
       System.out.printf("%02x ", b);

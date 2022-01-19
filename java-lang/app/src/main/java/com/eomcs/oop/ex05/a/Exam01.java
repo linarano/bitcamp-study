@@ -9,5 +9,5 @@ public class Exam01 {
     c1.capacity = 5;
 
     Car c2 = new Car("소나타", "비트자동차",  5);
-  }
+  }//인스턴스 사용할때 바로 초기화시킨 c2
 }

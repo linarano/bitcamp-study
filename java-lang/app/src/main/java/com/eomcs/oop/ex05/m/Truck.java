@@ -7,8 +7,9 @@ package com.eomcs.oop.ex05.m;
 // 2) 그리고 상속 관계를 맺는다.
 //    - 수퍼 클래스를 추출한 후 수퍼 클래스를 상속 받으면 된다.
 //
-public class Truck extends Car {
-  public void run() {
+public class Truck extends Car { 
+  @Override
+  public void run() {// 각 역할에 맞게 재정의 
     System.out.println("덜컹 덜컹 달린다.");
   }
 

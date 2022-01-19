@@ -7,7 +7,7 @@ public class Car {
   public String maker;
   public int capacity;
 
-  // 필드를 추가한다.
+  // 필드를 추가한다.(원본에 바로추가)
   public boolean sunroof;
   public boolean auto;
 

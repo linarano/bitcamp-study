@@ -13,7 +13,7 @@ public class Exam0120 {
 
     FileOutputStream out = new FileOutputStream("temp/jls11_3.pdf");
     BufferedOutputStream out2 = new BufferedOutputStream(out);
-
+    //바로입력 출력하는게 아니라 버퍼가꽉찰때깢 기다린다. 
     int b;
 
     long startTime = System.currentTimeMillis(); // 밀리초

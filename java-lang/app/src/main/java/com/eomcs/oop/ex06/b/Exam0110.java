@@ -5,7 +5,7 @@ public class Exam0110 {
 
   static class Calculator {
 
-    // 만약 같은 이름의 메서드를 여러 개 만들 수 없다면,
+    // 만약 같은 이름의 메서드를 여러 개 만들 수 없다면,(오버로딩 문법이 없다면)
     // 다음과 같이 같은 일을 수행(두 수를 더하는 일)하는 메서드라도 
     // 이름을 다르게 해야 한다.
     static int plusi(int a, int b) {
@@ -25,6 +25,7 @@ public class Exam0110 {
 
   public static void main(String[] args) {
 
+    //쓸 때마다 다르게 호출해야함. 
     // 두 개의 정수를 더할 때는 plusi()를 호출해야 한다.
     int r1 = Calculator.plusi(100, 200);
 

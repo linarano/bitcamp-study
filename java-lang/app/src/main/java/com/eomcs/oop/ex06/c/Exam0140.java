@@ -32,7 +32,7 @@ public class Exam0140 {
       System.out.printf("  => this.name(%s)\n", this.name);
       System.out.printf("  => this.tel(%s)\n", this.tel);
       System.out.printf("  => this.working(%s)\n", this.working);
-      System.out.printf("  => super.working(%b)\n", super.working);
+      System.out.printf("  => super.working(%b)\n", super.working); // 수퍼클래스에서 찾아가 아니라 '수퍼클래스에서 찾아올라가 없으면 그 위로 수퍼클래스로 찾아가 더더위로 oBJECT까지도 없으면 에러 .
     }
   }
 
@@ -41,7 +41,7 @@ public class Exam0140 {
     A4 obj = new A4();
     obj.name = "홍길동"; // A의 name
     obj.tel = "1111-1111"; // A의 tel
-    //    obj.working = true; // A4의 working : obj의 클래스에서 먼저 필드를 찾기 때문이다.
+    //        obj.working = true; // A4의 working : obj의 클래스에서 먼저 필드를 찾기 때문이다.
     obj.working = "취업";
 
     obj.print(); // A4의 print() 호출 : A4에서 상속 받은 print()를 재정의 했기 때문이다. 

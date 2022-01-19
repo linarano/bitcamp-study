@@ -9,7 +9,7 @@ public class Exam0410 {
     // 생성할 파일의 경로 설정
     File file = new File("temp2/a/test.txt");
 
-    if (file.createNewFile()) { // 파일 생성
+    if (file.createNewFile()) { // 빈 ㄴ파일 생성
       System.out.println("test.txt 파일을 생성하였습니다.");
     } else {
       // 이미 파일이 있다면 다시 생성할 수 없다.
