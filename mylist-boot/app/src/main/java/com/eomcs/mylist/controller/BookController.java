@@ -1,8 +1,11 @@
 package com.eomcs.mylist.controller;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.PrintWriter;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Book;
@@ -15,15 +18,16 @@ public class BookController {
 
   public BookController() throws Exception {
     System.out.println("BookController() 호출됨!");
-    // 파일리더 직접안씀- 굳이참조변수에 않고
-    BufferedReader in = new BufferedReader(new FileReader("books.csv")); // 실무에서는 바로씀 주객체에 데코레이터 객체를 연결, 따로 만들지않고 직접넘긴다.  
+    // 데코레이터 교체,. 왕창읽어와 반복문 돌릴 필요없음 
 
-    String line;
-    while ((line = in.readLine()) != null) { // 빈 줄을 리턴 받았으면 읽기를 종료한다.
-      bookList.add(Book.valueOf(line)); 
+    try {
+      ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("books.ser2"))); // 실무에서는 바로씀 주객체에 데코레이터 객체를 연결, 따로 만들지않고 직접넘긴다.  
+      bookList = (ArrayList) in.readObject();
+      in.close();
+
+    }catch (Exception e) {
+      System.out.println("독서록 데이터를 로딩하는 중 에러 발생");
     }
-
-    in.close();
   }
 
   @RequestMapping("/book/list")
@@ -64,20 +68,18 @@ public class BookController {
 
   @RequestMapping("/book/save")
   public Object save() throws Exception {
-    PrintWriter out = new PrintWriter(FileWriter("books.csv")); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
-
-    Object[] arr = bookList.toArray();
-    for (Object obj : arr) {
-      Book book = (Book) obj;
-      out.println(book.toCsvString() + "\n");
-    }
+    ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("books.ser2"))); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+    // 2) 다음과 같이 목록 자체를 serialize 할 수 도 있다.
+    out.writeObject(bookList);
 
     out.close();
-    return arr.length;
+    return bookList.size();
   }
 }
 
 
 
 
-
+//필수입력과 선택입력 확인 ! 
+//날짜값이 null 일수 있으므로 디테일하게 제어!
+// 

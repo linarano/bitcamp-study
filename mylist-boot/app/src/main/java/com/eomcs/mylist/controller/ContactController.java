@@ -1,10 +1,13 @@
 package com.eomcs.mylist.controller;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.eomcs.io.FileWriter2;
 import com.eomcs.mylist.domain.Contact;
 import com.eomcs.util.ArrayList;
 
@@ -28,16 +31,14 @@ public class ContactController {
     contactList = new ArrayList();
     System.out.println("ContactController() 호출됨!");
 
-    BufferedReader in = new BufferedReader(new FileReader("contacts.csv"));
-
-    String line;
-    while ((line = in.readLine()) != null) { // readLine()이 null을 리턴한다면 파일을 다 읽었다는 것이다.
-      contactList.add(Contact.valueOf(line)); // 파일에서 읽은 한 줄의 CSV 데이터로 객체를 만든 후 목록에 등록한다.
+    try {
+      ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("contacts.ser2")));
+      contactList = (ArrayList) in.readObject();
+      in.close();
+    } catch(Exception e) {
+      System.out.println("연락처 데이터를 로딩하다가 에러 발생 "); //서버가 계속 실행되도록 - 관리자가 알 수있도록 에러메세지 띄운다. 
     }
-
-    in.close();
   }
-
 
   @RequestMapping("/contact/list")
   public Object list() {
@@ -84,16 +85,12 @@ public class ContactController {
 
   @RequestMapping("/contact/save")
   public Object save() throws Exception {
-    FileWriter2 out = new FileWriter2("contacts.csv"); // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+    ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("contacts.ser2"))); //처음엔 이 파일없다. 에러로 시스템이 멈추면 안되도록- 적절한조치 취하고 계속 시스템 실행 : 예외처리문법
+    // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
 
-    Object[] arr = contactList.toArray();
-    for (Object obj : arr) {
-      Contact contact = (Contact) obj;
-      out.println(contact.toCsvString() + "\n");
-    }
-
+    out.writeObject(contactList);
     out.close();
-    return arr.length;
+    return contactList.size();
   }
 
   int indexOf(String email) {

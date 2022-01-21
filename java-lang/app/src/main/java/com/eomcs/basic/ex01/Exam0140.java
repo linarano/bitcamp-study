@@ -19,11 +19,11 @@ public class Exam0140 {
 
     // Object에서 상속 받은 hashCode()는 인스턴스마다 고유의 4바이트 정수 값을 리턴한다.
     // => 이 값은 toString()의 출력 값으로 사용된다.
-    System.out.println(Integer.toHexString(obj1.hashCode()));
+    System.out.println(Integer.toHexString(obj1.hashCode()));//원래는 10진수 //16진수 문자열로 만들어 출력
     System.out.println(Integer.toHexString(obj2.hashCode()));
 
     System.out.println(obj1);
-    System.out.println(obj2);
+    System.out.println(obj2);//내부적으로 tostring()호출
 
     // hash value?
     // - 데이터를 다른 데이터와 구분하기 위해 사용하는 특별한 정수 값이다.
@@ -61,6 +61,7 @@ public class Exam0140 {
 
 
 
-
-
+//toString() => 클래스명@hash코드
+//자바에서는 인스턴스주소를 알수없음 @해쉬코드일뿐, - 인스턴스가 달라도 해쉬코드를 각자 만들수 있음 
+//
 

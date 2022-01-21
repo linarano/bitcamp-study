@@ -4,7 +4,7 @@ package com.eomcs.basic.ex01;
 public class Exam0122 extends Object {
 
   // 수퍼 클래스를 지정하지 않으면 기본으로 java.lang.Object 클래스가 
-  // 수퍼 클래스로 지정된다.
+  // 수퍼 클래스로 지정된다.****
   static class Score /* extends Object */{
     String name;
     int kor;

@@ -2,6 +2,8 @@ package com.eomcs.io.ex11.d;
 
 public class Member implements java.io.Serializable {
 
+  // 직접추가하면 직접 우리가 관리해야함. : 유연하게 관리가능 
+
   // java.io.Serializable 인터페이스를 구현하는 클래스는
   // 항상 serialVersionUID 라는 스태틱 상수를 가져야 한다.
   // 이 변수는 인스턴스를 serialize 하고 deserialize 할 때 
@@ -33,7 +35,7 @@ public class Member implements java.io.Serializable {
   boolean gender; // true(여자), false(남자)
 
   // Exam0420의 두 번째 테스트를 실행할 때 주석을 풀라!
-  //  String tel;
+  String tel;
 
   @Override
   public String toString() {
@@ -42,7 +44,10 @@ public class Member implements java.io.Serializable {
         ", age=" + age +
         ", gender=" + gender +
         // Exam0420의 두 번째 테스트를 실행할 때 주석을 풀라!
-        //        ", tel=" + tel +
+        ", tel=" + tel +
         "]";
   }
 }
+
+//데이터타입을 바꾸는건 안됨 
+//변수삭제, 추가는 가능하나 

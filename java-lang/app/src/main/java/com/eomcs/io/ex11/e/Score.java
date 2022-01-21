@@ -30,7 +30,7 @@ public class Score implements Serializable {
   // - 즉 serialize 되지 않도록 변경한다.
   //
   transient int sum;
-  transient float aver;
+  transient float aver; // 이필드는 일시적이므로, 직렬화에서 제외 
 
   public Score() {
     System.out.println("Score() 생성자 호출!");

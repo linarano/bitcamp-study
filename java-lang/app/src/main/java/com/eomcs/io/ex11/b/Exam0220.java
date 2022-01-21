@@ -12,16 +12,17 @@ public class Exam0220 {
     // => ObjectOutputStream.writeObject()로 출력한 바이트 배열을 읽어
     //    인스턴스를 생성하는 기능이 있다.
     // => 단 java.io.Serializable 인터페이스를 구현한 클래스여야 한다.
-    //    출력할 때 클래스 버전과 읽을 때 클래스의 버전이 같아야 한다.
-    // => 인스턴스 필드를 생성한 후 직접 필드에 값을 저장한다.
-    //    이때는 생성자가 호출되지 않는다.
+    //    출력할 때 클래스 버전과 읽을 때 클래스의 버전이 같아야 한다.***
+    //- 버전(serialVersionUID 스태틱변수 값)
+    // => 인스턴스 필드를 생성한 후 setter메서드가 아니라 직접 필드에 값을 저장한다.
+    //    그래서 역직렬화를 통해 인스턴스를 만들 때는 생성자가 호출되지 않는다.
     //    따라서 초기화시킬 것이 있다면 따로 메서드를 호출해야 한다.
     //
     FileInputStream fileIn = new FileInputStream("temp/member2.data");
     ObjectInputStream in = new ObjectInputStream(fileIn);
 
     // Serialize로 출력된 데이터를 읽어 다시 원래의 객체로 만들기
-    Member member = (Member) in.readObject();
+    Member member = (Member) in.readObject();//라이트로 읽었으니 리드로읽어라.**형변환 확실히 해줘야함. 컴파일러에게 알려줘야함. 
 
     in.close();
 

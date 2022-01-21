@@ -48,7 +48,9 @@ public class Exam0131 {
         return false;
       if (getClass() != obj.getClass())
         return false;
-      My other = (My) obj;
+      My other = (My) obj; //다통과됐으면
+
+      //this.age생략, this.gender생략..
       return age == other.age && Objects.equals(email, other.email) && gender == other.gender
           && Objects.equals(name, other.name) && Objects.equals(tel, other.tel)
           && working == other.working;
