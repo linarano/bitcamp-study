@@ -1,15 +1,15 @@
 package com.eomcs.mylist.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Contact;
 import com.eomcs.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 //1) 생성자에서 FileReader 객체를 준비한다.
 //2) 파일에서 문자를 읽어 출력한다.
@@ -31,12 +31,39 @@ public class ContactController {
     contactList = new ArrayList();
     System.out.println("ContactController() 호출됨!");
 
-    try {
-      ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("contacts.ser2")));
-      contactList = (ArrayList) in.readObject();
+    try { 
+
+      BufferedReader in = new BufferedReader (new FileReader("contacts.json"));
+
+      // JSON 문자열을 다룰 객체 준비
+      ObjectMapper mapper = new ObjectMapper();
+
+      // 1) JSON 파일에서 문자열을 읽어 온다.
+      // => 읽어 온 문자열은 배열 형식이다.
+      String jsonStr = in.readLine();
+
+      // 2) JSON 문자열을 가지고 자바 객체를 생성한다.
+      // => 배열 형식의 JSON 문자열에서 Board의 배열 객체를 생성한다.
+      Contact[] contacts = mapper.readValue(jsonStr, Contact[].class);// 보드배열 클래스정보를 넘겨야함. 그 객체의 배열이라면 배열 표시를 하면된다. 
+
+
+      // 3) 배열 객체를 ArrayList 에 저장한다.
+      // => 다음과 같이 배열에서 한 개씩 꺼내 목록에 추가할 수 있다.
+      //      for (Board board : boards) {
+      //        boardList.add(board);
+      //      }
+
+      // => 다음과 같이 addAll()을 호출하여 배열을 목록에 추가할 수 있다.
+      //      boardList.addAll(boards);
+
+      // => 다음과 같이 생성자를 통해 배열을 목록에 추가할 수 있다.
+      // contactList.addAll(contacts);
+
+      contactList = new ArrayList(contacts);
       in.close();
-    } catch(Exception e) {
-      System.out.println("연락처 데이터를 로딩하다가 에러 발생 "); //서버가 계속 실행되도록 - 관리자가 알 수있도록 에러메세지 띄운다. 
+
+    } catch (Exception e) {
+      System.out.println("게시글 데이터 로딩중 오류 발생!");
     }
   }
 
@@ -85,10 +112,16 @@ public class ContactController {
 
   @RequestMapping("/contact/save")
   public Object save() throws Exception {
-    ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("contacts.ser2"))); //처음엔 이 파일없다. 에러로 시스템이 멈추면 안되도록- 적절한조치 취하고 계속 시스템 실행 : 예외처리문법
-    // 따로 경로를 지정하지 않으면 파일은 프로젝트 폴더에 생성된다.
+    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("contacts.json")));
 
-    out.writeObject(contactList);
+    // JSON 형식의 문자열을 다룰 객체를 준비한다. 
+    ObjectMapper mapper = new ObjectMapper();
+
+    //1) 문자열로 생성한다.
+    //2) 제이슨형식의 문자열을 파일로 출력
+    out.println( mapper.writeValueAsString(contactList.toString()));// 버퍼드리더로 읽으려면 한줄로 
+
+
     out.close();
     return contactList.size();
   }
