@@ -1,38 +1,52 @@
 package com.eomcs.mylist.controller;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.sql.Date;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.eomcs.mylist.domain.Board;
 import com.eomcs.util.ArrayList;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController 
 public class BoardController {
 
   ArrayList boardList = new ArrayList();
 
-  public BoardController() throws Exception {
-    System.out.println("BoardController() 호출됨!");
+  public BoardController() {
+    System.out.println("BoardController() 호출됨!"); // 생성자 호출함. - 직렬화와 다르게 json
 
-    ObjectInputStream in = new ObjectInputStream(new BufferedInputStream (new FileInputStream("boards.ser")));
 
-    while(true) {
-      try {
-        Board board = (Board) in.readObject();
+    try { 
+
+      BufferedReader in = new BufferedReader (new FileReader("boards.json"));
+
+      ObjectMapper mapper = new ObjectMapper();
+
+      //1) 객체를 JSON 형식의 ㅁ누자열로 생성한다.
+      //=>어레이리스트에서 보드배열ㅇ르 꺼낸후, 제이슨 문자열로 만든다. 
+      String jsonStr = mapper.writeValueAsString(boardList.toArray()); // 어레이리스트에서 배열만 쏙 꺼내라 - 배열이 3개면 3개를 꺼낸다.
+
+      Board[] boards = mapper.readValue(jsonStr, Board[].class);// 보드배열 클래스정보를 넘겨야함. 그 객체의 배열이라면 배열 표시를 하면된다. 
+
+      //3) 배열 객체를 ArrayList에 저장한다.
+      //반복문을 돌릴 수도있음
+      for(Board board: boards) {
         boardList.add(board);
-
-      } catch (Exception e) {
-        break; 
       }
+
+      in.close();
+
+    } catch (Exception e) {
+      System.out.println("게시글 데이터 로딩중 오류 발생!");
     }
-    in.close();
   }
+
+
   //
   //    try {
   //      ObjectInputStream in = new  ObjectInputStream(new BufferedInputStream(new FileInputStream("boards.ser2")));
@@ -113,22 +127,18 @@ public class BoardController {
     //    DataOutputStream out2 = new DataOutputStream(out1);
 
 
-    ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("boards.ser")));
+    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("boards.json")));
+
+    // JSON 형식의 문자열을 다룰 객체를 준비한다. 
+    ObjectMapper mapper = new ObjectMapper();
+
+    //1) 문자열로 생성한다.
+    String jsonStr = mapper.writeValueAsString(boardList.toString());// 값출력할때 문자열로 출력하라
+
+    //2) 제이슨형식의 문자열을 파일로 출력
+    out.println( jsonStr);// 버퍼드리더로 읽으려면 한줄로 
 
 
-    // 1) 다음과 같이 목록에 들어있는 객체를 한 개씩 순차적으로 serialize 할 수 도있고, 
-    //    Object[] arr = boardList.toArray();
-    //    for (Object obj : arr) {
-    //      out.writeObject(obj);
-    //    }
-
-    //2) 다음과 같이 목록 자체를 serialize 할 수도있다. 
-    try {
-      out.writeObject(boardList);
-
-    } catch (Exception e){
-      ""
-    }
     out.close();
     return boardList.size();
   }

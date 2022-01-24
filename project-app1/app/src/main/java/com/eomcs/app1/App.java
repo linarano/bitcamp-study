@@ -1,14 +1,42 @@
 package com.eomcs.app1;
 
 public class App {
+
   public static void main(String[] args) {
-    if(args[0].equals("add")) {
-      int v1 =Integer.parseInt(args[1]);
-      int v2 =Integer.parseInt(args[2]);
-      System.out.printf("%d + %d =%d\n", v1, v2, (v1+v2));
+
+    Console console = new Console();
+    CommandHandler commandHandler = new CommandHandler();
+
+    while (true) {
+      Command command = console.prompt();
+
+      if (command.getName().equals("quit") || command.getName().equals("exit")) {
+        break;
+
+      } else if (command.getName().equals("")) {
+        continue;
+
+      } else if (command.getName().equals("help")) {
+        commandHandler.doHelp();
+
+      } else if (command.getName().equals("add")) {
+        commandHandler.doAdd(command);
+
+      } else if (command.getName().equals("minus")) {
+        commandHandler.doMinus(command);
+
+      } else {
+        System.out.println("지원하지 않는 연산자입니다.");
+      }
     }
+
+    console.close();
   }
+
 }
-//1) 먼저 확인 
-//for (String arg:args) {
-// System.err.println(arg);
+
+
+
+
+
+
