@@ -17,6 +17,8 @@ public class ServerApp {
     Socket socket = serverSocket.accept(); // 클라이언트가 연결될 때까지 리턴하지 않는다.
     System.out.println("클라이언트와 연결됨!");
 
+    // 클라이언트와 데이터를 주고 받을 입출력 도구를 준비한다. ( 먼저 출력할때는 출력할 도구를 준비, 입력할떄는 입력할도구 준비) - 영향을 미치낟. 
+
     // 클라이언트와의 연결을 끊음
     socket.close();
     System.out.println("클라이언트 연결 종료!");
