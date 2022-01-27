@@ -78,19 +78,45 @@ public class MergeSort extends Sorter {
 
   // Main function that sorts arr[l..r] using
   // merge()
+  // void sort(int arr[], int l, int r)
   void sort(int arr[], int l, int r)
+  {  System.out.println("내부용이라네");
+  if (l < r)
   {
-    if (l < r)
-    {
-      // Find the middle point
-      int m = (l+r)/2;
+    // Find the middle point
+    int m = (l+r)/2;
 
-      // Sort first and second halves
-      sort(arr, l, m);
-      sort(arr , m+1, r);
+    // Sort first and second halves
+    sort(arr, l, m);
+    sort(arr , m+1, r);
 
-      // Merge the sorted halves
-      merge(arr, l, m, r);
+    // Merge the sorted halves
+    merge(arr, l, m, r);
+  }
+  }
+
+
+
+
+  @Override
+  void sort(int[] values) {
+
+    System.out.println("내가 심었지");
+    int size = values.length;
+    for (int i = 0; i < size - 1; i++) {
+      for (int j = 0; j < size - i - 1; j++) {
+        if (values[j] > values[j + 1]) {
+          //System.out.printf("%d <==> %d\n", values[j], values[j + 1]);
+          int temp = values[j];
+          values[j] = values[j + 1];
+          values[j + 1] = temp;
+        }
+      }
     }
   }
+
+
+  //범위를 확장하거나 같은범윈느 괜찮은 
+  //좁히는건 안돼 
+
 }

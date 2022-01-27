@@ -5,21 +5,23 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import org.springframework.stereotype.Repository;
 import com.eomcs.mylist.domain.Board;
-import com.eomcs.util.ArrayList;
 
-public class CsvBoardDao {
-  ArrayList boardList = new ArrayList();
+@Repository
+public class CsvBoardDao extends AbstractBoardDao { // 데이터 처리는 무조건 DAO에가 맡긴다. ,csv 장점- 임의적으로 텍스트 에디터로 데이터 추가변경 가능 
+
+  String filename = "board.csv";
 
   public CsvBoardDao() {
 
     try {
-      BufferedReader in =  new BufferedReader(new FileReader("boards.csv")); // 텍스트읽을꺼니까 파일리더,빠르게 읽기 - 버퍼드리더
 
+      BufferedReader in =  new BufferedReader(new FileReader(filename)); // 텍스트읽을꺼니까 파일리더,빠르게 읽기 - 버퍼드리더
       String csvStr;
 
       while ((csvStr = in.readLine()) !=  null) {
-        boardList.add(Board.valueOf(csvStr)); 
+        boardList.add(Board.valueOf(csvStr)); //this. 생략, 컴파일러가 자동으로 붙여준다. 규칙! 만약에 boardList가 로컬변수라면 안붙인다. 인스턴스 주소없이는 인스턴스롤 찾아갈 수 없다. 
       }
 
       in.close();
@@ -30,78 +32,19 @@ public class CsvBoardDao {
 
 
 
-  public void save() throws Exception{
-    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("boards.csv"))); //바로출력하는게 아니라 버퍼에 왕창담아서 다 차면 파일출력으로 보냄 
+  @Override
+  protected void save() throws Exception { // 내부만 접근가능하도록 - 내부에서만 쓰니까 private , 인스턴스 메소드이므로 늘 주소를 줘야함 this.sava(); , 저장하다가 오류뜨면 알려줘야되므로  오류던지도록
+    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(filename))); //바로출력하는게 아니라 버퍼에 왕창담아서 다 차면 파일출력으로 보냄 
 
     for (int i = 0; i<boardList.size(); i++) { // 굳이 배열만드필요없고 , 있으니까 
       Board board = (Board) boardList.get(i);
       out.write(board.toCsvString());
     }
     out.flush(); // 명시적으로 출력하라고 요구
-
     out.close(); // 정의를 따라가면 다 정의되어있지만 
   }
 
-  public int countAll() {
-    return boardList.size();
-  }
-
-  public Object[] findAll() {
-    return boardList.toArray();
-  }
-
-  public void insert(Board board) {
-    boardList.add(board);
-  }
-  //현업에서 insert의 리턴값은 1개 - 객체들어가는 것
-  //우리는 들어갈때마다 1
-
-
-  public Board findByNo(int no) {
-    if (no < 0 || no >= boardList.size()) {
-      return null;
-    }
-    return (Board) boardList.get(no);
-  }
-
-  public int update(int no, Board board) { // 나중에 업데이트하자 다른기능과함께 
-    if ( no < 0 || no >= boardList.size()) {
-      return 0;
-    }
-    boardList.set(no, board);
-    return 1;
-  }
-
-  public int delete(int no) {
-    if (no < 0 || no >= boardList.size()) {
-      return 0;
-    }
-    boardList.remove(no);
-    return 1;
-  }
 }
-
-//현업에서 insert의 리턴값은 1개 - 객체들어가는 것
-// 우리는 들어갈때마다 1
-
-
-
-
-// 초심자는 어떻게 저렇게 하지- 정답을 고민할 필요없음. 정답에는 풀이과정이 있음 
-// 정답이 아니라 경험자의 코드는 이런거다 라는 것을경험해라. (소개) - 문법과 실전 계쏙 연습하는 단계일뿐 
-
-//내일 
-//바이너리 
-//인터페이스 추가 기능 배움 - 파일필터를 다루기 위해 필터클래스를 만들었다면 , 파일필터가 아니라 우리가 인터페이스를 =>  만들기 위해   
-//스프링부트의 ioc 컨테이너 - 자동기술  
-
-
-
-
-
-
-
-
 
 
 

@@ -1,4 +1,4 @@
-// 인터페이스와 추상 클래스 : 추상 클래스의 도움 받기
+// 인터페이스와 추상 클래스 : 추상 클래스의 도움 받기(도우미클래스로서 실무에서 많이쓰임)
 package com.eomcs.oop.ex09.d;
 
 public class Exam0120 {
@@ -12,7 +12,7 @@ public class Exam0120 {
 
   // 추상클래스에서 인터페이스의 규칙을 모두 미리 구현해 둔다.
   // 물론 최소 상태로 구현한다.
-  abstract class AbstractProtocolA implements ProtocolA {
+  abstract class AbstractProtocolA implements ProtocolA { //클래스명에 어브스트래트 넣는다 보통)
     @Override
     public void rule1() {}
 
@@ -33,7 +33,7 @@ public class Exam0120 {
   //   그 서브 클래스들도 인터페이스를 구현한 것이 된다.
   class ProtocolAImpl extends AbstractProtocolA {
     // 이 방식의 장점은 오버라이딩을 통해
-    // 인터페이스 규칙 중 필요한 규칙만 구현할 수 있다.
+    // 인터페이스 규칙 중 필요한 규칙만 구현할 수 있다.*****
     @Override
     public void rule2() {
       System.out.println("ProtocolAImpl.rule2()");

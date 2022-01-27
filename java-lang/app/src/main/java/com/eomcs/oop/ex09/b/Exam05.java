@@ -24,7 +24,7 @@ class MyInterface5Impl extends Parent implements MyInterface5 {
 
 public class Exam05 {
   public static void main(String[] args) {
-    // 인터페이스의 스태틱 메서드 호출하기
+    // 인터페이스의 스태틱 메서드 호출하기 - 확실한 목적이 없으면 만들지 마라!!!!!( 도저히 어쩔수없는거 아니면 스태틱,프라이빗 쓰지마라. 퍼블릭어브스트릭트, 디폴트메서드는 써도되나)
     MyInterface5.m1();
 
     // 클래스의 스태틱 메서드 호출하기

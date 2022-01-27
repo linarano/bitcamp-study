@@ -13,8 +13,8 @@ abstract class Letter {
   // 수퍼 클래스에서 기능이 어떻게 동작하는지 정의한다.
   // => 템플릿의 역할을 하는 메서드를 수퍼 클래스에 둔다.
   // => 자세한 구현은 서브 클래스에 맡긴다.
-  public void print() { // <== 템플릿 메서드 디자인 패턴에서 "템플릿 메서드"에 해당한다. 
-    this.printHeader();
+  public void print() { // <== 템플릿 메서드 디자인 패턴에서 "템플릿 메서드"에 해당한다. //(흐름) - 틀을 구성해주는 메서드! 팩토리메서드처럼...
+    this.printHeader(); //this에 담긴 인스턴스주소의 클래스에서 해당메서드를 호출 *** (this는 컴파일러가 자동으로 붙여준다.)
     System.out.println(this.content);
     System.out.println();
     System.out.printf("              From %s!\n", this.getSign());
@@ -29,7 +29,7 @@ abstract class Letter {
   public abstract String getSign();
 }
 
-// 상세한 기능에 대한 구현은 다음과 같이 서브 클래스에게 맡긴다.
+// 상세한 기능에 대한 구현은 다음과 같이 서브 클래스에게 맡긴다.(concrete) - 추상클래스/인터페이스 상속받아서 인스턴스를 생성하는 클래스 
 class LoveLetter extends Letter {
 
   @Override
@@ -80,3 +80,8 @@ public class Exam05 {
     letter2.print();
   }
 }
+
+
+
+//letter.printHeader(); - 추상메서드든 일반메서드인지 일단 레퍼런스의 타입에 존재하므로 컴파일러통과 ***
+

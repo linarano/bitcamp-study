@@ -13,7 +13,7 @@ interface MyInterface {
   public abstract void m1();
 
   // public 을 생략할 수 있다.
-  abstract void m2(); // public 이 생략된 것이다. (default) 아니다!
+  abstract void m2(); // public 이 생략된 것이다. (default) 아니다!*****
 
   // abstract 를 생략할 수 있다.
   public void m3();
@@ -22,7 +22,7 @@ interface MyInterface {
   void m4();
 
   // => private, protected, (default)는 없다.
-  //  private void m5(); // 컴파일 오류!
+  //    private void m5(); // 컴파일 오류!
   //  protected void m6(); // 컴파일 오류!
   void m7(); // 이건 (default) 아니라, public 이 생략된 것이다.
 
@@ -30,7 +30,7 @@ interface MyInterface {
 
 // 2) 인터페이스 구현
 abstract class MyInterfaceImpl implements MyInterface {
-  @Override
+  @Override // 상속(수퍼클래스-서브클래스) 마찬가지로 오버라이드쓴다
   public void m1() {}
 
   // public 보다 접근 범위를 좁힐 수는 없다.
@@ -41,12 +41,12 @@ abstract class MyInterfaceImpl implements MyInterface {
   public void m2() {} // OK!
 
   // 인터페이스의 모든 메서드를 구현해야 한다.
-  // 한 개라도 빠뜨린다면 concrete 클래스가 될 수 없다.
+  // 한 개라도 빠뜨린다면 concrete 클래스가 될 수 없다.****
   // 추상 클래스로 선언해야 한다.
 }
 
 class MyInterfaceImpl2 implements MyInterface {
-  @Override
+  @Override 
   public void m1() {}
 
   @Override

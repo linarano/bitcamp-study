@@ -11,6 +11,9 @@ public interface Spec {
   // => 규칙은 공개되어야 하기 때문에 무조건 public 이다.
   // => 규칙이기 때문에 당장 구현할 필요는 없다. 그래서 추상 메서드이다.
   public abstract void m1();
+
+  //물론다음과 같이 public과 abstract 생략가능
+  //  void m1();
 }
 
 

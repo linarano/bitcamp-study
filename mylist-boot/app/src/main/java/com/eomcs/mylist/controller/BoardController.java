@@ -1,16 +1,20 @@
 package com.eomcs.mylist.controller;
 
 import java.sql.Date;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.eomcs.mylist.dao.CsvBoardDao;
+import com.eomcs.mylist.dao.BoardDao;
 import com.eomcs.mylist.domain.Board;
 
 @RestController 
 public class BoardController {
 
-  CsvBoardDao boardDao = new CsvBoardDao();
-
+  // 필드 선언부에 표시해두면
+  // SpringBoot가 BoardController 객체를 자동으로 자동으로 주입한다. 
+  //
+  @Autowired
+  BoardDao boardDao; 
 
   @RequestMapping("/board/list")
   public Object list() {
@@ -18,7 +22,7 @@ public class BoardController {
   }
 
   @RequestMapping("/board/add")
-  public Object add(Board board) {
+  public Object add(Board board) throws Exception {
 
     board.setCreatedDate(new Date(System.currentTimeMillis()));
     boardDao.insert(board);
@@ -27,19 +31,19 @@ public class BoardController {
 
 
   @RequestMapping("/board/get")
-  public Object get(int index) {
-    Board board = boardDao.findByNo(index); // 못찾으면 null 리턴 
+  public Object get(int index) throws Exception {
+    Board board = boardDao.findByNo(index); // 새로객체리턴이 아니라 기존의 어레이리스트에 있던걸 리턴, 값을 바뀌면, 저장된 조회수가 저장안됨 
     if (board == null) {
       return ""; // 빈문자열 리턴, 웹브라우저에 자바스크립트 쪽에 널을 리턴할 수 없으므로 
     }
 
-    board.setViewCount(board.getViewCount() + 1);
+    boardDao.increaseViewCount(index); //기존 객체가 바뀌는 것이므로 손을대면 안됨(남의것을 함부로 손대면 안됨), dao가 다루는 객체는  
     return board;
   }
 
 
   @RequestMapping("/board/update")
-  public Object update(int index, Board board) {
+  public Object update(int index, Board board) throws Exception {
     Board old = boardDao.findByNo(index);
 
     if (old == null) {
@@ -47,22 +51,16 @@ public class BoardController {
     }
 
     board.setViewCount(old.getViewCount());
-    board.setCreatedDate(old.getCreatedDate());
+    board.setCreatedDate(old.getCreatedDate());// 복제해와서 바뀐 이메일 ,컨트럴러가 다루는 객체 가 다루는 객체는  
     return boardDao.update(index, board);
   }
   // 다른 사람이 100번 게시물을 지울 수 있기때문에 중간에 - 무효할 수 있으므로, 0 리턴
   //코드를 실행하는 과정중에 
   @RequestMapping("/board/delete")
-  public Object delete(int index) {
+  public Object delete(int index)  throws Exception { // 개발자가 처리하기 싫어 delete을 호출한 스프링부트에 시켜 
     return boardDao.delete(index);
   }
 
-
-  @RequestMapping("/board/save") //sava로 해야 바이너리 형식으로 저장, 출력 
-  public Object save() throws Exception {
-    boardDao.save();
-    return boardDao.countAll();
-  }
 }
 
 //필드값일일이 출력하는게 아니라 객체 직접출력
