@@ -11,17 +11,18 @@ import java.net.Socket;
 public class Receiver4 {
 
   public static void main(String[] args) throws Exception {
-    System.out.println("서버 실행 중...");
+    System.out.println("서버 실행 중2...");
 
     ServerSocket serverSocket = new ServerSocket(8888);
     Socket socket = serverSocket.accept();
     System.out.println("클라이언트가 연결됨.");
 
     PrintStream out = new PrintStream(socket.getOutputStream());
-    DataInputStream in = new DataInputStream(socket.getInputStream());
+    DataInputStream in = new DataInputStream(socket.getInputStream()); // 데코레이터 붙임 
 
     System.out.println("클라이언트로부터 데이터 수신 중...");
 
+    //클라이언트가 3번 보내면 - 3번 받아야함 , 순서도 받아야함 
     //1) 파일 크기 읽기
     long filesize = in.readLong();
 
@@ -32,7 +33,7 @@ public class Receiver4 {
     File file = new File("temp/ok_" + filename);
     FileOutputStream fileOut = new FileOutputStream(file);
 
-    for (long i = 0; i < filesize; i++) {
+    for (long i = 0; i < filesize; i++) { //filesize만큼 
       fileOut.write(in.read());
     }
     System.out.println("클라이언트로부터 데이터 수신 완료!");

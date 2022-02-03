@@ -23,7 +23,7 @@ public class Server0420 {
 
     // 대기열에 있는 2개 중에 한 개의 클라이언트를 승인하면,
     // => 대기열에 포함 안된 나머지 1개의 클라이언트가 대기열에 들어온다.
-    Socket socket = ss.accept();
+    Socket socket = ss.accept(); // 대기열에서 먼저들어온거 1개 꺼내고 다시 빈자리가 생기므로 연결가능.
     System.out.println("대기 중인 클라이언트 중 한 개의 클라이언트에 대해 연결 승인!");
 
     keyboard.nextLine();
@@ -39,3 +39,5 @@ public class Server0420 {
 }
 
 
+//대기열이 꽉찬경우 대기열에 포함조차안됨
+//accept() 된다면 땡겨지면서 맨 마지막 빈자리에 클라이언트가 대기 

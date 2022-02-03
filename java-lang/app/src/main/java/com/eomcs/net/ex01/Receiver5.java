@@ -20,7 +20,7 @@ public class Receiver5 {
     System.out.println("클라이언트가 연결됨.");
 
     PrintStream out = new PrintStream(
-        new BufferedOutputStream(socket.getOutputStream()));
+        new BufferedOutputStream(socket.getOutputStream())); // 버퍼드데코레이터 연결
     DataInputStream in = new DataInputStream(
         new BufferedInputStream(socket.getInputStream()));
 
