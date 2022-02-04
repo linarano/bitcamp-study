@@ -12,12 +12,12 @@ public class Server0111 {
 
 
     try (Scanner keyboard = new Scanner(System.in);
-        ServerSocket serverSocket = new ServerSocket(8888)) {
+        ServerSocket serverSocket = new ServerSocket(8888)) {//마지막 문장은 ; 붙여도 되고 안붙여도된다.  일반문장은 집어넣을 수 없다. 변수선언 외에는/ AUTOCloserble 구현체만 
+      // 자동으로 close() - fianlly 필요 없음 
 
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
-      try (Socket socket = serverSocket.accept();
-
+      try (Socket socket = serverSocket.accept(); 
           // 클라이언트와 데이터를 주고 받을 입출력 스트림 객체를 준비한다.
           // => 출력 스트림 객체를 준비하기
           OutputStream out = socket.getOutputStream();
@@ -63,3 +63,4 @@ public class Server0111 {
 
 }
 
+//110차이! - finally 없음 

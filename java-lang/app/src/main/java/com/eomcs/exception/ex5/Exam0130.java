@@ -35,25 +35,24 @@ public class Exam0130 {
       // => 게시물 예외를 직관적으로 알 수 있는 클래스를 만든다.
       // => 그 클래스가 BoardException 이다.
       //
+
       throw new BoardException("게시물 입력 도중 오류 발생!", 원본오류);
     }
   }
 
   public static void main(String[] args) {
-    try {
-      Board board = read();
-      System.out.println("---------------------");
-      System.out.printf("번호: %d\n", board.getNo());
-      System.out.printf("제목: %s\n", board.getTitle());
-      System.out.printf("내용: %s\n", board.getContent());
-      System.out.printf("등록일: %s\n", board.getCreatedDate());
-
-    } catch (BoardException e) {
-      System.out.println(e.getMessage());
-      e.printStackTrace();
-    }
+    Board board = read();
+    System.out.println("---------------------");
+    System.out.printf("번호: %d\n", board.getNo());
+    System.out.printf("제목: %s\n", board.getTitle());
+    System.out.printf("내용: %s\n", board.getContent());
+    System.out.printf("등록일: %s\n", board.getCreatedDate());
 
   }
 }
 
 
+// 예외 상속받아서 현재프로그램에 의미있는 이름으로 예외를 던지도록  
+// 클래스이름만으로 직관적으로 예외를 알 수 있도록 상속을 받게하는 것.
+//스태틱 메서드는 의미없다. 인스턴스메서드 는 현재 없다. //  public static void main(String[] args) throws NumberFormatException, IllegalArgumentException {
+// 자바 오리지널 예외던지지않고, 자기들이 만든 예외를 던진다. - spring-boot 예외, 라이브러리 예외등 자기가 만든예외를 던진다. 

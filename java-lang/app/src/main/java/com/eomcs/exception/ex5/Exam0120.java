@@ -47,7 +47,7 @@ public class Exam0120 {
       System.out.printf("내용: %s\n", board.getContent());
       System.out.printf("등록일: %s\n", board.getCreatedDate());
 
-    } catch (RuntimeException e) {
+    } catch (RuntimeException e) {// 슈퍼클래스에 퉁쳐서 받아라.
       System.out.println(e.getMessage());
       System.out.println("게시물 입력 중에 오류 발생!");
       // e.printStackTrace();
@@ -56,4 +56,7 @@ public class Exam0120 {
   }
 }
 
+
+//     if (d == null) {
+//throw new java.lang.IllegalArgumentException(); - 생성자에 아무것도 없음 getCreatedDate() - 에러메시지가 없음 
 

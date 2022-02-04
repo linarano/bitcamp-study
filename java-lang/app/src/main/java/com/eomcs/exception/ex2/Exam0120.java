@@ -27,9 +27,12 @@ public class Exam0120 {
       } catch (RuntimeException e) {
         System.out.println(e.getMessage());
       } 
+      //      keyScan.close(); - 일리걸 오류 - 메뉴얼을 보고 어떤 경우에 에러가 발생하는지 봐라 ㅏ
     }
     keyScan.close();
   }
 }
 
 
+// 이 경우에는 이 객체를 만들어서 떤진다. 
+// 제발 메뉴판을 봐라  API 도구에 관련된 문서 규칙

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Client0111 {
   public static void main(String[] args) {
-    try (Scanner keyScan = new Scanner(System.in);
+    try (Scanner keyScan = new Scanner(System.in); // try 블럭을 나가면 이 모든 객체에 대해서 close()
 
         // 서버와 연결
         Socket socket = new Socket("localhost", 8888);

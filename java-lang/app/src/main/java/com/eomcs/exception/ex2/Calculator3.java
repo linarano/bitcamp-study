@@ -10,10 +10,15 @@ public class Calculator3 {
       case "*": return a * b;
       case "/": return a / b;
       case "%": return a % b;
-      default:
+      default:  
         // 유효하지 않은 연산자인 경우 throw 명령을 이용하여 호출자에게 
         // 오류 상황을 알린다.
         throw new RuntimeException("해당 연산자를 지원하지 않습니다.");
     }
   }
 }
+
+//RuntimeException 상자만들어서 예외정보를 담아서 던진다. - 예외정보를 담을때도 적절한 상자에 담아서 던져라 
+//IoException
+
+// 예외를 던지는 문법

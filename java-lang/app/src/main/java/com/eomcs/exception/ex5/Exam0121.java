@@ -1,12 +1,12 @@
-// 예외 처리 전
+// 예외 처리 후 - 생각해 볼 문제 
 package com.eomcs.exception.ex5;
 
 import java.sql.Date;
 import java.util.Scanner;
 
-public class Exam0110 {
+public class Exam0121 {
 
-  static Board read() {
+  static Board read() throws RuntimeException {
     try (Scanner keyScan = new Scanner(System.in)) {
       Board board = new Board();
 
@@ -20,15 +20,18 @@ public class Exam0110 {
       board.setContent(keyScan.nextLine());
 
       System.out.print("등록일> ");
-      board.setCreatedDate(Date.valueOf(keyScan.nextLine()));// 사용자가 입력한 문자열을 가지고 날짜객체를 만든 것 
+      board.setCreatedDate(Date.valueOf(keyScan.nextLine()));
 
       return board;
-    } 
-  } //read()호출이 끝나면 닫는다. cl0se()
-  //캐치문 안적으면 선언해야하는데... 컴파일러가 아무런 에러 안뜸. =>RuntimeException 의 자식이므로 가능 
-  //throw를 안적어도 된다는 이야기지, 예외가 발생하지않는다는 의미가 아님. 받을때까지 끝까지 던진다. 
+    }
+  }
 
   public static void main(String[] args) {
+    //이 프로그램을 실행할 때,
+    // 1) 번호를 입력할 때 숫자가 아닌 것을 입력하면 NumberFormatException 예외가 발생한다.
+    // 2) 날짜를 입력할때 yyy-MM-dd 형식에 맞지않게 입력하면 
+    //예외 클래스이름을 보면 오류의 원인이 상세하게 나와있지만
+    // 전체적인 그림에서 어떤 객체에서 발생된 예외인지 직관적으로 알 수가 없다. 
     Board board = read();
     System.out.println("---------------------");
     System.out.printf("번호: %d\n", board.getNo());
@@ -38,4 +41,7 @@ public class Exam0110 {
   }
 }
 
+
+//     if (d == null) {
+//throw new java.lang.IllegalArgumentException(); - 생성자에 아무것도 없음 getCreatedDate() - 에러메시지가 없음 
 

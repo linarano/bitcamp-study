@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class Server0121 {
   public static void main(String[] args) {
-    // 소켓을 연결한 후에 꼭 클라이언트가 먼저 데이터를 보낼 필요는 없다.
-    // 서버가 먼저 데이터를 보내도 된다.
-    // 즉 읽고 쓰기 순서만 맞으면 누가 먼저 보내든지 상관없다.
+    // 소켓을 연결한 후에 꼭 클라이언트가 먼저 데이터를 보낼 필요는 없다.******
+    // 서버가 먼저 데이터를 보내도 된다. ****
+    // 즉 읽고 쓰기 순서만 맞으면 누가 먼저 보내든지 상관없다. ***
     try (Scanner keyboard = new Scanner(System.in);
         ServerSocket serverSocket = new ServerSocket(8888)) {
 
@@ -33,7 +33,7 @@ public class Server0121 {
         }
 
         // 클라이언트에서 받은 바이트 개수 만큼 배열을 출력한다.
-        out.write(buf);
+        out.write(buf); // 서버가 먼저 라이트 - 클라이언트가 리드
         // out.flush();
         // byte stream 을 사용할 때는 바로 출력한다.
         // 따라서 flush()를 호출하지 않아도 된다.
@@ -49,4 +49,7 @@ public class Server0121 {
   }
 
 }
+
+//보통은 클라이언트가 서버에 요청 
+// 기본 컨텐츠를 달라고 요청하는 것.  HTTP 요청을 먼저 보내야하는게 통신 규칙 
 

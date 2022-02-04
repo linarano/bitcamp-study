@@ -45,13 +45,13 @@ public class Client0110 {
       // 서버의 응답을 받는다.
       // - 서버가 응답을 할 때까지 리턴하지 않는다.
       // 즉 blocking 모드로 작동한다.
-      int response = in.read();
+      int response = in.read(); // 메서드 호출이 끝날때까지 리턴하지 못하는 상태 - 블로킹 모드 : 보내고 응답을 기다리는 상태
       System.out.println(response);
 
     } catch (Exception e) {
       e.printStackTrace();
 
-    } finally {
+    } finally { // 순서 주의! 소켓을 먼저닫으면 안됨, 소켓으로부터 얻었으므로, 현관문을 닫아버리면 안방문을 닫을 수 없다. 열고닫는 순서!! 소켓 생성 후, 소켓으로 부터 입출력 만들었으면 그 반대로!
       try {out.close();} catch (Exception e) {}
       try {in.close();} catch (Exception e) {}
       try {socket.close();} catch (Exception e) {}
@@ -62,3 +62,4 @@ public class Client0110 {
 }
 
 
+// 개발자가 직접 close 작성해야함. (finally -) - 111번을 써라. 하지만 다른 개발자가 100번을 쓸수 있으므로 알아둬여함 

@@ -32,3 +32,6 @@ public class Exam0641 {
     }
   }
 }
+
+//finally와 다른점 예외 발생시 try catch - finally 문까지 실행
+//close()은  try - close() - catch

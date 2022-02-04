@@ -1,6 +1,8 @@
 package com.eomcs.exception.ex5;
 
 public class BoardException extends RuntimeException {
+  //  가능하면 두는게 좋다.
+  private static final long serialVersionUID = 1L;
 
   public BoardException() {
     super();
@@ -33,6 +35,6 @@ public class BoardException extends RuntimeException {
   //    쉽게 추측할 수 있도록 하기 위함이다.
   // => 일종의 분류표로서 사용한다.
 
-
-
 }
+
+//사용자정의 예외 
