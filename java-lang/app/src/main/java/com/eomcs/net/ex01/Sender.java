@@ -17,7 +17,7 @@ public class Sender {
     // => 서버에 연결할 수 없으면 예외가 발생한다.
     // new Socket 원격호스트의 IP주소/도메인이름, 원격 호스트 프로그램의 포트번호( 내포트가 아님)
     // => 로컬호스트  (로컬일 경우, 127.0.0.1(localhost )  : 애플리케이션을 실행하는 현재 컴퓨터를 가리킨다.
-    Socket socket = new Socket("192.168.0.219",8888); // 서버의 대기열에 등록된다면 리턴한다. 
+    Socket socket = new Socket("localhost",8888); // 서버의 대기열에 등록된다면 리턴한다. 
     System.out.println("서버와 연결된 Socket 생성!");
 
     // 2) 소켓 객체를 통해 읽고 쓸 수 있도록 입출력 스트림을 얻는다.

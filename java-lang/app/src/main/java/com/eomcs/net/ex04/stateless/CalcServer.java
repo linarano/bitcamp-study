@@ -58,3 +58,5 @@ public class CalcServer {
 }
 
 
+// 요청이 끝나면 서버연결종료
+// 실행이 끝나면 종료

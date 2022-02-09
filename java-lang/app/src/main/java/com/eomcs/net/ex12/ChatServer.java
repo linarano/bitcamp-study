@@ -1,103 +1,90 @@
 package com.eomcs.net.ex12;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+
 public class ChatServer {
-
-  // 연결된 클라이언트의 출력 스트림을 보관하는 목록
-  ArrayList<PrintStream> outputStreams = new ArrayList<>();
-
   int port;
 
-  public ChatServer(int port) {
+
+  @SuppressWarnings("rawtypes")
+  ArrayList clientOutputStreams = new ArrayList(); //
+
+  public ChatServer(int port){
     this.port = port;
   }
 
   public void service() {
-    try (ServerSocket serverSocket = new ServerSocket(port)) {
-      System.out.println("채팅 서버 시작!");
+    try(ServerSocket serverSocket = new ServerSocket(this.port)) {
+      System.out.println("서버 실행 중..");
 
-      while (true) {
-        new Thread(new ChatAgent(serverSocket.accept())).start();
-        System.out.println("채팅 클라이언트가 연결되었음!");
+      while(true) {
+        new RequestHandler(serverSocket.accept()).start();// (serverSocket.accept() 먼저 실행 순서!!! 리턴돼야 객체가 생성된아 
       }
 
-    } catch (Exception e) {
-      e.printStackTrace();
+    } catch (Exception e){
+      System.out.println("서버 실행 오류- " + e.getMessage());
     }
   }
 
-  synchronized private void send(String message) {
-    for (PrintStream out : outputStreams) {
-      try {
-        out.println(message);
-      } catch (Exception e) {
-        // 출력이 안되는 스트림은 다음에 사용하지 않기 위해 목록에서 제거한다.
-        outputStreams.remove(out);
-      }
+
+  public void sendMessage(String message) {
+    for (int i = 0; i< clientOutputStreams.size(); i++){
+      DataOutputStream out = (DataOutputStream) clientOutputStreams.get(i);
+      try {out.writeUTF(message);} catch (Exception e) {}
+
     }
   }
+  class RequestHandler extends Thread {
+    Socket socket; // 인스턴스필드
 
-  class ChatAgent implements Runnable {
-
-    Socket socket;
-
-    public ChatAgent(Socket socket) {
+    public RequestHandler(Socket socket) {
       this.socket = socket;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void run() {
-      try (Socket socket = this.socket;
-          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-          PrintStream out = new PrintStream(socket.getOutputStream())) {
+      //클라이언트 요청처리 하는 걸 이 메서드에 
 
-        // 출력 스트림을 ChatServer에 보관한다.
-        outputStreams.add(out);
+      try (Socket socket2 = socket;
+          DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+          DataInputStream in = new DataInputStream(socket.getInputStream())) {
+
+        clientOutputStreams.add(out);
+
+        out.writeUTF("환영합니다!");
+        out.flush();
 
         while (true) {
-          String message = in.readLine();
-          if (message.equals("quit"))
+          String message = in.readUTF();
+          if (message.equals("\\quit")) {
+            out.writeUTF("Goodbye!");
+            out.flush();
             break;
-
-          // 채팅 방에 참여한 모든 사람들에게 메시지를 전달한다.
-          // => 메시지를 전문적으로 보내는 일을 하는 객체에 맡긴다.
-          new Thread(new MessageSender(message)).start();
+          }
+          sendMessage(message);// 클라이언트의 출력을 받으면 이쪽으로 보내라. 
         }
-
-        // 채팅 방에 참여한 모든 사람들에게 퇴장 메시지를 전달한다.
-
       } catch (Exception e) {
-        e.printStackTrace();
+        System.out.println("클라이언트와의 통신 오류! - " + e.getMessage());
       }
-      System.out.println("채팅 클라이언트가 종료되었음!");
     }
   }
 
-  class MessageSender implements Runnable {
-    String message;
-
-    public MessageSender(String message) {
-      this.message = message;
-    }
-
-    @Override
-    public void run() {
-      // 바깥 클래스의 메서드를 호출하여 메시지를 보낸다.
-      send(message);
-    }
-  }
 
   public static void main(String[] args) {
-    ChatServer chatServer = new ChatServer(8888);
-    chatServer.service();
+    new ChatServer(8888).service();
+
   }
 
 }
 
 
+// 계속 클라이언트가 요청하면
+//쓰레드가 별도의 요청흐름을 만들어
+// 실행흐름은 어차피 다시 메인으로 돌아와 종료한다. - 절대 중간에 끊기는게 없다.( 실처럼 계속 연결되어 결국에는 메인으로 들어온다) - main() 호출 --> 결구 메인으로 돌아옴
+//새로운 실행흐름 new Thread();

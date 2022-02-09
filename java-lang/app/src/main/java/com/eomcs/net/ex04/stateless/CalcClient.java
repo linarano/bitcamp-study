@@ -19,6 +19,7 @@ public class CalcClient {
       System.out.print("값2? ");
       int b = Integer.parseInt(keyScan.nextLine());
 
+      //데이터를 서버에 보낼때 연결*****   
       try (Socket socket = new Socket("localhost", 8888);
           Scanner in = new Scanner(socket.getInputStream());
           DataOutputStream out = new DataOutputStream(socket.getOutputStream())) {
@@ -34,6 +35,8 @@ public class CalcClient {
         System.out.println("서버와 통신 중 오류 발생!");
       }
 
+      //try블록은 나가면 연결을 끊는다.
+
       System.out.print("계속하시겠습니까?(Y/n)");
       if (keyScan.nextLine().equalsIgnoreCase("n")) {
         break;
@@ -43,5 +46,9 @@ public class CalcClient {
     keyScan.close();
   }
 }
+
+//요청하고 응답하는 순간 연결이 끊어짐
+
+//연산한 결과를 계속 가지고있기 어려움***
 
 

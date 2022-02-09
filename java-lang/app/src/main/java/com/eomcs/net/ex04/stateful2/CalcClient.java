@@ -18,7 +18,7 @@ public class CalcClient {
       out.writeUTF(keyScan.nextLine());
 
       System.out.print("값? ");
-      out.writeInt(Integer.parseInt(keyScan.nextLine()));
+      out.writeInt(Integer.parseInt(keyScan.nextLine())); // TCP/IP제어 - 입력한것은 메모리에 쌓임, 서버에서 읽어야 되는것은 별개
 
       String str = in.nextLine();
       System.out.println(str);
@@ -35,3 +35,5 @@ public class CalcClient {
 }
 
 
+//단발성이 아니라 영속성을 갖는 서비스 처리할 때 사용하라!
+//클라이언트를 쓰는 여러분이 중간계산결과를 유지할 필요없다.(기억할 필요없음)

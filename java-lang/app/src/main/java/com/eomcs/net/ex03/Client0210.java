@@ -12,8 +12,8 @@ public class Client0210 {
     Scanner keyScan = new Scanner(System.in);
 
     try (Socket socket = new Socket("localhost", 8888);
-        PrintWriter out = new PrintWriter(socket.getOutputStream());
-        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+        PrintWriter out = new PrintWriter(socket.getOutputStream()); //캐릭터 스트림 -출력 
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) { //버퍼리드 읽어드림 한줄 
 
       System.out.println("서버와 연결되었음!");
 
@@ -42,3 +42,4 @@ public class Client0210 {
 }
 
 
+//flush는 입력과 상관없음 출력과 관련된겄****

@@ -15,7 +15,7 @@ public class Exam03 {
     System.out.printf("서버주소: %s\n", url.getHost());
     System.out.printf("포트번호: %d\n", url.getPort());
     System.out.printf("자원경로: %s\n", url.getPath());
-    System.out.printf("참조경로(내부위치): %s\n", url.getRef());
+    System.out.printf("참조경로(내부위치): %s\n", url.getRef()); //  <a href="#section-3.2.1"> #을 빼고 나머지만 나옴 
     // 자원 경로 다음에 문서의 내부 위치를 지정하면
     // 웹브라우저는 해당 위치로 자동 스크롤 한다.
 
@@ -24,3 +24,4 @@ public class Exam03 {
 }
 
 
+// 메서드 사용법 잘익혀둬라 

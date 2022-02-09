@@ -8,9 +8,9 @@ import java.util.Scanner;
 
 // HTTP 응답 프로토콜
 // --------------------------------
-// HTTP/1.1 200 OK(CRLF)
+// HTTP/1.1 200 OK(CRLF) // 버전/상태코드/문구
 // Content-Type: text/html; charset=UTF-8(CRLF)
-// (CRLF)
+// (CRLF) //엔터
 // 보낼 데이터
 // --------------------------------
 public class HttpServer {
@@ -23,11 +23,13 @@ public class HttpServer {
       Scanner in = new Scanner(socket.getInputStream());
       PrintStream out = new PrintStream(socket.getOutputStream());
 
+
       // 클라이언트가 보낸 데이터를 HTTP 요청 프로토콜에 맞춰 읽는다.
       while (true) {
         String str = in.nextLine();
+
         System.out.println(str);
-        if (str.equals(""))
+        if (str.equals("")) //클라이언트가 빈줄을 받을때까지 - 요청 끝 
           break;
       }
 

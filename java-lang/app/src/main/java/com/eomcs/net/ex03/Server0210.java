@@ -17,7 +17,7 @@ public class Server0210 {
 
       try (Socket socket = serverSocket.accept(); // blocking : 클라이언트가 대기열에 들어올 때까지
           BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-          PrintWriter out = new PrintWriter(socket.getOutputStream())) {
+          PrintWriter out = new PrintWriter(socket.getOutputStream())) { // 트라이블록에서 close() - flush 자동호출
 
         System.out.println("클라이언트가 보낸 한 줄의 문자열을 기다리고 있음!");
 
@@ -29,7 +29,7 @@ public class Server0210 {
         System.out.print("데이터를 보내기 전에 잠깐!>");
         keyboard.nextLine();
 
-        out.println(str);
+        out.println(str); // 버퍼를 쓰지도않았는데도 안보내짐 
         //        out.flush();
         // character stream 클래스의 경우
         // 출력 데이터를 내부 버퍼에 보관하고 있다가

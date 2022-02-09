@@ -9,7 +9,7 @@ public class CalcClient {
   public static void main(String[] args) throws Exception {
     Scanner keyScan = new Scanner(System.in);
 
-    Socket socket = new Socket("localhost", 8888);
+    Socket socket = new Socket("192.168.0.23", 8888);
     Scanner in = new Scanner(socket.getInputStream());
     DataOutputStream out = new DataOutputStream(socket.getOutputStream());
 
@@ -35,3 +35,4 @@ public class CalcClient {
 }
 
 
+// 클라이언트 쪽 포트번호 운영체제가 자동으로 부여함(지정하지말아야함 개발자가 )

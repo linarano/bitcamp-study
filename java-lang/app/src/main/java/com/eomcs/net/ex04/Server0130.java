@@ -1,4 +1,4 @@
-// 통신 방식 - Stateful + 여러 클라이언트 요청 처리 + 서버 종료
+// 통신 방식 - Stateful + 여러 클라이언트 요청 처리 + 서버 종료 (서버종료 기능을 덧붙임)
 package com.eomcs.net.ex04;
 
 import java.io.BufferedReader;
@@ -25,11 +25,11 @@ public class Server0130 {
 
           while (true) {
             String name = in.readLine();
-            if (name.equalsIgnoreCase("quit")) { // 클라이언트와 연결 끊기
+            if (name.equalsIgnoreCase("quit")) { // 클라이언트와 연결 끊기 - 현재반복문 나가고 바깥의 반복문 실행
               out.println("Goodbye!");
               out.flush();
               break;
-            } else if (name.equalsIgnoreCase("stop")) { // 서버 종료하기
+            } else if (name.equalsIgnoreCase("stop")) { // 서버 종료하기 - 아예반복문 나가도록
               out.println("Goodbye!");
               out.flush();
               break loop;

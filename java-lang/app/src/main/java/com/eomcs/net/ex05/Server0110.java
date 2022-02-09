@@ -9,21 +9,22 @@ import java.util.Scanner;
 // 연결지향(connection oriented)
 // => 연결 후에 데이터를 송수신 하기 때문에 데이터 송수신에 대한 신뢰를 보장한다.
 // => TCP 통신 방법이 전형적인 예이다.
-//    예) FTP, Telnet, SMTP, POP3, HTTP 등 
+//    예) FTP, Telnet, SMTP, POP3,(stateful)/ HTTP(stateless) 등 
 // 
 public class Server0110 {
   public static void main(String[] args) throws Exception {
     Scanner keyboardScanner = new Scanner(System.in);
 
     System.out.println("서버 실행 중...");
-    ServerSocket ss = new ServerSocket(8888);
+    ServerSocket ss = new ServerSocket(8888); // 소켓을 쓰는게 연결지향방식임! 전형적인! , 대기열에 등록
 
     System.out.println("엔터를 치면 대기열에서 기다리고 있는 클라이언트의 소캣을 생성한다.>");
     keyboardScanner.nextLine();
 
-    Socket socket = ss.accept();
+    Socket socket = ss.accept();// 대기열순서대로 꺼내자. 
     System.out.println("클라이언트와 통신할 소캣을 준비하였다!");
 
+    //입출력스트림 준비 
     Scanner in = new Scanner(socket.getInputStream());
     PrintStream out = new PrintStream(socket.getOutputStream());
 
