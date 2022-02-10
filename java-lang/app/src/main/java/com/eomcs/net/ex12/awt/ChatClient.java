@@ -1,4 +1,4 @@
-package com.eomcs.net.ex12.awt;
+ㅁpa ckage com.eomcs.net.ex12.awt;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -36,7 +36,8 @@ public class ChatClient extends Frame {
     TextField portTf =new TextField();
     topPanel.add(portTf); // 
 
-    Button connectBtn = new Button("연결!");
+    ㅇ
+    Buㅇ러ㅏ댠애ㅑㅓㅑ찮녀ㅗㅗtton connectBtn = new Button("연결!");
     topPanel.add(connectBtn);
 
     add(topPanel, BorderLayout.NORTH);
@@ -66,9 +67,11 @@ public class ChatClient extends Frame {
 
 
 
-// 익명클래스 (중첩클래스의 한종류- 클래스 안에 클래스 ) - 더 직관적이다. 
 
-//Frame f = new Frame("계산기");
+// ㄱ익명클래스 (중첩클래스의 한ㅕㅑ종류- 클래스 안에 클래스 ) - 더 직관적이다| ||
+
+
+//Fram e f = new Frame("계산기");
 // f.addWindowListener(new WindowAdapter(){ //익명클래스-클래스정의한후, 객체만든다음, 객체주소를 준다는 의미 // 슈퍼클래스 생성자 호출 - 클래스이름이 없다. - 생성자에 이름이 없는게 존재 못하므로 슈퍼클래스의 생성자를 호출할 수 밖에 없다.
 //@Override
 // public void windowClosing(WindowEvent e) {
@@ -96,4 +99,4 @@ public class ChatClient extends Frame {
 
 //자바가 아니라 윈도우에서 띄우는거 기때문에 인코딩이안맞으므로 인코딩을 설정해줘야한다. ㅕㅆㄹ-8 => MS949
 
-//패널은 컨테이너인데 모든 컨테이너는 기본레이아웃 관리자가 있음  - 여기서 설정 바꿔주면 된다. 
+//패널 은 컨테이너인데 모든 컨테이너는 기본레이아웃 관리자가 있음  - 여기서 설정 바꿔주면 된다. 

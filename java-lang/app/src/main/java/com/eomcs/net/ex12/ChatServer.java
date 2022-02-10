@@ -7,11 +7,11 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
+@SuppressWarnings("rawtypes")
 public class ChatServer {
   int port;
 
 
-  @SuppressWarnings("rawtypes")
   ArrayList clientOutputStreams = new ArrayList(); //
 
   public ChatServer(int port){
@@ -32,11 +32,21 @@ public class ChatServer {
   }
 
 
+  @SuppressWarnings("unchecked")
   public void sendMessage(String message) {
+    ArrayList deleteStreams = new ArrayList();
+
     for (int i = 0; i< clientOutputStreams.size(); i++){
       DataOutputStream out = (DataOutputStream) clientOutputStreams.get(i);
-      try {out.writeUTF(message);} catch (Exception e) {}
+      try {out.writeUTF(message);}
+      catch (Exception e) {
+        System.out.println("전송오류 : " + message);
+        deleteStreams.add(out); //  무효한 출력 스트림은 삭제 명단에 등록한다.  -> 무미건조한 코드를 말로 풀어써라 . 머릿속에 그림을 그려라  수억수천년동안 쌓인 데이터를  단기간에 흡수하는 지식 
+      }
+    }
 
+    for (Object deleteStream : deleteStreams) { // 삭제 명단에 등록된 출력스트림을 제거한다. 
+      clientOutputStreams.remove(deleteStream);
     }
   }
   class RequestHandler extends Thread {
@@ -55,19 +65,26 @@ public class ChatServer {
           DataOutputStream out = new DataOutputStream(socket.getOutputStream());
           DataInputStream in = new DataInputStream(socket.getInputStream())) {
 
-        clientOutputStreams.add(out);
+        clientOutputStreams.add(out); // 접속하는 순간 목록에 추가하고 1)
 
-        out.writeUTF("환영합니다!");
+
+        String nickname = in.readUTF(); //메세지를 보낼때마다 쓰자
+
+        out.writeUTF(nickname + "님 환영합니다!");
         out.flush();
 
         while (true) {
           String message = in.readUTF();
           if (message.equals("\\quit")) {
-            out.writeUTF("Goodbye!");
+            // out.writeUTF("Goodbye!"); //  별도의 쓰레드가 작업하므로 언제뜰지몰람 - 프로토콜을 바꾸자 - 더 쉽게 //  연결을 끊겠다는 메시지를 클라이언트에게 보낸다.
+            out.writeUTF("<![QUI[]]}>"); // 사람들이 잘 입력하지않을만한 문자열을 줄 꺼다 - 특별한 코드를 보낼꺼다. 
             out.flush();
+            clientOutputStreams.remove(out);// 메시지 출력목록에서 연결이 종료된 클라이언트를 제거한다. 2
             break;
           }
-          sendMessage(message);// 클라이언트의 출력을 받으면 이쪽으로 보내라. 
+          sendMessage(String.format("[%s] %s", nickname, message));// 클라이언트의 출력을 받으면 이쪽으로 보내라. 
+          // sendMessage("[" +nickname+"]" + message);
+
         }
       } catch (Exception e) {
         System.out.println("클라이언트와의 통신 오류! - " + e.getMessage());

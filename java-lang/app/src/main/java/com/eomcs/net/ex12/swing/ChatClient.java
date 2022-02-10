@@ -26,38 +26,59 @@ public class ChatClient extends JFrame {
   Socket socket;
   DataInputStream in;
   DataOutputStream out;
+  String nickname; // 계속 사용해야하니까. - 기본으로   null값으로 셋팅된다(인스턴스필드)
 
-  JTextField addressTf = new JTextField(4);
-  JTextField portTf =new JTextField(35);
+  JTextField addressTf = new JTextField(35);
+  JTextField portTf =new JTextField(4);
+  JButton connectBtn = new JButton("연결!");
   JTextArea messageListTa = new JTextArea();
-  JTextField messageTf = new JTextField(40);
+  JTextField messageTf = new JTextField(40); //     어차피 컴파일하면 생성자에 첫부분으로 선언하는 걸로 바뀌니까 상관
 
   public ChatClient() {
-    super("채팅!");
+    //기본생성자 자동생성    default
+    // 대화명을 먼저 입력하도록 
+    String title = " 대화명을 입력하세요.\n(2자 이상) ";
+    while(true) {
+      nickname = JOptionPane.showInputDialog(title);
+      System.out.println(nickname);
+
+      if (nickname == null) { // 기
+        System.exit(0);
+      } else if (nickname.length() >= 2) { //  가독성측면에서 이게 더 낫다.
+        break;
+      } 
+      title = "대화명을 다시입력하세요 \n(2자이상)";
+    }
+    setTitle("채팅!! - " + nickname);
+
     this.addWindowListener(new WindowAdapter() {
       @Override
       public void windowClosing(WindowEvent e) {
-        System.exit(0); // 순서 소켓을 통한 입출력먼저 닫고 소켓닫아라ㅏ
-        try{in.close();}catch(Exception ex){}
-        try{out.close();}catch(Exception ex){}
-        try{socket.close();}catch(Exception ex){}
-        System.out.println();
+        if (connectBtn.getText().equals("종료")) { // 
+          try {
+            out.writeUTF("\\quit");
+            out.flush();
+          } catch (Exception ex) { 
+          }
+        }
+        try {in.close();} catch (Exception ex) {}
+        try {out.close();} catch (Exception ex) {}
+        try {socket.close();} catch (Exception ex) {}
+        System.exit(0);
       }
     });
-
-    JPanel topPanel = new JPanel();
-    topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-    setSize(400,300); 
+    setSize(500,400); 
 
     Container contentPanel = this.getContentPane();
-
+    JPanel topPanel = new JPanel();
+    topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+    //3.35.214.230
 
     topPanel.add(addressTf); 
 
     topPanel.add(portTf); // 
 
-    JButton connectBtn = new JButton("연결!");
+
     // 액션리스터 인처페이스를 구현한 어떤 클래스의 객체주소를 주고 싶다(공통)
     // 1) 로컬 클래스(가장정석- 기초) - 굳이 객체1번 만드는데 굳이 클래스를 만드냐 ->2) : 자바는 매번 클래스에 담아서 함수를 사용했다. 자바스크립트와 같은 스크립트 언어와 달리 함수주소만 줄 수 없었따. 좀더 비슷하게
     //    class MyActionListener implements ActionListener {
@@ -107,6 +128,8 @@ public class ChatClient extends JFrame {
     messageTf.addActionListener(this::sendMessage);
 
     this.setVisible(true);
+
+
   }
   public static void main(String[] args) throws Exception {
     UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName()); //metal과 동일  -> 운영체제와 상관없이 동일한 모양
@@ -127,25 +150,37 @@ public class ChatClient extends JFrame {
     //System.out.println(addressTf.getText());
     //System.out.println(portTf.getText());
 
-    try {
-      socket = new Socket(
-          addressTf.getText(),
-          Integer.parseInt(portTf.getText()));
+    if(connectBtn.getText().equals("연결")) {
+      try {
+        socket = new Socket(
+            addressTf.getText(),
+            Integer.parseInt(portTf.getText()));
 
-      in = new DataInputStream(socket.getInputStream());
-      out = new DataOutputStream(socket.getOutputStream());
+        in = new DataInputStream(socket.getInputStream());
+        out = new DataOutputStream(socket.getOutputStream());
 
+        out.writeUTF(nickname);
+        out.flush();
 
-      new MessageReceiver(in).start();// 특정일만 함. 서버에서 데이터를 보내면 읽고 뿌리는 역할 - 서버와 연결하면 바로 일 시작 
+        new MessageReceiver(in).start();// 특정일만 함. 서버에서 데이터를 보내면 읽고 뿌리는 역할 - 서버와 연결하면 바로 일 시작 
 
-    }catch(Exception ex){
-      //창을 클로즈할 떄닫아야함
-      JOptionPane.showMessageDialog(this,"서버 연결오류","실행오류!",JOptionPane.ERROR_MESSAGE);
+      }catch(Exception ex){
+        //창을 클로즈할 떄닫아야함
+        JOptionPane.showMessageDialog(this,"서버 연결오류","실행오류!",JOptionPane.ERROR_MESSAGE);
 
+      }
+
+      connectBtn.setText("종료");
+    } else {
+      try {
+        out.writeUTF("\\quit");
+        out.flush();
+      } catch (Exception ex) { 
+      }
+      connectBtn.setText("연결");
+      messageListTa.setText("");
     }
-
   }
-
   public void sendMessage(ActionEvent e) { //인스턴스 메서드 쓰려면 인스턴스 주소를 줘야함  // JVM Stack에 로컬변수로 준다. 
     System.out.println("메시지보내기");
     //int[] arr =int [4];
@@ -183,8 +218,11 @@ public class ChatClient extends JFrame {
     public void run() {
       while (true) {
         try{
-          String respense = in.readUTF();
-          messageListTa.append(respense+"\n");
+          String message = in.readUTF();
+          if (message.equals("<![QUIT[]]>")) { // 일반적으로 잘 쓰지않는 텍스트를 사용하여 일종의 명령어로 사용
+            break; // 런메서드 실행을 마치면 스레드는 종료한다.   - 쓰레드의 객체정보를 보관해놨다가 살았는지 죽었는지 확인 가능 
+          }
+          messageListTa.append(message+"\n");
 
         }catch (Exception e){
         }

@@ -3,17 +3,13 @@ package com.eomcs.net.ex12.awt;
 import java.awt.Frame;
 
 
-@SuppressWarnings("serial")
 public class ChatClient2 extends Frame {
 
-  public  ChatClient2() {
+  private static final long serialVersionUID = 1L;
+
+  public ChatClient2() {
     super("채팅");
-
-
-    this.addWindowListener(new myWindowListener());
-    // 인터페이스와 상속?????? 기억이 안남 
-    //addWindowListener(WindowLister l)
-
+    this.addWindowListener(new MyWindowListener());
   }
 
   public static void main(String[] args) {
