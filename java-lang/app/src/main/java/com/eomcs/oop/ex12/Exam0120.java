@@ -2,7 +2,7 @@
 package com.eomcs.oop.ex12;
 
 public class Exam0120 {
-
+  // 추상메서드가 1개만 있는 인터페이스(default 메서드는 안침 4/1) => functional interface 
   interface Player {
     void play();
   }

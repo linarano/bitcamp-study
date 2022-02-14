@@ -1,4 +1,4 @@
-ㅁpa ckage com.eomcs.net.ex12.awt;
+package com.eomcs.net.ex12.awt;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -36,8 +36,8 @@ public class ChatClient extends Frame {
     TextField portTf =new TextField();
     topPanel.add(portTf); // 
 
-    ㅇ
-    Buㅇ러ㅏ댠애ㅑㅓㅑ찮녀ㅗㅗtton connectBtn = new Button("연결!");
+
+    Button connectBtn = new Button("연결!");
     topPanel.add(connectBtn);
 
     add(topPanel, BorderLayout.NORTH);

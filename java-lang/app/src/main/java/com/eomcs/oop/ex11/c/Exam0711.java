@@ -18,7 +18,7 @@ public class Exam0711 {
 
     // Player가 사용할 Musics 객체를 넘기기 위해 
     // 개발자가 직접 해당 생성자를 호출해 줘야 한다. 
-    Musics1.Player p1 = new Musics1.Player(m1);
+    Musics1.Player p1 = new Musics1.Player(m1); // 탑레벨 클래스가 아니므로 탑레벨클래스 주소를 준다.
     Musics1.Player p2 = new Musics1.Player(m2);
 
     p1.play();
@@ -29,7 +29,7 @@ public class Exam0711 {
 
 class Musics1 {
 
-  List<String> songs = new ArrayList<>();
+  List<String> songs = new ArrayList<>(); //음악목록 관리 
 
   public void add(final String song) {
     songs.add(song);

@@ -22,6 +22,8 @@ public class Exam0712 {
     Musics2.Player p1 = m1.new Player();
     Musics2.Player p2 = m2.new Player();
 
+    //스태틱 
+
     p1.play();
     p2.play();
   }
@@ -71,4 +73,5 @@ class Musics2 {
 
 }
 
-
+// 훨씬쓰는 이점 - 편하다  
+//뮤직ㅋ틀래스 - 플레이어 클래스와 모두 관계를 맺어야함 712클래스가 

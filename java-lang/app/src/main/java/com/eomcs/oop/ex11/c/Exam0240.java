@@ -17,8 +17,8 @@ class B4 {
       // => 컴파일러는 변수를 찾은 후에 해당 변수의 문법에 맞게 코드를 변경한다.
       //
       System.out.printf("v3 = %d\n", v3); // 로컬 변수: v3 
-      System.out.printf("this.v2 = %d\n", v2); // 인스턴스 변수: this.v2 로 변경 
-      System.out.printf("B4.this.v1 = %d\n", v1); // 바깥 객체의 인스턴스 변수: B4.this.v1 으로 변경 
+      System.out.printf("this.v2 = %d\n", v2); // 인스턴스 변수: this.v2 로 변경  // 겹치지않으므로 생략가능 - 겹치는게 있다면 생략하면 안된다.
+      System.out.printf("B4.this.v1 = %d\n", v1); // 바깥 객체의 인스턴스 변수: B4.this.v1 으로 변경  // 인스턴스가 겹치지않으므로 굳이 길게 안적고 생략해도된다.
     }
   }
 }
@@ -26,21 +26,21 @@ class B4 {
 public class Exam0240 {
 
   public static void main(String[] args) {
-    B3 outer = new B3();
+    B4 outer = new B4();
     outer.v1 = 11;
 
-    B3.X x1 = outer.new X();
+    B4.X x1 = outer.new X();
     x1.test();
     System.out.println("--------------------");
 
-    B3.X x2 = outer.new X();
+    B4.X x2 = outer.new X();
     x2.test();
     System.out.println("--------------------");
 
-    B3 outer2 = new B3();
+    B4 outer2 = new B4();
     outer2.v1 = 22;
 
-    B3.X x3 = outer2.new X();
+    B4.X x3 = outer2.new X();
     x3.test();
     System.out.println("--------------------");
   }

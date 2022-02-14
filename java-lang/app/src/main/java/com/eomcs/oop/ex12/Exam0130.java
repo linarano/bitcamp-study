@@ -16,7 +16,7 @@ public class Exam0130 {
     Player p2 = (name) -> System.out.println(name + " 님 환영합니다.");
     p2.play("홍길동");
 
-    // 3) 파라미터가 한 개일 때는 괄호도 생략할 수 있다.
+    // 3) 파라미터가 한 개일 때는 괄호도 생략할 수 있다. => 간결하게 사용하려고 만든게 람다문법이므로 -> 간단한걸 써라 
     Player p3 = name -> System.out.println(name + " 님 환영합니다.");
     p3.play("홍길동");
   }

@@ -11,3 +11,4 @@ public class Product {
   String maker;
   int price;
 }
+//메모리 설계도

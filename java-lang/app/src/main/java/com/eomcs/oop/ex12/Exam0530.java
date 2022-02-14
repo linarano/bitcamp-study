@@ -23,7 +23,7 @@ public class Exam0530 {
   }
 
   interface Calculator1 {
-    double compute(int a, int b);
+    double compute(int a, int b);// 메서드 구현체로 대체가 가능한가? 쓸 수 있나의 문제  ->   int plus(int a, int b) {} // 510번 확인 
   }
 
   interface Calculator2 {
@@ -35,7 +35,7 @@ public class Exam0530 {
   }
 
   interface Calculator4 {
-    void compute(int a, int b);
+    void compute(int a, int b); // 리턴하지않음
   }
 
   interface Calculator5 {
@@ -66,7 +66,7 @@ public class Exam0530 {
 
 
     // 리턴 타입 int ===> short
-    //    Calculator3 c3 = MyCalculator::plus; // 컴파일 오류!
+    //        Calculator3 c3 = MyCalculator::plus; // 컴파일 오류!
     // 위 문장은 다음과 같다.
     //    Calculator3 c3 = new Calculator3() {
     //      @Override
@@ -76,7 +76,7 @@ public class Exam0530 {
     //    };
 
 
-    // 리턴 타입 int ===> void
+    // 리턴 타입 int ===> void // 리턴하는 걸 안쓰면 된다. (내부적으로)
     Calculator4 c4 = MyCalculator::plus; // OK!
     // 위 문장은 다음과 같다.
     //    Calculator4 c4 = new Calculator4() {
@@ -94,7 +94,7 @@ public class Exam0530 {
     //      @Override
     //      public Object compute(int a, int b) {
     //        return MyCalculator.plus(a, b); // OK! 
-    //        //이유? plus()가 리턴한 int 값이 오토박싱 되기 때문이다.
+    //        //이유? plus()가 리턴한 int 값이 오토박싱**** 되기 때문이다.
     //      }
     //    };
     System.out.println(c5.compute(100, 200));
@@ -114,7 +114,7 @@ public class Exam0530 {
     // 1) 같은 리턴 타입
     // 2) 암시적 형변환 가능한 타입
     // 3) auto-boxing 가능한 타입
-    // 4) void
+    // 4) void // 안 던지면 되니까 가능
     // 결론,
     // 메서드 레퍼런스가 가리키는 실제 메서드를 호출한 후
     // 그 메서드가 리턴한 값이

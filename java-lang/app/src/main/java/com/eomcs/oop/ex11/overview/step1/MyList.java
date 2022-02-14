@@ -10,7 +10,7 @@ public class MyList {
     if (size == arr.length){ 
       arr = Arrays.copyOf(arr,arr.length + (arr.length >> 1)); // 나누기 2한것과 같음 기존보다 절반정도 더큰 배열 만듬 1.5 //  이제 반복문 돌려서 꺼낼필요없음 -클래스의 도구를 사용하라. 
     }   
-    arr[size++] = obj; //  size는 항상 현재집어넣을 위치를 가리킴 
+    arr[size++] = obj; // 실제 데이터가 들어있는 크기 + 다음 위치를 가리킨다. 왜냐하면 add()  size++ 
   }
 
 

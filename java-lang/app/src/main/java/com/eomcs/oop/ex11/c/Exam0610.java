@@ -9,12 +9,12 @@ class G {
   class X {
     int v1 = 10;
     int v2 = 20;
-
+    //컴파일러가 디스추가 - 바깥객체의 주소를 담고있음 
     void m1(int v1) {
 
       // 중첩 클래스의 메서드에서 필드를 사용하기 
       System.out.println("G 객체:");
-      System.out.printf("G.this.v1 = %d\n", G.this.v1);
+      System.out.printf("G.this.v1 = %d\n", G.this.v1); // 바깥객체 
       System.out.printf("G.this.v2 = %d\n", G.this.v2);
       System.out.printf("G.this.v3 = %d\n", G.this.v3);
 
@@ -22,7 +22,7 @@ class G {
 
       // inner 클래스의 인스턴스 필드 접근
       System.out.println("G.X 객체:");
-      System.out.printf("this.v1 = %d\n", this.v1);
+      System.out.printf("this.v1 = %d\n", this.v1); //  X객체의 주소를 가리키는 것, -빼버리면 의미가 달라짐 
       System.out.printf("this.v2 = %d\n", this.v2);
 
       System.out.println("-------------------------");

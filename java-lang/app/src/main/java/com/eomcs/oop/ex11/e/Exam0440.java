@@ -31,7 +31,7 @@ public class Exam0440 {
     };
     m1(obj);
 
-    // 3) 익명 클래스를 파라미터 자리에 바로 삽입
+    // 3) 익명 클래스를 파라미터 자리에 바로 삽입 - 객체의 주소가 넘어가는 것이다!!!
     m1(new A() {
       @Override
       public void print() {

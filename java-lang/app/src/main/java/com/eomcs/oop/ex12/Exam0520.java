@@ -5,7 +5,7 @@ package com.eomcs.oop.ex12;
 public class Exam0520 {
 
   static class MyCalculator {
-    public static int plus(int a, int b) {
+    public static int plus(int a, int b) { // 타입 일치 해야함
       return a + b;
     }
 

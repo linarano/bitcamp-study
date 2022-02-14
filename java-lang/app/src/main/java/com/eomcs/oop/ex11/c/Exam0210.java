@@ -3,15 +3,15 @@ package com.eomcs.oop.ex11.c;
 
 class B {
   // 클래스 멤버
-  static int v1 = 10;
-  static void m1() {}
+  static int v1 = 10; //1)
+  static void m1() {} //2)
 
-  class X {
+  class X { //3)
     void test() {
       // 바깥 클래스든 패키지 멤버 클래스든 스태틱 멤버를 사용할 때는 
       // 다음과 같이 클래스 이름으로 해당 멤버를 사용한다.
       System.out.println(B.v1);
-      B.m1();
+      B.m1();// 생략가능하나 명확이게 명확 -> 선배들은 많이 샹락 
       System.out.println("-------------------------");
 
       // 그런데 중첩 클래스에서 바깥 클래스의 스태틱 멤버에 접근할 때는 
@@ -37,3 +37,5 @@ public class Exam0210 {
   }
 
 }
+
+// X찾아보고, 상속클래스찾아보고 , 없으면 바깥 클래스를 찾는 방식 

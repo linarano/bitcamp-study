@@ -1,6 +1,7 @@
 // 상수를 별도의 클래스로 분리하여 다루기 - static 멤버 import
 package com.eomcs.oop.ex11.g.step5;
 
+//사용하는 특정 필드에대해서만 각각 
 import static com.eomcs.oop.ex11.g.step5.Category.APPLIANCE_TV;
 import static com.eomcs.oop.ex11.g.step5.Category.BOOK_NOVEL;
 import static com.eomcs.oop.ex11.g.step5.Category.COMPUTER_RAM;
@@ -26,3 +27,5 @@ public class Exam0120 {
     p3.price = 18000;
   }
 }
+
+//스태틱필드를 사용하는데 매번 안적어줘서 ㅍ편하다. 

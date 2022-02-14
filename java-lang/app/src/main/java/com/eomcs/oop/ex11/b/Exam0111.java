@@ -12,7 +12,7 @@ class A2 {
     // top level class 처럼 인스턴스 멤버 선언 가능
     int v2;
     void m2() {}
-    {}
+    {} //블럭
   }
 
 }

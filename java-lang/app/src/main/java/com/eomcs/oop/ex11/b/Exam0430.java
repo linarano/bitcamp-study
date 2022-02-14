@@ -2,7 +2,7 @@
 package com.eomcs.oop.ex11.b;
 
 // 각각의 스태틱 멤버를 지정하는 대신 
-// 다음과 같이 wildcard(*)를 사용하여 전체 스태틱 멤버를 한 번에 지정할 수 있다.
+// 다음과 같이 wildcard(*)를 사용하여 전체 스태틱 멤버를 한 번에 지정할 수 있다. //-컨트럴 제트 직전소스로 복원 -> 와일드카드 쓴는 것보다 추천!!!!!, 많지않으면 정확하게 적워두는게 후임개발자에게 소스코드를 이해하는데 더 도움 
 import static com.eomcs.oop.ex11.b.F.m1;
 import static com.eomcs.oop.ex11.b.F.v1;
 import static com.eomcs.oop.ex11.b.sub.M.m2;
