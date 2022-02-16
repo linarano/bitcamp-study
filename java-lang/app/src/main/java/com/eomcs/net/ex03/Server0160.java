@@ -1,4 +1,4 @@
-// 클라이언트와 입출력 테스트 - byte stream + buffer ** 버퍼를 쓸때는 조심하라. 
+// 클라이언트와 입출력 테스트 - byte stream + buffer
 package com.eomcs.net.ex03;
 
 import java.io.BufferedInputStream;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Server0160 {
   public static void main(String[] args) {
     try (Scanner keyboard = new Scanner(System.in);
-        ServerSocket serverSocket = new ServerSocket(8888)) { // close()하면 플러시 자동호출 , 자동방출된것.
+        ServerSocket serverSocket = new ServerSocket(8888)) {
 
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
@@ -30,7 +30,7 @@ public class Server0160 {
         keyboard.nextLine();
 
         out.println(str);
-        out.flush();//*****
+        out.flush();
         // 버퍼를 사용할 때는
         // 데이터를 보내기 위해 반드시 flush()를 호출해야 한다.
         // => 버퍼에 남아 있는 데이터를 연결된 출력 스트림을 이용하여 내보낸다.

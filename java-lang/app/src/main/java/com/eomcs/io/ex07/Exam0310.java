@@ -8,10 +8,10 @@ public class Exam0310 {
   public static void main(String[] args) throws Exception {
     byte[] buf = {
         0x0b, 0x41, 0x42, (byte) 0xea, (byte) 0xb0, (byte) 0x80, (byte) 0xea, (byte) 0xb0,
-        (byte) 0x81, (byte) 0xea, (byte) 0xb0, (byte) 0x84, 0x00, 0x00, 0x00, 0x1b, 0x01};// 한사람의 멤버정보 
+        (byte) 0x81, (byte) 0xea, (byte) 0xb0, (byte) 0x84, 0x00, 0x00, 0x00, 0x1b, 0x01};
 
     // 바이트 배열에서 데이터를 읽는 도구
-    ByteArrayInputStream in = new ByteArrayInputStream(buf); //파일대신 메모리에서 데이터를 읽어들인다. 
+    ByteArrayInputStream in = new ByteArrayInputStream(buf);
 
     // 보통 바이트 배열에서 데이터를 읽을 때 인덱스를 가지고 직접
     // 바이트 배열의 값을 읽는다.
@@ -24,7 +24,6 @@ public class Exam0310 {
     // 즉 "데이터가 저장된 장소에 상관없이 데이터를 읽을 때는 read() 호출한다"는
     // 일관성 있는 규칙이 생기게 되는 것이다.
     // 규칙이 있다는 것은 코딩을 매우 편하게 만든다.
-
     int b;
 
     while (true) {
@@ -40,15 +39,3 @@ public class Exam0310 {
   }
 
 }
-
-// 데이터를 읽는건 read() - 05. 120번 비교
-//*Stream API의 효용성 (역사가 깊다. c FUNCTION)
-//
-//데이터를 읽는 대상(파일,메모리, 프로세스, 사운드카드의 마이크, 스캐너, 등)이 다르더라도
-//데이터를 읽는 방법은 같다!
-//
-//read() 호출
-//
-//=> 일관성 있는 프로그래밍 가능!
-//
-//다만, 클래스만 다를뿐. 

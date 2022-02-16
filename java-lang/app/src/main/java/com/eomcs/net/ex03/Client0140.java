@@ -10,9 +10,9 @@ public class Client0140 {
   public static void main(String[] args) {
 
     try (Scanner keyScan = new Scanner(System.in);
-        Socket socket = new Socket("localhost", 8888); // 객체 생성 - 서버연결 : 승인 accept()됐다는 의미가 아님 서버의 대기열에 등록되는 순간 객체가 생성., 대기하는 클라이언트 꽉차있으면 커넥션 거절 
-        DataOutputStream out = new DataOutputStream(socket.getOutputStream()); //바이트배열 그대로 출력//데코레이터붙임 - 언제바꾸나 : 서버와 똑같이 주거니 받거니 합맞춰야함 
-        DataInputStream in = new DataInputStream(socket.getInputStream())) {  //바이트배열 그대로 출력//데코레이터붙임 
+        Socket socket = new Socket("localhost", 8888); // 서버의 대기열에 등록되는 순간 객체가 생성된다.
+        DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+        DataInputStream in = new DataInputStream(socket.getInputStream())) {
 
       System.out.println("서버와 연결되었음!");
 

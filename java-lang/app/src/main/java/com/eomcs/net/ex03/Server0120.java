@@ -14,7 +14,7 @@ public class Server0120 {
 
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
-      try (Socket socket = serverSocket.accept(); // 대기열을 계속 바라보고 있다가, 대기열에 클라이언트정보가 들어오면 꺼낸다. 
+      try (Socket socket = serverSocket.accept();
           OutputStream out = socket.getOutputStream();
           InputStream in = socket.getInputStream()) {
 
@@ -31,7 +31,7 @@ public class Server0120 {
           if (i > 0 && (i % 20) == 0) {
             System.out.println(); // 20바이트 출력한 후 줄 바꾼다.
           }
-          System.out.printf("%x ", buf[i]); //16진수로 출력
+          System.out.printf("%x ", buf[i]);
         }
 
       }
@@ -44,6 +44,4 @@ public class Server0120 {
   }
 
 }
-
-//파일입출력과 동일함
 

@@ -1,24 +1,23 @@
 package com.eomcs.oop.ex05.x3.app4;
 
-
-// 하이브리드카 만들기
-// 1) 기존 코드에 복제해온 후, 자동차를 만든다. 
-
+// 하이브리드 자동차 만들기
+//
+// 2) app1의 Engine 클래스를 복제해 온 후 하이브리드 기능 덧붙이기
+//
 public class CarTest4 {
 
   public static void main(String[] args) {
-
+    // Engine 클래스에 하이브리드 기능 추가하기
+    // => kwh 변수 추가
+    // => chargeBattery() 메서드 추가
+    // => run() 메서드 변경
+    //
     Engine car = new Engine();
-    //    car.chargeBattery(100);
+    //car.chargeBattery(100);
     car.start();
-    car.run(); 
+    car.run();
     car.stop();
 
   }
 
 }
-
-
-//트럭과 캠핑카 번갈아 
-// 기존코드를 변경해야되는 상황이 반드시 온다. (코드추가뿐만 아니라 )
-//단순 변수와 메서드 추가뿐만 아니라 기존코드를 손댈수밖에 없다. 이 작은 코드를 짜는데도 이런상황 RUNF()

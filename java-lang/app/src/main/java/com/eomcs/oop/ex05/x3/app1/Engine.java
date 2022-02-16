@@ -5,18 +5,22 @@ public class Engine {
   int valve;
 
   public void run() {
-    System.out.println("씽씽달린다!");
+    System.out.println("씽씽 달린다.!");
   }
+
   // 자동차 기능 추가
   public void start() {
-    System.out.println("시동건다!");
+    System.out.println("시동 건다!");
   }
 
   public void stop() {
-    System.out.println("시동끈다!");
+    System.out.println("시동 끈다!");
   }
 }
 
 
 
-// 가벼운 엔진 클래스
+
+
+
+

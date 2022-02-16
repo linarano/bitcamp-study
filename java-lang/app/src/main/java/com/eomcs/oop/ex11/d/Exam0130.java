@@ -15,7 +15,7 @@ class B2 {
     }
   }
 
-  static void m2() { //클래스이름이 같으면 같은 명끼리 순서를 따진다.
+  static void m2() {
     class Y {
       // 로컬 클래스의 .class 파일명
       // => [바깥클래스명]$[정의된순서][로컬클래스명].class

@@ -17,7 +17,7 @@ public class Sender5 {
     BufferedInputStream fileIn = new BufferedInputStream(new FileInputStream(file));
 
     System.out.println("서버에 연결 중...");
-    Socket socket = new Socket("192.168.0.61", 8888);
+    Socket socket = new Socket("192.168.0.76", 8888);
     System.out.println("서버에 연결 완료!");
 
     DataOutputStream out = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
@@ -56,9 +56,4 @@ public class Sender5 {
 
 }
 
-// 어차피 주고받는건 입출력스트림 
-//네트워킹 프로그램
-//클라이언트 소켓 생성, 입출력스트림 준비가 끝
-//나머지가 다 입출력 스트림
 
-//서버소켓 생성 후, accept()

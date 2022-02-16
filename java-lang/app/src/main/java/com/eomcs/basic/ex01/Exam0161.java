@@ -31,17 +31,15 @@ public class Exam0161 {
 
     System.out.println(new byte[10].getClass().getName()); //[B
     System.out.println(new short[10].getClass().getName()); //[S
-    System.out.println(new long[10].getClass().getName()); //[J ***L이 이미있으므로 
+    System.out.println(new long[10].getClass().getName()); //[J
     System.out.println(new char[10].getClass().getName()); //[C
-    System.out.println(new boolean[10].getClass().getName()); //[Z ***B가 이미있으므로 
+    System.out.println(new boolean[10].getClass().getName()); //[Z
   }
 }
 
 
-// 예약어로 인해서 변수명을 널리쓸때 이런식으로 씀 
-//Class cls;
-//String str;
-//Class clazz;
+
+
 
 
 

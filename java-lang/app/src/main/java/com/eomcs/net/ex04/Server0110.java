@@ -33,7 +33,7 @@ public class Server0110 {
             out.flush();
             break;
           }
-          count++; // 연결을 끊지않았기때문에 가능
+          count++;
           out.printf("%s 님 반갑습니다!(%d)\n", name, count);
           out.flush();
         }
@@ -48,5 +48,3 @@ public class Server0110 {
 
 }
 
-//statefull
-// 클라이언트가 종료하면 서버도 같이 종료  

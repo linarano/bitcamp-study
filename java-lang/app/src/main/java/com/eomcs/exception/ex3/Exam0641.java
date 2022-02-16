@@ -18,7 +18,7 @@ public class Exam0641 {
     }
   }
 
-  public static void main(String[] args) throws Exception {
+  public static void main(String[] args) {
     try (B obj = new B() /* 마지막 문장에는 세미콜론을 붙이지 않아도 된다. */) {
       System.out.println("try 블록 실행...시작");
       obj.m(-100);
@@ -32,6 +32,3 @@ public class Exam0641 {
     }
   }
 }
-
-//finally와 다른점 예외 발생시 try catch - finally 문까지 실행
-//close()은  try - close() - catch

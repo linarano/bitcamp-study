@@ -8,17 +8,15 @@ package com.eomcs.oop.ex05.m;
 public class Exam01 {
 
   public static void main(String[] args) {
-    // => 다음과 같이 Car 클래스를 사용하는 것을 막기 위해 추상클래스 문법이 등장하였다.
-    // => 만약 추상클래스의 인스턴스를 만들려고 한다면 
-    // => 다음의 경우처럼 Car 클래스를 추상 클래스로 선언하는 순간 컴파일 오류가 발생한다.
-    //    Car c = new Car(); // 컴파일 오류! - abstract
+    // => 다음과 같이 Car 클래스를 사용하는 것을 막기 위해 추상 클래스 문법이 등장하였다.
+    // => 만약 추상 클래스의 인스턴스를 만들려고 한다면 컴파일 오류가 발생할 것이다.
+    //    Car c = new Car(); // 컴파일 오류!
 
     // generalization 과정에서 정의한 수퍼 클래스에 대해
     // 직접 사용하지 못하도록 추상클래스로 선언한다.
 
     Sedan s = new Sedan();
     Truck t = new Truck();
-
   }
 
 }

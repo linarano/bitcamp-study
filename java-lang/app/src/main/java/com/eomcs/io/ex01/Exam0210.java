@@ -20,12 +20,12 @@ public class Exam0210 {
     System.out.printf("계산된 절대경로: %s\n", file1.getCanonicalPath());
 
     // 존재하지 않는 폴더인 경우 크기를 알아낼 수 없다.
-    System.out.printf("총크기: %d\n", file1.getTotalSpace());//하드디스크 총크기
+    System.out.printf("총크기: %d\n", file1.getTotalSpace());
     System.out.printf("남은크기: %d\n", file1.getFreeSpace());
     System.out.printf("가용크기: %d\n", file1.getUsableSpace());
 
     // 존재하지 않는 폴더인 경우 정보를 알아낼 수 없다. 모두 false
-    System.out.printf("디렉토리여부: %b\n", file1.isDirectory()); //파일아니면 디렉토리
+    System.out.printf("디렉토리여부: %b\n", file1.isDirectory());
     System.out.printf("파일여부: %b\n", file1.isFile());
     System.out.printf("감춤여부: %b\n", file1.isHidden());
     System.out.printf("존재여부: %b\n", file1.exists());

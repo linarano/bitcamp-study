@@ -3,7 +3,7 @@ package com.eomcs.basic.ex02;
 
 public class Exam0210 {
   public static void main(String[] args) {
-    // 자바는 primitive data 를 객체처럼 다룰 수 있도록
+    // 자바는 primitive type의 data 를 객체처럼 다룰 수 있도록
     // 각 타입에 대응하는 클래스를 제공한다.
     // 예)
     Byte b = new Byte((byte)100);               // ==> byte
@@ -28,12 +28,11 @@ public class Exam0210 {
     // 가능한 생성자를 사용하여 인스턴스를 생성하지 말라!
     // deprecated(비난받는, 유지보수가 중단되어, 사용이 권장되지 않는)?
     // - 사용하지 않는 것이 좋다고 결정되었고, 가까운 장래에 제거될 것이라는 의미.
-    // 생성자로 만든느것은 옜날방식 
+    //
 
 
     // Wrapper 클래스의 인스턴스를 생성할 때는 생성자 대신 클래스 메서드를 사용하라.
-    //byte c =100; //원래 안된느건데 할당연산자를 통해 저장될 수 있으면 컴파일러가 허용, 원래 4바이트지만, 범위를 넘어가면 안됨 
-    Byte b2 = Byte.valueOf((byte)100);//할당연산자가 아닌 아규먼트로 넣은것 , 짤리더라도 4바이트 중에서 맨끝 1바이트만 넘겨줘 컴파일러는 거기까지는 상관안하고 오케이 
+    Byte b2 = Byte.valueOf((byte)100);
     Short s2 = Short.valueOf((short)20000);
     Integer i2 = Integer.valueOf(3000000);
     Long l2 = Long.valueOf(60000000000L);
@@ -46,6 +45,6 @@ public class Exam0210 {
 
 
 
-//공장메서드(팩토리메서드임)- 메서드에서 객체 생성 
+
 
 

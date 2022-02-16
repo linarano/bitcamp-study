@@ -30,11 +30,11 @@ public class CalcServer {
         DataInputStream in = new DataInputStream(socket.getInputStream());
         PrintStream out = new PrintStream(socket.getOutputStream());) {
 
-      // 작업 결과를 유지할 변수 *** 
-      int result = 0; 
+      // 작업 결과를 유지할 변수
+      int result = 0;
 
       loop: while (true) {
-        String op = in.readUTF(); // 연산자와 값을 받음 
+        String op = in.readUTF();
         int a = in.readInt();
 
         switch (op) {
@@ -63,8 +63,5 @@ public class CalcServer {
     }
   }
 }
-//단발성이 아니라 영속성을 갖는 서비스 처리할 때 사용하라!
-//  클라이언트를 쓰는 여러분이 중간계산결과를 유지할 필요없다.(기억할 필요없음)
-//stateful 이점  - 클라이언트와 주고받는 내용들을 서버에 보관해야함 
 
-//단, 앞의 클라이언트 요청이 끝날때까지 그 다음 클라이언트의 요청을 받을 수 없음*******
+

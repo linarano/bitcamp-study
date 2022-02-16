@@ -13,33 +13,33 @@ public class MyStack extends MyList {
       throw new EmptyStackException();
     }
     return remove(size - 1);
-
   }
 
-  @Override // 상속받은 메서드 중에서  서브클래스의 목적에 맞게끔 재정의 
-  public Iterator iterator() 
-  {
+  @Override
+  public Iterator iterator() {
     return new StackIterator(this);
   }
 
-  static public class StackIterator implements Iterator {
+  // static nested class(스태틱 중첩 클래스)
+  // - StackIterator는 MyStack 클래스에서만 직접 사용된다.
+  // - 중첩 클래스 문법을 사용하여 명학하게 StackIterator의 사용범위를 제한한다.
+  //
+  static class StackIterator implements Iterator {
+
     MyStack stack;
 
-
-    public StackIterator (MyStack stack) {
+    public StackIterator(MyStack stack) {
       this.stack = stack;
     }
 
     @Override
     public boolean hasNext() {
-      return stack.size() > 0; // 비교연산자의 리턴값 
+      return stack.size() > 0;
     }
-
 
     @Override
     public Object next() {
       return stack.pop();
     }
   }
-
 }

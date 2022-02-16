@@ -30,10 +30,10 @@ public class Exam0010 {
     score.kor = 100;
     score.eng = 100;
     score.math = 100;
-    score.music = 50; // 추가
-    score.art = 50;  // 추가
+    score.music = 50;
+    score.art = 50;
 
-    score.compute(); //Score2에서 찾아서 없으므로 Score의 메서드 호출
+    score.compute();
 
     System.out.printf("%d(%f)\n", score.sum, score.aver);
 
@@ -45,5 +45,3 @@ public class Exam0010 {
     //   합계와 평균이 올바르지 않다.
   }
 }
-
-// 소스코드를 복사할 수 없는 경우에도 사용가능한 문법->상속

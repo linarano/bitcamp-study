@@ -11,7 +11,7 @@ public class Exam0220 {
 
   public static void main(final String[] args) {
 
-    A obj = new A() { //;이없다 그러면 익명클래스다 
+    A obj = new A() {
 
       // 1) 익명 클래스는 생성자를 직접 정의할 수 없다.
       // - 그러나 컴파일러가 컴파일할 때 익명 클래스의 생성자를 만든다.

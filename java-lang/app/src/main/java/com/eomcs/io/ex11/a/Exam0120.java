@@ -13,13 +13,13 @@ public class Exam0120 {
 
     Member member = new Member();
 
-    member.name = in.readUTF(); //저장된 순서대로 읽는다. 반드시
+    member.name = in.readUTF();
     member.age = in.readInt();
     member.gender = in.readBoolean();
 
     in.close();
 
-    System.out.println(member); //멤버객체  - toString의 메서드의 값을 준다
+    System.out.println(member);
   }
 }
 

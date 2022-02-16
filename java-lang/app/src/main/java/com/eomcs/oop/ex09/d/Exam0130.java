@@ -1,4 +1,4 @@
-// 인터페이스와 추상 클래스 : 추상 클래스의 도움 받기 - 전형적인 예
+// 인터페이스와 추상 클래스 : 추상 클래스의 도움 받기
 package com.eomcs.oop.ex09.d;
 
 // 1) 인터페이스 정의
@@ -66,19 +66,19 @@ class Tico implements CarSpec {
 //   직접 CarSpec 인터페이스를 구현하는 대신에
 //   CarSpec을 미리 구현한 AbstractCar를 상속 받는 것이
 //   클래스를 만들기가 편하다.
-class Sonata extends AbstractCar {//*****
+class Sonata extends AbstractCar {
 
   // CarSpec에 선언된 on(), off() 메서드는 수퍼 클래스에서 미리 구현했기 때문에
   // 서브 클래스에서 다시 구현할 필요가 없어 편하다!
   //
-  // 서브 클래스는 수퍼 클래스가 구현하지 않은 나머지 메서드만 구현하면 된다. => 프로그래밍이 편하다 
+  // 서브 클래스는 수퍼 클래스가 구현하지 않은 나머지 메서드만 구현하면 된다.
   @Override
   public void run() {
     System.out.println("씽씽~~ 달린다!");
   }
 }
 
-class Truck extends AbstractCar { // 각각의 서브클래스의 특징에 맞춰서 구현
+class Truck extends AbstractCar {
   @Override
   public void run() {
     System.out.println("덜컹 덜컹 달린다!");
@@ -110,3 +110,9 @@ public class Exam0130 {
     new Exam0130().test();
   }
 }
+
+
+
+
+
+

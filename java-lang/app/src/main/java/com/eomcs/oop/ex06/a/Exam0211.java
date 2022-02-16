@@ -4,7 +4,7 @@ package com.eomcs.oop.ex06.a;
 public class Exam0211 {
 
   public static void main(String[] args) {
-    Vehicle v1 = new Sedan(); //
+    Vehicle v1 = new Sedan();
 
     // model과 capacity 변수는 원래 Vehicle 설계도에 있는 변수이기 때문에
     // 당연히 레퍼런스를 통해 사용할 수 있다.
@@ -33,7 +33,7 @@ public class Exam0211 {
         ((Sedan)v1).sunroof, ((Sedan)v1).auto);
 
     // 각각의 변수에 대해 일일이 형변환해서 사용하기가 불편한가?
-    // => 그냥 레퍼런스를 형변환 해서 사용하라! // 임시변수에 담는 것. 
+    // => 그냥 레퍼런스를 형변환 해서 사용하라!
     Sedan s = (Sedan)v1;
     s.cc = 1980;
     s.valve = 16;
@@ -49,7 +49,7 @@ public class Exam0211 {
   }
 
 }
-// 형변환은 진짜 그 주소가 해당 형일때 사용하는 것.
+
 
 
 

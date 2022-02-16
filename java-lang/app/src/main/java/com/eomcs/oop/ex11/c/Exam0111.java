@@ -9,9 +9,9 @@ class A2 {
     // - static nested class 
     // 만이 가질 수 있다.
     // 
-    //static int v1; // 컴파일 오류!
-    //static void m1() {} // 컴파일 오류!
-    //static {} // 컴파일 오류!
+    //    static int v1; // 컴파일 오류!
+    //    static void m1() {} // 컴파일 오류!
+    //    static {} // 컴파일 오류!
 
     int v2;
     void m2() {}
@@ -31,5 +31,3 @@ public class Exam0111 {
     A2.X obj2 = new A2().new X(); // => new X(new A2())
   }
 }
-
-//java 17 - 에서는 에러가 아님 

@@ -13,36 +13,29 @@ public class MyStack extends MyList {
       throw new EmptyStackException();
     }
     return remove(size - 1);
-
   }
 
-  @Override // 상속받은 메서드 중에서  서브클래스의 목적에 맞게끔 재정의 
-  public Iterator iterator() 
-  {
+  @Override
+  public Iterator iterator() {
     return new StackIterator();
   }
 
+  // non-static nested class(논스태틱 중첩 클래스)
+  // - inner class 라고도 부른다.
+  // - StackIterator가 사용할 바깥 클래스 MyStack의 인스턴스를 주소를 저장할 필드와 생성자가 자동으로 추가된다.
+  // - 기존의 static nested class 처럼 개발자가 직접 추가할 필요가 없다.
+  // - 바깥 클래스의 인스턴스를 사용하는 경우, static nested class로 만드는 것 보다 더 편리하다.
+  //
   class StackIterator implements Iterator {
-
-    // 커서 필요없다 팝으로 꺼낼꺼니까 
-
-
 
     @Override
     public boolean hasNext() {
-      return MyStack.this.size() > 0; // 비교연산자의 리턴값 
+      return MyStack.this.size() > 0;
     }
-
 
     @Override
     public Object next() {
-      return  MyStack.this.pop();
+      return MyStack.this.pop();
     }
   }
-
 }
-
-// 겸사겸사 자료구조 만든다. 
-//자료구조는 혼자서 만들 수 있을정도로 트레이닝해라.
-//향후 프로그램 개발뿐만 아니라 손코딩테스트 통과 가능 
-

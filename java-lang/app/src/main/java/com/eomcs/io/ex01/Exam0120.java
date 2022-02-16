@@ -9,9 +9,7 @@ public class Exam0120 {
     // File 클래스
     // => 파일이나 디렉토리 정보를 관리
     // => 파일이나 디렉토리를 생성,삭제,변경
-    /*
-     * 비트캠프건물/6층/601호 비트캠프건물/6층/601호/../602호 비트캠프건물/6층/602호
-     */
+
     // 상위 폴더 정보 조회
     // - ".." 으로 경로를 표시한다.
     //
@@ -19,7 +17,7 @@ public class Exam0120 {
     System.out.printf("폴더명: %s\n", currentDir.getName());
     System.out.printf("경로: %s\n", currentDir.getPath());
     System.out.printf("절대경로: %s\n", currentDir.getAbsolutePath());
-    System.out.printf("계산된 절대경로: %s\n", currentDir.getCanonicalPath());//
+    System.out.printf("계산된 절대경로: %s\n", currentDir.getCanonicalPath());
 
     System.out.printf("총크기: %d\n", currentDir.getTotalSpace());
     System.out.printf("남은크기: %d\n", currentDir.getFreeSpace());
@@ -29,7 +27,7 @@ public class Exam0120 {
     System.out.printf("파일여부: %b\n", currentDir.isFile());
     System.out.printf("감춤폴더: %b\n", currentDir.isHidden());
     System.out.printf("존재여부: %b\n", currentDir.exists());
-    System.out.printf("실행가능여부: %b\n", currentDir.canExecute());// 접근할 수 있냐 
+    System.out.printf("실행가능여부: %b\n", currentDir.canExecute());
   }
 
 }

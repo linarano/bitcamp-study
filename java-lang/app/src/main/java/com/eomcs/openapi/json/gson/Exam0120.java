@@ -13,13 +13,13 @@ public class Exam0120 {
     Gson gson = new Gson();
 
     // 3) JSON 문자열을 가지고 객체 만들기
-    Member m = gson.fromJson(jsonStr, Member.class);//클래스정보가 담겨있는 인스턴스의 주소가 들어있음 - 클래스정보(class는 변수다)
+    Member m = gson.fromJson(jsonStr, Member.class);
 
     System.out.println(m);
   }
 }
 
 
-//gson 고유형식- 우리나라로 바꿔줌 
+
 
 

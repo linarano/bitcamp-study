@@ -16,7 +16,7 @@ public class Exam0521 {
     }
   }
 
-  static void printCar(Vehicle v) { // 그 변수에 그 서브타입객체까지 전달할 수  있다. - 다형적변수 
+  static void printCar(Vehicle v) {
     System.out.printf("모델: %s\n", v.model);
     System.out.printf("수용인원: %s\n", v.capacity);
 

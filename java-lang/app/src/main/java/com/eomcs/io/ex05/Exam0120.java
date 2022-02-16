@@ -1,4 +1,4 @@
-// 객체 읽기 - 파일의 데이터를 읽어 인스턴스로 만들기 
+// 객체 읽기 - 파일이 데이터를 읽어 인스턴스로 만들기 
 package com.eomcs.io.ex05;
 
 import java.io.FileInputStream;

@@ -2,8 +2,6 @@ package com.eomcs.io.ex11.d;
 
 public class Member implements java.io.Serializable {
 
-  // 직접추가하면 직접 우리가 관리해야함. : 유연하게 관리가능 
-
   // java.io.Serializable 인터페이스를 구현하는 클래스는
   // 항상 serialVersionUID 라는 스태틱 상수를 가져야 한다.
   // 이 변수는 인스턴스를 serialize 하고 deserialize 할 때 
@@ -16,7 +14,7 @@ public class Member implements java.io.Serializable {
   // 필드를 추가하거나 변경하더라도 버전 번호가 같다면
   // JVM은 같은 형식으로 판단한다.
   //
-  private static final long serialVersionUID = 1280L;
+  private static final long serialVersionUID = 1280;
 
   // serialVersionUID의 사용법
   // => 클래스를 변경하더라도 기존 데이터를 읽는데 문제가 없다면
@@ -48,6 +46,3 @@ public class Member implements java.io.Serializable {
         "]";
   }
 }
-
-//데이터타입을 바꾸는건 안됨 
-//변수삭제, 추가는 가능하나 

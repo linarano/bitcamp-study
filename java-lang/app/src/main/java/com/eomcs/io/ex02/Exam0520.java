@@ -6,8 +6,7 @@ import java.io.FileInputStream;
 public class Exam0520 {
 
   public static void main(String[] args) throws Exception {
-
-    FileInputStream in = new FileInputStream("sample/ms949.txt");//바이트데이터를 읽어서 그걸 그대로 문자열로 바꿀수는 없음
+    FileInputStream in = new FileInputStream("sample/ms949.txt");
 
     int b = 0;
 
@@ -25,8 +24,6 @@ public class Exam0520 {
     }
 
     in.close();
-
-
   }
 
 }

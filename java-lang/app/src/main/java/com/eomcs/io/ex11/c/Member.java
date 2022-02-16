@@ -19,7 +19,3 @@ public class Member implements java.io.Serializable {
         "]";
   }
 }
-
-
-// 메서드 상관없고,필드만 중요해
-//필드가 바뀌어서 버전이 바뀜

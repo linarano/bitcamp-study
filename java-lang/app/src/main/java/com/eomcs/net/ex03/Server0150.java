@@ -14,12 +14,12 @@ public class Server0150 {
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
       try (Socket socket = serverSocket.accept();
-          Scanner in = new Scanner(socket.getInputStream()); //한줄의 문자열을 읽어드림 - 마치 데코레이터처럼 여갛ㄹ 
-          PrintStream out = new PrintStream(socket.getOutputStream())) { //한줄의 문자열 쉽게 출력
+          Scanner in = new Scanner(socket.getInputStream());
+          PrintStream out = new PrintStream(socket.getOutputStream())) {
 
         System.out.println("클라이언트가 보낸 한 줄의 문자열을 기다리고 있음!");
 
-        String str = in.nextLine();//한줄을 읽는데 , 날려버리고 읽는다. 라인피드
+        String str = in.nextLine();
         System.out.println(str);
 
         // 서버가 데이터를 보내지 않으면 클라이언트의 read()는 리턴하지 않는다.

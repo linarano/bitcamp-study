@@ -19,6 +19,7 @@ public class Exam0110 {
 
     // 2) JSON 처리 객체 준비
     ObjectMapper mapper = new ObjectMapper();
+
     // 3) 객체의 값을 JSON 문자열로 얻기
     String jsonStr = mapper.writeValueAsString(m);
 

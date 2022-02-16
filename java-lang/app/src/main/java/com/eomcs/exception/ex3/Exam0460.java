@@ -23,7 +23,7 @@ public class Exam0460 {
       // try 블록에서 예외가 발생할 수 있는 메서드를 호출한다.
       m(1);
 
-    } catch (RuntimeException | SQLException | IOException e) { // 변수는 맨끝에 1개만 
+    } catch (RuntimeException | SQLException | IOException e) {
       // OR 연산자를 사용하여 여러 개의 예외를 묶어 받을 수 있다.
       //
     } catch (Exception e) {

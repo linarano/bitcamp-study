@@ -1,7 +1,5 @@
 package com.eomcs.oop.ex05.x5;
 
-import javax.swing.plaf.synth.SynthRootPaneUI;
-
 public class Trailer extends Option {
 
   public Trailer(Car car) {
@@ -11,22 +9,22 @@ public class Trailer extends Option {
   CampingTrailer trailer;
 
   public void setTrailer(CampingTrailer trailer) {
-    this.trailer= trailer;
+    this.trailer = trailer;
   }
-  // 옵션이므로 시동기능없음
-  // 원래 가에 있는 스타트가 호출되야 함
+
   @Override
   public void start() {
-    car.start(); 
-    sysout("덜덜덜 트레일러가 따라간다.")
+    car.start();
   }
+
   @Override
   public void stop() {
-    car.stop(); //포함하고 있는 실제 카 객체에게 달리라고 해야지. 기능을 덧붙일순없지 껍데기니까 
-    sysout("덜덜덜 트레일러가 따라간다.")
+    car.stop();
   }
+
   @Override
   public void run() {
-    car.run(); // 생성자한테 위임.
-    sysout("덜덜덜 트레일러가 따라간다.")
+    car.run(); // 옵션 자체는 실제 자동차가 아니다. 그래서 run()이 호출되면 실제 자동차 객체에게 위임한다.
+    System.out.println("덜덜덜 트레일러가 따라간다.");
   }
+}

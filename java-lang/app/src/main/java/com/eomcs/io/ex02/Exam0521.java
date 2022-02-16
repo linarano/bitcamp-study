@@ -12,7 +12,7 @@ public class Exam0521 {
     FileInputStream in = new FileInputStream("sample/utf8.txt");
 
     // 파일의 데이터를 한 번에 읽어보자.
-    byte[] buf = new byte[1000]; // 넉넉한 배열 준비
+    byte[] buf = new byte[1000]; 
     int count = in.read(buf); // <== 41 42 ea b0 80 ea b0 81 (AB가각)
 
     in.close();
@@ -24,10 +24,10 @@ public class Exam0521 {
     // - 바이트 배열에 저장된 문자 코드를 
     //   JVM이 사용하는 문자 집합(UCS2=UTF16BE)의 코드 값으로 변환한다.
     // - 바이트 배열에 들어 있는 코드 값이 어떤 문자 집합의 값인지 알려주지 않는다면,
-    //   JVM 환경 변수 file.encoding에 설정된 문자 집합으로 가정(utf-8)하고 변환을 수행한다.
+    //   JVM 환경 변수 file.encoding에 설정된 문자 집합으로 가정하고 변환을 수행한다.
     String str = new String(buf, 0, count); 
-    //바이트 배열이 어떤 문자집합으로 인코딩된 것인지 알려주지않으면 
-    //file.encoding에 설정된 문자집합으로 인코딩 된것으로 간주하낟. 
+    // 바이트 배열이 어떤 문자집합으로 인코딩 된 것인지 알려주지 않으면, 
+    // file.encoding에 설정된 문자집합으로 인코딩된 것으로 간주한다.
 
     System.out.println(str);
 

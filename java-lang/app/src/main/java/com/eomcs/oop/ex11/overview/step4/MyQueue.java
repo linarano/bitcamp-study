@@ -14,31 +14,41 @@ public class MyQueue extends MyList {
   }
 
   @Override
-  public Iterator iterator() //리턴타입   Iterator
-  {
-    return new QueueIterator(this); // myQueue.iterator(); //빌트인 파라미터 This
+  public Iterator iterator() {
+    return new QueueIterator(this);
   }
 
+  // static nested class(스태틱 중첩 클래스)
+  // - QueueIterator는 MyQueue 클래스에서만 직접 사용된다.
+  // - 중첩 클래스 문법을 사용하여 명학하게 QueueIterator의 사용범위를 제한한다.
+  //
+  static class QueueIterator implements Iterator {
 
-  static public class QueueIterator implements Iterator {
     MyQueue queue;
-    // 커서 필요없다 팝으로 꺼낼꺼니까 
 
-    public QueueIterator (MyQueue queue) {
+    public QueueIterator(MyQueue queue) {
       this.queue = queue;
     }
 
     @Override
     public boolean hasNext() {
-      return queue.size() > 0; // 비교연산자의 리턴값 
+      return queue.size() > 0;
     }
-
 
     @Override
     public Object next() {
       return queue.poll();
     }
-
   }
 }
+
+
+
+
+
+
+
+
+
+
 

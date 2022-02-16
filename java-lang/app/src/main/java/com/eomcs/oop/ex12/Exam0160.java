@@ -20,7 +20,7 @@ public class Exam0160 {
     // 파라미터
     m1(() -> System.out.println("파라미터"));
 
-    ////리턴 값 
+    // 리턴 값
     A obj4 = m2();
   }
 
@@ -28,9 +28,8 @@ public class Exam0160 {
     obj.print();
   }
 
-
   static A m2() {
-    //   리턴문장
-    return () -> System.out.println("리턴문장"); 
+    // 리턴 문장
+    return () -> System.out.println("리턴 문장");
   }
 }

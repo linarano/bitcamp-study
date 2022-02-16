@@ -5,11 +5,11 @@ public class CarTest1 {
     Sedan sedan = new Sedan();
     testSedan(sedan);
 
-    System.out.println("-------------------");
+    System.out.println("-----------------------");
 
     Truck truck = new Truck();
     testTruck(truck);
-  } 
+  }
 
   static void testSedan(Sedan car) {
     car.start();
@@ -21,6 +21,5 @@ public class CarTest1 {
     car.launch();
     car.go();
     car.stopping();
-  } // 트럭을바꿔버리멘 에러가 뜬다. 트럭메서드를 썼던 
+  }
 }
-

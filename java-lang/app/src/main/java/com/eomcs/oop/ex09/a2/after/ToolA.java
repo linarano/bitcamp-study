@@ -25,6 +25,6 @@ public class ToolA implements Spec {
 
 
 
-// 상속받았다는 표현을 씀.
+
 
 

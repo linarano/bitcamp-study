@@ -15,7 +15,7 @@ public class Exam0110 {
     member.age = 27;
     member.gender = true;
 
-    out.writeUTF(member.name);//문자열 출력
+    out.writeUTF(member.name);
     out.writeInt(member.age);
     out.writeBoolean(member.gender);
 
@@ -26,4 +26,3 @@ public class Exam0110 {
 }
 
 
-//   첫2바이트가 문자열의미 

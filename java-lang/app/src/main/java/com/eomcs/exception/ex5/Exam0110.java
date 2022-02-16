@@ -20,13 +20,11 @@ public class Exam0110 {
       board.setContent(keyScan.nextLine());
 
       System.out.print("등록일> ");
-      board.setCreatedDate(Date.valueOf(keyScan.nextLine()));// 사용자가 입력한 문자열을 가지고 날짜객체를 만든 것 
+      board.setCreatedDate(Date.valueOf(keyScan.nextLine()));
 
       return board;
     } 
-  } //read()호출이 끝나면 닫는다. cl0se()
-  //캐치문 안적으면 선언해야하는데... 컴파일러가 아무런 에러 안뜸. =>RuntimeException 의 자식이므로 가능 
-  //throw를 안적어도 된다는 이야기지, 예외가 발생하지않는다는 의미가 아님. 받을때까지 끝까지 던진다. 
+  }
 
   public static void main(String[] args) {
     Board board = read();

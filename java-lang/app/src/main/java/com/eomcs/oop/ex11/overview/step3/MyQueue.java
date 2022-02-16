@@ -14,10 +14,18 @@ public class MyQueue extends MyList {
   }
 
   @Override
-  public Iterator iterator() //리턴타입   Iterator
-  {
-    return new QueueIterator(this); // myQueue.iterator(); //빌트인 파라미터 This
+  public Iterator iterator() {
+    return new QueueIterator(this);
   }
-
 }
+
+
+
+
+
+
+
+
+
+
 

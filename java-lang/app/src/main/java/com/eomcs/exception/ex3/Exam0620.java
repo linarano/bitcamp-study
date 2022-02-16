@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Exam0620 {
 
   public static void main(String[] args) {
-    Scanner keyScan = null; // 블럭 안에 선언하면 블럭 내에서만 유효 안에다 두면 finaly에서 접근 못함. 
+    Scanner keyScan = null;
     try {
       keyScan = new Scanner(System.in);
 

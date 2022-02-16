@@ -12,7 +12,7 @@ public class Exam0220 {
   // RuntimeException 객체를 던질 경우,
   // 메서드 선언부에 예외를 던진다고 표시하지 않아도 된다.
   // 왜?
-  // => 스텔스 모드(비유!) 를 지원하기 위해 만든 예외이다.****(프로그램 편의성때문에 등장한 클래스임)
+  // => 스텔스 모드(비유!) 를 지원하기 위해 만든 예외이다.
   static void m2() {
     throw new RuntimeException();
   }
@@ -21,5 +21,3 @@ public class Exam0220 {
   public static void main(String[] args) {}
 
 }
-
-//에러와 비슷 - 선언부에 선언안해도 ok!

@@ -17,7 +17,7 @@ public class CalcServer {
 
 
   // 클라이언트와 대화하는 부분을 별도의 코드로 분리하여 실행한다.
-  static class RequestHandler extends Thread { // 쓰레드 상속 
+  static class RequestHandler extends Thread {
 
     Socket socket;
 
@@ -27,8 +27,8 @@ public class CalcServer {
 
     @Override
     public void run() {
-      // main 스래드와 별개로 실행해야 하는 코드를 이 메서드에 둔다.
-
+      // main 스레드와는 별개로 실행해야 하는 코드가 있다면
+      // 이 메서드에 둔다.
       try (Socket socket2 = socket;
           DataInputStream in = new DataInputStream(socket.getInputStream());
           DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
@@ -66,7 +66,7 @@ public class CalcServer {
             result *= value;
             break;
           case "/":
-            Thread.sleep(10000); // 현재 쓰레드만 슬립, 나머지는 돌아감 
+            Thread.sleep(10000);
             result /= value;
             break;
         }
@@ -114,10 +114,6 @@ public class CalcServer {
 
     }
     // ss.close();
-  }
-
-  static void processRequest(Socket socket) throws Exception {
-
   }
 }
 

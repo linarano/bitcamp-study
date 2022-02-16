@@ -36,7 +36,7 @@ public class Exam0610 {
     // => 문법:
     // 인스턴스::메서드명
     //
-    Calculator 보통예금 = new Calculator(0.5); // 클래스명이 아니라 인스턴스 주소를 줘야함
+    Calculator 보통예금 = new Calculator(0.5);
     Calculator 정기예금 = new Calculator(1.5);
     Calculator 청년행복예금 = new Calculator(10);
 

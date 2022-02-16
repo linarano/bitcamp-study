@@ -1,16 +1,16 @@
-// 상속 - 추상클래스를 파라미터로 사용하기 - 다형적변수 다음에 
+// 상속 - 추상클래스를 파라미터로 사용하기
 package com.eomcs.oop.ex05.m;
 
 public class Exam02 {
 
   public static void main(String[] args) {
     m1(new Truck()); // OK!
-    //    m1(new Sedan()); // Error
+    //m1(new Sedan()); // Error
 
     m2(new Truck());
     m2(new Sedan());
 
-    //    m2(new Car()); // Error
+    //m2(new Car()); // Error
   }
 
   static void m1(Truck car) {

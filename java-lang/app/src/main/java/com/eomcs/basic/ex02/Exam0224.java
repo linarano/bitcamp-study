@@ -17,7 +17,7 @@ public class Exam0224 {
 
     // wrapper 클래스를 이용하면,
     // primitive data type의 값을 객체로 다룰 수 있다.
-    Object obj; //다형성변수 
+    Object obj;
 
     String str = new String("Hello");
     obj = str; // 다형적 변수 문법에 따라 상위 클래스의 레퍼런스에 저장할 수 있다.

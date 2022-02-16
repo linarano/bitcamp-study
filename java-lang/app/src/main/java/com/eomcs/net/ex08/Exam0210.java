@@ -18,20 +18,20 @@ public class Exam0210 {
     URLConnection con = url.openConnection();
 
     // => 웹서버와 연결한 후 HTTP 요청한다.
-    con.connect(); // 서버에 연결 - 이점!
+    con.connect();
 
     // URL.openStream()을 사용하는 것 보다 이점?
-    // - 응답 헤더의 다양한 값을 추출할 수 있다. ***
+    // - 응답 헤더의 다양한 값을 추출할 수 있다.
     System.out.printf("Content-Type: %s\n", con.getContentType());
     System.out.printf("Content-Length: %d\n", con.getContentLength());
     System.out.printf("Content-Encoding: %s\n", con.getContentEncoding());
 
-    // - 직접 헤더 이름을 사용해서 헤더 값을 추출할 수 있다.(이렇게도 가능)
+    // - 직접 헤더 이름을 사용해서 헤더 값을 추출할 수 있다.
     System.out.printf("Content-Type: %s\n", con.getHeaderField("Content-Type"));
     System.out.printf("Server: %s\n", con.getHeaderField("Server"));
     System.out.println();
 
-    // => 웹서버의 응답 데이터를 읽어들일 도구를 리턴한다. // 커넥션 객체에서 꺼내자.
+    // => 웹서버의 응답 데이터를 읽어들일 도구를 리턴한다.
     InputStream in = con.getInputStream();
 
     // => 서버가 보낸 데이터를 한 줄씩 읽기 위해 데코레이터를 붙인다.
@@ -51,5 +51,4 @@ public class Exam0210 {
 
 }
 
-// 컨텐츠 뿐만 아니라 서버의 응답서버 정보까지 얻을 수 있다.
-//헤더(정보)가 필요없으면 110만 꺼내면 된다. 
+

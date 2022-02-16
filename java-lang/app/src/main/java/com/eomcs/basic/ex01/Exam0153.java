@@ -18,13 +18,13 @@ public class Exam0153 {
       return "MyKey2 [contents=" + contents + "]";
     }
 
-    @Override
-    public int hashCode() {
-      final int prime = 31;
-      int result = 1;
-      result = prime * result + ((contents == null) ? 0 : contents.hashCode());
-      return result;
-    }
+    //    @Override
+    //    public int hashCode() {
+    //      final int prime = 31;
+    //      int result = 1;
+    //      result = prime * result + ((contents == null) ? 0 : contents.hashCode());
+    //      return result;
+    //    }
 
     @Override
     public boolean equals(Object obj) {
@@ -72,17 +72,13 @@ public class Exam0153 {
     System.out.println(k3 == k6); // 인스턴스는 다르다.
     System.out.printf("k3(%s), k6(%s)\n", k3, k6);
     System.out.println(k3.hashCode()); // hash code는 같다.
-    System.out.println(k6.hashCode()); // hash code는 같다.*
-    System.out.println(k3.equals(k6)); // equals()의 비교 결과도 같다.* 
+    System.out.println(k6.hashCode()); // hash code는 같다.
+    System.out.println(k3.equals(k6)); // equals()의 비교 결과도 같다.
   }
 }
 
-//해시코드와 equals()값이 같으므로 같은 값을 가진 것으로 본다. 
-//반드시 2개를 묶어서 오버라이딩 해야함.
-//비록 인스턴스가 다르더라도 내용물이 같다 - 해시코드
-//
-//어떤 선배가 클래스를 만들고 해쉬코드와 equlas()로버라이드 했으면 
-//인스턴스가 다르더라도 내용물이 같으면 같은 객체로 취급하고 싶어서 오버라이딩한것 
+
+
 
 
 

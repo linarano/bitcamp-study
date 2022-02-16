@@ -62,7 +62,7 @@ public class Exam0110 {
     //   즉 수퍼 인터페이스 레퍼런스로 객체를 가리킬 수 있다.
     //
     ProtocolA a = obj;
-    a.rule1(); // OK --> ProtocolA.rule1() //허락한 한도내에서만 쓸수있다.
+    a.rule1(); // OK --> ProtocolA.rule1()
     //    a.rule2(); // 컴파일 오류 --> ProtocolB.rule2() 
     //    a.m1(); // 컴파일 오류 --> ProtocolImpl.m1() 
   }
@@ -77,4 +77,4 @@ public class Exam0110 {
 
 
 
-//컴파일러는 문법만 따진다.
+

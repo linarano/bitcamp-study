@@ -9,7 +9,6 @@ public class Vehicle {
   public Vehicle(String model, int capacity) {
     this.model = model;
     this.capacity = capacity;
-    System.out.println();
   }
 }
 

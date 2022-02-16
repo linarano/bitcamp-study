@@ -21,7 +21,3 @@ public class Exam0310 {
   public static void main(String[] args) {}
 
 }
-
-//원래는다 적어야되지만 (원칙)
-// 상위클래스를 선언한다면 (하위클래스) 안적어도 가능 
-// 빵, 소보루, 팥빵 

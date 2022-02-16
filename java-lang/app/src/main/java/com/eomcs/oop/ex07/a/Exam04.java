@@ -4,7 +4,7 @@ package com.eomcs.oop.ex07.a;
 abstract class A4 {
 
   // 추상 클래스의 용도는
-  // - 서브 클래스들이 가져야할 공통 변수나 메서드를 제공하는 것이다.**(추상클래스에 정의해놓는 이유)
+  // - 서브 클래스들이 가져야할 공통 변수나 메서드를 제공하는 것이다.
   // - 그래서 다음과 같이 일반 변수나 메서드를 정의할 수 있다.
   public static int value1 = 100;
   static void m1() {System.out.println("A4.m1() 호출됨!");}
@@ -48,6 +48,3 @@ public class Exam04 {
     obj.m3();
   }
 }
-
-
-//객체지향프로그램에서는 반드시 주소가 주어짐 - 클래스명 또는 인스턴스 주소 

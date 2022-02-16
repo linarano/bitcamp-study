@@ -8,9 +8,7 @@ public class Exam02 {
   public static void main(String[] args) throws Exception {
     // 포트번호 명시
     // - http://서버주소:포트번호/자원경로?파라미터명=값&파라미터명=값&파라미터명=값 
-    URL url = new URL("https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=bitcamp"); // 서버연결은 아니고 지금은 공부니까 URL정보만 다룬다.
-    //null
-    //?""  빈문자열
+    URL url = new URL("https://search.naver.com/search.naver?sm=top_hty&fbm=1&ie=utf8&query=bitcamp");
 
     // URL 분석
     System.out.printf("프로토콜: %s\n", url.getProtocol());

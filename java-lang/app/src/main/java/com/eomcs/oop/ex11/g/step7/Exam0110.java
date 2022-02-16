@@ -21,7 +21,7 @@ public class Exam0110 {
     //
     //
     Product p = new Product();
-    p.category = Category.appliance.TV; //카테고리.중첩클래스.
+    p.category = Category.appliance.TV;
     // p.category = Category.COMPUTER_MOUSE_BLUETOOTH; // 예전의 상수를 사용하는 방식
     p.name = "울트라비전 뷰";
     p.price = 2000000;
@@ -38,6 +38,3 @@ public class Exam0110 {
   }
 }
 
-//중첩클래스
-// 특정클래스가 안에서만 1)
-//상수처럼 자잘한 클래스 묶을때도 2)

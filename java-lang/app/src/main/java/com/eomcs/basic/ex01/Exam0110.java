@@ -24,8 +24,8 @@ public class Exam0110 /*extends Object*/ {
     System.out.println(obj instanceof Object);
 
     // Object를 조상으로 갖는다면 당연히 Object의 메서드를 사용할 수 있을 것이다.
-    System.out.println(obj.toString());//인스턴스의 클래스정보@인스턴스고유번호
-    System.out.printf("%08x, %1$d\n", obj.hashCode()); //인스턴스고유번호
+    System.out.println(obj.toString());
+    System.out.printf("%08x, %1$d\n", obj.hashCode());
     System.out.println(obj.equals("Hello"));
 
     // 결론!
@@ -47,7 +47,7 @@ public class Exam0110 /*extends Object*/ {
 //    => 인스턴스를 복제한 후 그 복제 인스턴스를 리턴한다.
 // 6) finalize()
 //    => 가비지 컬렉터에 의해 메모리에서 해제되기 직전에 호출된다.
-// 우리가 가비지컬렉터를 강제로 돌릴 수는 없다. 
+// 
 
 
 

@@ -9,7 +9,7 @@ package com.eomcs.oop.ex05.m;
 //
 
 public class Sedan extends Car {
-  public void run() { // 각 역할에 맞게 재정의 필요한 메서드 
+  public void run() {
     System.out.println("쌩쌩 달린다.");
   }
 

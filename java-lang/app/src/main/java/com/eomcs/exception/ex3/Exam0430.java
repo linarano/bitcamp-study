@@ -18,14 +18,14 @@ public class Exam0430 {
 
   }
 
-  public static void main(String[] args) { // 최소한 메인메서드인 만큼 try-catch로 처리해라.
+  public static void main(String[] args) {
     // 예외 처리 방법 2:
     // - try ~ catch 를 사용하여 코드 실행 중에 발생된 예외를 중간에 가로챈다.
     //
     try {
       // try 블록에는 예외가 발생할 수 있는 코드를 둔다.
-      m(1);
-      System.out.println("실행 성공!"); // 예외가 발생하면 실행안되는 문장임 , 에러가 없으면 실행 try블럭만 실행
+      m(4);
+      System.out.println("실행 성공!");
       // try 블록에 있는 코드를 실행하는 중에
       // 예외가 발생하면,
       // 그 예외 객체를 파라미터로 받을 수 있는

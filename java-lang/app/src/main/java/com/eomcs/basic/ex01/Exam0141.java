@@ -10,7 +10,7 @@ public class Exam0141 {
     @Override
     public int hashCode() {
       // String 클래스의 hashCode() 메서드는
-      // 같은 문자열에 대해 같은 해시값을 리턴한다.***(재정의)
+      // 같은 문자열에 대해 같은 해시값을 리턴한다.
       // 이 능력을 이용하여 My 클래스의 인스턴스 해시값을 계산해보자.
       //
       String str = String.format("%s,%d", this.name, this.age);
@@ -28,7 +28,7 @@ public class Exam0141 {
     obj2.age = 20;
 
     System.out.println(obj1 == obj2); // false
-    System.out.println(obj1.equals(obj2)); // false //오브젝트의 이퀄스임으로 인스턴스다름.
+    System.out.println(obj1.equals(obj2)); // false
 
     System.out.println(Integer.toHexString(obj1.hashCode()));
     System.out.println(Integer.toHexString(obj2.hashCode()));
@@ -70,7 +70,6 @@ public class Exam0141 {
 
 
 
-//원래해쉬코드는 인스턴스값이 다르면 다른 해쉬코드를 리턴하게 되어있음 
 
 
 

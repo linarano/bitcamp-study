@@ -25,9 +25,9 @@ public class Server0210 {
     // => 보내는 쪽이나 받는 쪽이나 같은 소켓 클래스를 사용한다.
     //    서버 소켓이 따로 없다.
     // => 받는 쪽에서는 소켓을 생성할 때 포트번호를 설정한다.
-    DatagramSocket socket = new DatagramSocket(8888); // 서버의 경우에는 포트번호 적는다.  자기 가 사용할 포트번호 설정 - OS 자동부여 내가 하지않으면 
+    DatagramSocket socket = new DatagramSocket(8888);
 
-    // 받은 데이터를 저장할 버퍼 준비 - 상대편이 보낸 데이터를 받을 받을 만큼 바이트배열 이 넉넉해야함 
+    // 받은 데이터를 저장할 버퍼 준비
     byte[] buf = new byte[8196];
 
     // 빈 패킷 준비
@@ -47,30 +47,26 @@ public class Server0210 {
     // 빈 패킷에 저장된 클라이언트가 보낸 데이터를 꺼낸다.
     // 패킷에 저장된 UTF-8로 인코딩된 바이트 배열을 가지고 String 객체(UTF-16)를 만든다.
 
-    // 1) 패킷 객체에 보관된 바이트 배열을 꺼낸다. 
+    // 1) 패킷 객체에 보관된 바이트 배열을 꺼낸다.
     byte[] bytes = emptyPacket.getData();
 
-    //2) qkdlxm 
-
+    // 2) 바이트 배열에 보관된 데이터의 개수를 알아낸다.
     int len = emptyPacket.getLength();
 
-    String message = new String(bytes,0,len, "UTF-8");
+    // 3) 클라이언트에서 받은 바이트 배열을 가지고 String 객체를 생성한다.
+    String message = new String(bytes, 0, len, "UTF-8");
 
-    //    // 실무에서는 다음과 같이 로컬변수를 사용하지 않고 직접 *** 이걸써라 
+    // 실무에서는 다음과 같이 로컬 변수를 사용하지 않고 직접 패킷 객체를 사용하는 방식으로 코딩한다.
     //    String message = new String(//
     //        emptyPacket.getData(), // ==> buf, 패킷에서 바이트 배열을 꺼낸다.
     //        0, // 버퍼에서 데이터를 꺼낼 때 0번째부터 꺼낸다.
     //        emptyPacket.getLength(), // 패킷에서 받은 바이트의 개수만큼 데이터를 꺼낸다.
     //        "UTF-8" // 바이트 배열로 인코딩된 문자표의 이름을 지정한다.
     //        );
+
     System.out.println(message);
 
   }
 }
 
-// 이미 버려진 데이터는 서버가 받을 수 없음
-//서버가 떠있을때 받는 것. 
-// 데이터그램 클래스 1개로만 사용 한다. 
-
-//주거나 받거니 하려면 포트번호 열어야됨. 
 

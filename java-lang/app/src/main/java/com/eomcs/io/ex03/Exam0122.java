@@ -27,7 +27,7 @@ public class Exam0122 {
     //    UTF-8 문자가 아니기 때문에 
     //    다음과 같이 잘못되었다는 의미로 특정 값(fffd)으로 변환한다.
     int ch3 = in.read(); // b0 a1 => fffd => �
-    int ch4 = in.read(); // b0 a2 => fffd => � (못바꾸니까 에라모르겠다라는 뜻)
+    int ch4 = in.read(); // b0 a2 => fffd => �
 
     // 3) 읽기 도구를 닫는다.
     in.close();

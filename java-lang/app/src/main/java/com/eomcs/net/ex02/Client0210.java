@@ -11,7 +11,7 @@ public class Client0210 {
     System.out.println("클라이언트 실행!");
 
     Socket socket = new Socket("localhost", 8888);
-    System.out.println("서버에 연결됨3!");
+    System.out.println("서버에 연결됨!");
     // 서버의 대기열에 접속 순서대로 대기한다.
     // 서버에서 연결이 승인되면, 비로서 입출력을 할 수 있다.
 
@@ -29,5 +29,3 @@ public class Client0210 {
 }
 
 
-// accept()로 호출하지앟으면 승인하지않으면 의미없다 - 대기열에서 꺼내지않으면 - 연결은되지만 입출력은 못함 
-//서버쪽에서 지우기 전까지는 대기열에 계속 존재 

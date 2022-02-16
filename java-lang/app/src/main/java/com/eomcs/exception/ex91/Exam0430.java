@@ -44,7 +44,7 @@ public class Exam0430 {
   }
 }
 
-// Exception vs RuntimeException ***
+// Exception vs RuntimeException
 //
 // 1) Exception
 // - 호출자에게 예외 처리를 강요한다.

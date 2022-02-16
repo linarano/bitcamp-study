@@ -12,7 +12,6 @@ public class Calculator2 {
     this.result -= value;
   }
 
-  // 새기능 추가 
   public void multiple(int value) {
     this.result *= value;
   }

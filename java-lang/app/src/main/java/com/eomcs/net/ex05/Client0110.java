@@ -7,11 +7,10 @@ import java.util.Scanner;
 
 public class Client0110 {
   public static void main(String[] args) throws Exception {
-    //서버에 연결되어야 소켓객체 생성 
-    Socket socket = new Socket("localhost", 8888);
-    System.out.println("서버에 연결됨!"); // 대기열에 클라이언트의 정보 등록 - 승인은 다른문제 
+    Socket socket = new Socket("localhost", 8888); // 서버에 연결
+    System.out.println("서버에 연결됨!");
 
-    //연결이 이루어진 후 데이터 입출력을 할 수 있다. 
+    // 연결이 이루어진 후 데이터 입출력을 할 수 있다.
     Scanner in = new Scanner(socket.getInputStream());
     PrintStream out = new PrintStream(socket.getOutputStream());
 

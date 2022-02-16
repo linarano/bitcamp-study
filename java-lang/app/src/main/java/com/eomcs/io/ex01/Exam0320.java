@@ -7,7 +7,7 @@ public class Exam0320 {
 
   public static void main(String[] args) throws Exception {
 
-    File dir = new File("temp/a"); // 파일이나 디렉토리에 대한정보 
+    File dir = new File("temp/a");
 
     // 하위 디렉토리 생성하기
     //

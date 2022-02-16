@@ -29,7 +29,7 @@ public class Server0120 {
               out.println("Goodbye!");
               out.flush();
               break;
-            } // 앞 고객이 상담이 끝날때까지 계속 , 상담이 끝날때까지 계속
+            }
             out.printf("%s 님 반갑습니다!\n", name);
             out.flush();
           }
@@ -47,9 +47,3 @@ public class Server0120 {
 
 }
 
-//110번과 차이! - 서버는 계속 기다림 - 여러클라이언트와 연결하려고 while문 밖에 
-
-//statefull- 순차적처리
-// 먼저 접속한 고객과의 연결이 끊을때까지 뒤의 고객(대기)에게는 응답안함. 계속 대기해야함.
-
-//네이버 검색시 앞사람의 검색이 끝날때까지 검색결과가 안된다면 안된다. - stateless + thred: 동시요청처리

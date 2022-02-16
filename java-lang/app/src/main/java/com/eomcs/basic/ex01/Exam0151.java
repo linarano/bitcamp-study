@@ -66,7 +66,7 @@ public class Exam0151 {
     // 해시셋(집합)에 객체를 보관한다.
     HashSet<Student> set = new HashSet<Student>();
     set.add(s1);
-    set.add(s2); // 이미 s2의 해시값과 같은 객체(s1)가 들어있기 때문에 s2는 중복을 막기 위해 저장되지않는다. 
+    set.add(s2); // 이미 s2의 해시값과 같은 객체(s1)가 들어 있기 때문에 중복을 막기 위해 s2는 저장되지 않는다. 
     set.add(s3);
     set.add(s4);
 
@@ -91,7 +91,6 @@ public class Exam0151 {
 
 
 
-//어레이리스트는 데이터중복을 안따지고 순차대로 꺼낸다.
-//hashset - 절대 중복을 허락하지않음 (4:23)
+
 
 

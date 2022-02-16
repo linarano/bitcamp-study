@@ -26,7 +26,7 @@ public class Calculator2 {
 }
 
 
-//cal2 만들때 cal만드는 방식 
+
 
 
 

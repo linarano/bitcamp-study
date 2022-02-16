@@ -14,29 +14,37 @@ public class MyQueue extends MyList {
   }
 
   @Override
-  public Iterator iterator() //리턴타입   Iterator
-  {
-    return new QueueIterator(); // myQueue.iterator(); //빌트인 파라미터 This
+  public Iterator iterator() {
+    return new QueueIterator();
   }
 
-
+  // non-static nested class(논스태틱 중첩 클래스)
+  // - inner class 라고도 부른다.
+  // - QueueIterator가 사용할 바깥 클래스 MyQueue의 인스턴스를 주소를 저장할 필드와 생성자가 자동으로 추가된다.
+  // - 기존의 static nested class 처럼 개발자가 직접 추가할 필요가 없다.
+  // - 바깥 클래스의 인스턴스를 사용하는 경우, static nested class로 만드는 것 보다 더 편리하다.
+  //
   class QueueIterator implements Iterator {
-
-    // 커서 필요없다 팝으로 꺼낼꺼니까 
-
-
 
     @Override
     public boolean hasNext() {
-      return MyQueue.this.size() > 0; // 비교연산자의 리턴값 
+      return MyQueue.this.size() > 0;
     }
-
 
     @Override
     public Object next() {
       return MyQueue.this.poll();
     }
-
   }
 }
+
+
+
+
+
+
+
+
+
+
 

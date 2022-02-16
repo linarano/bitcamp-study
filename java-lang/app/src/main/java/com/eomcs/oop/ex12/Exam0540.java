@@ -1,4 +1,4 @@
-// 메서드 레퍼런스 - 스태틱 메서드 레퍼런스 - 이번엔 파라미터 
+// 메서드 레퍼런스 - 스태틱 메서드 레퍼런스
 package com.eomcs.oop.ex12;
 
 
@@ -39,7 +39,7 @@ public class Exam0540 {
   }
 
   static interface Calculator5 {
-    int compute(Object a, Object b); // 오브젝트에 뭐가 올줄 알고? 문자객체나 날짜 객체가 넘어온다면?
+    int compute(Object a, Object b);
   }
 
   static interface Calculator6 {
@@ -47,7 +47,7 @@ public class Exam0540 {
   }
 
   static interface Calculator7 {
-    int compute(Integer a, Integer b); // 자동언박싱 
+    int compute(Integer a, Integer b);
   }
 
   static interface Calculator8 {
@@ -141,4 +141,3 @@ public class Exam0540 {
 }
 
 
-// 규칙에 따라서 메서드를 호출할때 - > 이 메서드를 대체할 수 있는지 여부 -> 사용가능하다면 메서드레퍼런스로 대체 가능하다!

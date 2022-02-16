@@ -19,7 +19,7 @@ public class Exam0110 {
   static class A2 extends A {
     int age = 20;
 
-    void print2() { // 오버로딩이었으면 불가( 파라미터가없고, 메서드명 동일했다면 중복) - 오버라이딩이 없으면 불가능했을 문법 
+    void print2() {
       System.out.println("A2.print2():");
       System.out.printf("  => this.name(%s)\n", this.name);
       System.out.printf("  => this.tel(%s)\n", this.tel);

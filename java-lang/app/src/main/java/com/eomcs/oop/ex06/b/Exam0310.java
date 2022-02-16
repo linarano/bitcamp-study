@@ -3,7 +3,7 @@ package com.eomcs.oop.ex06.b;
 
 public class Exam0310 {
   public static void main(String[] args) {
-
+    
     // 다양한 파라미터 값을 받는 println()
     System.out.println(100);
     System.out.println(true);
@@ -19,5 +19,3 @@ public class Exam0310 {
   }
 
 }
-
-// 프로그래밍의 일관성(호출할때 일관성있게)

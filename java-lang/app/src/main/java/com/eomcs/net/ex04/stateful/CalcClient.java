@@ -15,14 +15,14 @@ public class CalcClient {
 
     while (true) {
       System.out.print("값1? ");
-      out.writeInt(Integer.parseInt(keyScan.nextLine()));//키보드입력받아서 int로 변환, 서버에 보낸다. 
+      out.writeInt(Integer.parseInt(keyScan.nextLine()));
 
       System.out.print("연산자? ");
-      out.writeUTF(keyScan.nextLine());//내부적으로 버퍼처리되는듯?
+      out.writeUTF(keyScan.nextLine());
 
       System.out.print("값2? ");
-      out.writeInt(Integer.parseInt(keyScan.nextLine())); 
-      //out.flush(); // 꼭해줘라 신경쓰지말고 그냥
+      out.writeInt(Integer.parseInt(keyScan.nextLine()));
+      out.flush();
 
       String str = in.nextLine();
       System.out.println(str);
@@ -39,4 +39,3 @@ public class CalcClient {
 }
 
 
-//계속연결- 먼저 요청한 클라이언트와 작업이 끊길때까지 다음 클라이언트는 기다려야함

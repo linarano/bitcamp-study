@@ -5,15 +5,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Test02 {
 
   public static void main(String[] args) throws Exception {
-    String jsonStr = "[{\"name\":\"소보루\", \"maker\":\"안데르센\"}, {\"name\":\"소보루\", \"maker\":\"안데르센\"}]";
+    //    String jsonStr = "[{\"name\":\"소보루\",\"maker\":\"안데르센\"},{\"name\":\"단팥빵\",\"maker\":\"안데르센\"}]";
+    //    String jsonStr = "[{\"name\":\"소보루\",\"maker\":\"안데르센\"}]";
+    String jsonStr = "[]";
 
     ObjectMapper mapper = new ObjectMapper();
 
-    Phone[] objs = mapper.readValue(jsonStr, Phone[].class);// 다 name,maker를 갖고있으므로, 알수없으므로 알려줘야한다. 
+    Bread[] arr = mapper.readValue(jsonStr, Bread[].class);
 
-    for (Phone obj : objs) {
+    for (Bread obj : arr) {
       System.out.println(obj);
     }
+
   }
 
 }

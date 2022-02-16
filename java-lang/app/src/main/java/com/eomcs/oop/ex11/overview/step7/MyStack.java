@@ -13,34 +13,26 @@ public class MyStack extends MyList {
       throw new EmptyStackException();
     }
     return remove(size - 1);
-
   }
 
-  @Override // 상속받은 메서드 중에서  서브클래스의 목적에 맞게끔 재정의 
+  @Override
   public Iterator iterator() {
-
-
-    return new Iterator(){//익명클래스의 생성자가 아니라., 슈퍼클래스의 생성자를 가리킨다. 
-
-
-      // 커서 필요없다 팝으로 꺼낼꺼니까 
-
-
+    // anonymous class(익명 클래스)
+    // - 클래스의 이름이 없다. 
+    // - 그래서 클래스를 정의한 후 따로 인스턴스를 생성할 수 없다.
+    // - 클래스 정의와 인스턴스 생성 문장이 합쳐져 있다.
+    //
+    return new Iterator() {
 
       @Override
       public boolean hasNext() {
-        return MyStack.this.size() > 0; // 비교연산자의 리턴값 
+        return MyStack.this.size() > 0;
       }
-
 
       @Override
       public Object next() {
-        return  MyStack.this.pop();
+        return MyStack.this.pop();
       }
-
     };
   }
-
 }
-
-// 메서드 호출 

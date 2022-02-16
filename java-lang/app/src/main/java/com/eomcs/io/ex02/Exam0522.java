@@ -17,10 +17,10 @@ public class Exam0522 {
 
     in.close();
 
-    String str = new String(buf, 0, count, "MS949");
-    //바이트 배열에 MS949 문자집합에 따라 인코딩 된 데이터가 들어있는데
-    //String 클래스는 UTF-8 문자집합으로 인코딩 되었다고 가정하기 때문에
-    //제대로 읽어서 utf-16으로 정확하게 변환할 수 없는 것이다.
+    String str = new String(buf, 0, count);
+    // 바이트 배열에 MS949 문자집합에 따라 인코딩 된 데이터가 들어 있는데,
+    // String 클래스는 UTF-8 문자집합으로 인코딩 되었다고 가정하기 때문에
+    // UTF-16으로 정확하게 변환할 수 없는 것이다.
 
     System.out.println(str);
 

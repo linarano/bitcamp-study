@@ -19,10 +19,13 @@ public class Exam0712 {
     // Player가 사용할 바깥 클래스 Musics2의 객체를 넘길 때는 
     // 다음과 같이 파라미터가 아니라 
     // 생성자 호출 문장 앞쪽에 놓는다. 
+    //
     Musics2.Player p1 = m1.new Player();
     Musics2.Player p2 = m2.new Player();
 
-    //스태틱 
+    // 스태틱 중첩 클래스를 사용할 때는 다음과 같이 직접 생성자의 파라미터로 바깥 클래스의 객체를 넘겨줘야 했다. 
+    //    Musics2.Player p1 = new Musics2.Player(m1);
+    //    Musics2.Player p2 = new Musics2.Player(m2);
 
     p1.play();
     p2.play();
@@ -73,5 +76,4 @@ class Musics2 {
 
 }
 
-// 훨씬쓰는 이점 - 편하다  
-//뮤직ㅋ틀래스 - 플레이어 클래스와 모두 관계를 맺어야함 712클래스가 
+

@@ -5,10 +5,10 @@ import java.io.OutputStream;
 
 public class DataOutputStream {
 
-  OutputStream out; //이 놈한테 위임 
+  OutputStream out;
 
   public DataOutputStream(OutputStream out) throws Exception {
-    this.out = out; // 생성자에 받아놓은 위임
+    this.out = out;
   }
 
   public void write(int b) throws IOException {

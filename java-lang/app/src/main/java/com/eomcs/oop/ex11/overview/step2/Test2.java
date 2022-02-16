@@ -10,9 +10,8 @@ public class Test2 {
     myStack.push("윤봉길");
     myStack.push("김구");
 
-    StackIterator iterator= new StackIterator(myStack);// 
-    // 꺼내는 방법은 단일->일관성이 있다.(이터레이터를 쓰는 이유)
-    while(iterator.hasNext()) {
+    StackIterator iterator = new StackIterator(myStack);
+    while (iterator.hasNext()) {
       System.out.println(iterator.next());
     }
   }

@@ -17,7 +17,7 @@ public class Exam0420 {
       throw new IOException();
   }
 
-  public static void main(String[] args) throws Exception, RuntimeException, SQLException, IOException { //이런식으로 쓰는건 문법공부용 실무에서는 사용하지마라.
+  public static void main(String[] args) throws Exception, RuntimeException, SQLException, IOException {
     // 예외 처리 방법 1:
     // - 예외를 처리하고 싶지 않다면 상위 호출자에게 책임을 떠넘길 수 있다.
     m(1);
@@ -31,6 +31,3 @@ public class Exam0420 {
   }
 
 }
-
-//파일입출력/네트워킹 부분에도 이런식으로 작성-문법배우는데 집중해라.
-//메인메서드 선언부에 에러 적는건 지향해라. 

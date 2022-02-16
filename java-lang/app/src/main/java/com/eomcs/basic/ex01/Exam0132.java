@@ -31,7 +31,7 @@ public class Exam0132 {
 
     System.out.println("-----------------------");
 
-    String s1 = new String("Hello"); //스트링클래스는 equals 오버라이딩 
+    String s1 = new String("Hello");
     String s2 = new String("Hello");
 
     System.out.println(s1 == s2);

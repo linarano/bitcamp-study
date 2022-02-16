@@ -1,7 +1,7 @@
 //static nested class : import static 사용 후
 package com.eomcs.oop.ex11.b;
 
-// 스태틱 멤버를 임포트하기 - 중첩클래스만이아니라. 단 스태틱까지만 -단 스태틱붙여라
+// 스태틱 멤버를 임포트하기
 import static com.eomcs.oop.ex11.b.E.m1;
 import static com.eomcs.oop.ex11.b.E.v1;
 import static com.eomcs.oop.ex11.b.sub.M.m2;
@@ -43,5 +43,3 @@ public class Exam0420 {
   }
 
 }
-
-//import가 간략하게 해준다.

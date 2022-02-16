@@ -6,7 +6,7 @@ public class Exam0230 {
   // 여러 개의 메서드가 있다 하더라도 추상 메서드가 한 개이면 된다.
   interface Player {
 
-    static String info() { // 바람직하지는 않ㅇ므
+    static String info() {
       return "Player입니다.";
     }
 

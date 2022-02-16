@@ -19,7 +19,6 @@ public class Exam0310 {
 
     out.close();
 
-    //    System.out.println("serialVersionUID = %d\n", Member.serial); - 직접접근은 안됨
     System.out.println("출력 완료!");
   }
 

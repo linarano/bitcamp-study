@@ -10,7 +10,7 @@ public class Exam0412 {
   // => 즉 Sedan 객체와 Truck 객체를 모두 가리킬 수 있는
   //    상위 클래스의 레퍼런스를 선언하면 된다.
   //
-  public static void printCar(Car car) { // 공통분모를 파라미터의 타입으로 준다.  서브타입(실무에서 더 많이 사용) = 서브클래스(인터페이스)
+  public static void printCar(Car car) {
     System.out.printf("모델명: %s\n", car.model);
     System.out.printf("cc: %d\n", car.cc);
     System.out.println("-------------------------");

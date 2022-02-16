@@ -15,4 +15,13 @@ public class MyQueue extends MyList {
 
 }
 
-//아예 값을 껀내다. 맨앞의 껏을 꺼낸다. 
+
+
+
+
+
+
+
+
+
+

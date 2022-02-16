@@ -24,7 +24,7 @@ public class Exam0450 {
 
     } catch (Exception e) {
       // RuntimeException, SQLException, IOException 모두
-      // Exception의 서브 클래스이기 때문에 이 블록에서 모두 처리할 수 있다.(굳이 구분할 필요가 없다면)
+      // Exception의 서브 클래스이기 때문에 이 블록에서 모두 처리할 수 있다.
       //
     }
   }

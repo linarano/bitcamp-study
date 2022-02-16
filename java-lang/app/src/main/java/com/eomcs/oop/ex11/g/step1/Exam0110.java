@@ -4,7 +4,7 @@ package com.eomcs.oop.ex11.g.step1;
 public class Exam0110 {
   public static void main(String[] args) {
     Product p = new Product();
-    p.category = 10; // 가전 / TV // 주석주는 이유 -> 다른개발자가 보고 바로 파악할 수 있게 하기 위해서 
+    p.category = 10; // 가전 / TV
     p.name = "울트라비전 뷰";
     p.price = 2000000;
 

@@ -37,9 +37,7 @@ public class CalculatorServer {
       System.out.println("서버 실행 중...");
 
       while (true) {
-
-        new RequestHandler(serverSocket.accept()).start();// 안쪽부터 실행하므로 임시변수 만들지마라. 소켓못만들면, 안됨
-
+        new RequestHandler(serverSocket.accept()).start();
       }
 
     } catch (Exception e) {
@@ -51,12 +49,10 @@ public class CalculatorServer {
     new CalculatorServer().launch(8888);
   }
 
-  public class RequestHandler extends Thread { // 서버에서만 쓸꺼니까 패키지멤버라는 일반멤버로 만들지만 특정클래스 - 중첩클래스 nesttes zmffotm 
-
+  class RequestHandler extends Thread {
     Socket socket;
-    String logo;
 
-    public RequestHandler(Socket socket) {//중첩클래스 이너클래스(논스태틱)
+    public RequestHandler(Socket socket) {
       this.socket = socket;
     }
 
@@ -68,57 +64,53 @@ public class CalculatorServer {
           PrintStream out = new PrintStream(socket.getOutputStream());
           ) {
 
-        out.print(logo);//중첩클래스의 이점  - 바깥클래스의 객체주소  // 마치 자기변수인냥 생략가능. 
+        out.print(logo);
 
         out.println("계산식을 입력하세요!");
         out.println("예) 23 + 7 ");
         out.println();
 
-        while( true) {
-          String str = in.nextLine();//클라이언트가 보낸걸 읽어 
-
-          if(str.equals("quit")) {
-            out.println("goodbye!");
+        while (true) {
+          String str = in.nextLine();
+          if (str.equals("quit")) {
+            out.println("Goodbye!");
             out.flush();
             break;
           }
+
           try {
-            String[] values = str.split("");
+            String[] values = str.split(" ");
             int a = Integer.parseInt(values[0]);
             int b = Integer.parseInt(values[2]);
             String op = values[1];
 
             switch (op) {
-              case  "+" : out.printf(" %d %s %d =%d \n", a, op, b, a + b); break;
-              case  "-" : out.printf(" %d %s %d =%d \n", a, op, b, a - b); break;
-              case  "*" : out.printf(" %d %s %d =%d \n", a, op, b, a * b); break;
-              case  "/" : out.printf(" %d %s %d =%d \n", a, op, b, a / b); break;
-              case  "%" : out.printf("%d %s %d =%d \n", a, op, b, a % b); break;
-              default: out.printf("%d %s %d =%d \n", a, op, b,"지원하지않는 연산자 입니다.");
-
+              case "+": out.printf("%d %s %d = %d\n", a, op, b, a + b); break;
+              case "-": out.printf("%d %s %d = %d\n", a, op, b, a - b); break;
+              case "*": out.printf("%d %s %d = %d\n", a, op, b, a * b); break;
+              case "/": out.printf("%d %s %d = %d\n", a, op, b, a / b); break;
+              case "%": out.printf("%d %s %d = %d\n", a, op, b, a % b); break;
+              default:  out.printf("%d %s %d = %s\n", a, op, b, "지원하지 않는 연산입니다");
             }
             out.flush();
 
-          }catch(Exception e) {
-            out.println("계산중 오류발생-" + e.getmessage());
+          } catch (Exception e) {
+            out.println("계산 중 오류 발생 - " + e.getMessage());
             out.flush();
           }
-
         }
+
       } catch (Exception e) {
         System.out.println("클라이언트 요청 처리 중 오류 발생!");
       }
     }
   }
 
-
 }
-//중첩클래스 - 파라미터로 받을 필요가 없다.
-//특정클래스 안에서만 사용 
 
-//자바스크립트 클로저 
-//내부에서 쓰려는게 아니라 
-//용도가 다름 클로저 리턴, 파라미터로 넘겨지거나 해줄려고 쓰는 것  
+
+
+
 
 
 

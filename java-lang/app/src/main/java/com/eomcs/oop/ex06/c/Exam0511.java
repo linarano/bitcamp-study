@@ -38,7 +38,7 @@ public class Exam0511 {
 
   public static void main(String[] args) {
     X4 x4 = new X4();
-    x4.m1(); // x4.m1();
+    x4.m1();   // X4.m1()
 
     // 인스턴스 필드와 달리 메서드의 경우는
     // 레퍼런스에 대한 형변환에 상관없이
@@ -58,7 +58,9 @@ public class Exam0511 {
   }
 }
 
-// 타입에 상관없이 실제로 레퍼런스가 가리키는 객체의 타입에서 찾아올라간다.
+
+
+
 
 
 

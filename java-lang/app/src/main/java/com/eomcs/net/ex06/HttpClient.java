@@ -5,9 +5,9 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-// HTTP 요청 프로토콜 (최소 단위)
+// HTTP 요청 프로토콜
 // ---------------------------------
-// GET [자원주소] HTTP/1.1 (CRLF -2바이트)
+// GET [자원주소] HTTP/1.1 (CRLF)
 // Host: [서버주소] (CRLF)
 // (CRLF)
 // ---------------------------------
@@ -18,7 +18,7 @@ import java.util.Scanner;
 //
 public class HttpClient {
   public static void main(String[] args) throws Exception {
-    Socket socket = new Socket("corners.auction.co.kr", 80); //옥션서버에 접속
+    Socket socket = new Socket("corners.auction.co.kr", 80);
     PrintStream out = new PrintStream(socket.getOutputStream());
     Scanner in = new Scanner(socket.getInputStream());
 
@@ -26,9 +26,9 @@ public class HttpClient {
     // => macOS에서 JVM을 실행할 때, println()은 문자열 뒤에 0a(LF) 코드만 붙인다.
     // => 이를 해결하려면, 다음과 같이 명확하게 CRLF 코드를 붙여라.
     // 
-    out.print("GET /AllKill/AllDay.aspx?SelectedItemno=C266641719 HTTP/1.1\r\n"); //요구 이 url에 해당하는 걸 달라. \r\n( 꼭보내야함)
+    out.print("GET /AllKill/AllDay.aspx?SelectedItemno=C266641719 HTTP/1.1\r\n");
     out.print("Host: corners.auction.co.kr\r\n");
-    out.print("\r\n"); //빈줄을 보내면 요청 끝 
+    out.print("\r\n");
     out.flush();
 
     // HTTP 응답 프로토콜에 따라 서버가 보낸 데이터를 수신

@@ -14,7 +14,7 @@ public class Exam0410 {
     // FileOutputStream + BufferedOutputStream
     // - 버퍼로 출력한 다음에 버퍼가 모두 차면 한번에 출력한다.
     // - 출력 속도를 높이는 일을 한다.
-    BufferedOutputStream out2 = new BufferedOutputStream(out1);//생성자에 아웃풋스트림연결 
+    BufferedOutputStream out2 = new BufferedOutputStream(out1);
 
     // FileOutputStream + BufferedOutputStream + DataOutputStream
     // - 문자열이나 자바 기본 타입의 데이터를 좀 더 쉽게 출력하기
@@ -24,8 +24,7 @@ public class Exam0410 {
     //   - 즉 DataOutputStream은 OutputStream 객체에만 연결할 수 있다.
     //   - BufferedOutputStream은 OutputStream 의 자식이 아니기 때문에
     //     DataOutputStream에 연결할 수 없다.
-    // 연결하려면 아웃풋스트림이어야함. 버퍼트아웃스트림이 일반클래스임 
-    DataOutputStream out3 = new DataOutputStream(out2); // 컴파일 오류! //아웃스트림만 받음
+    DataOutputStream out3 = new DataOutputStream(out2); // 컴파일 오류!
 
     Member member = new Member();
     member.name = "AB가각간";

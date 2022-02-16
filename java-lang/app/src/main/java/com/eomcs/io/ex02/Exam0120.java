@@ -20,7 +20,7 @@ public class Exam0120 {
     int b = in.read(); // 읽은 값은 0x4d 이다.
     System.out.printf("%02x\n", b);
 
-    System.out.printf("%02x\n", in.read());//1바이트
+    System.out.printf("%02x\n", in.read());
     System.out.printf("%02x\n", in.read());
     System.out.printf("%02x\n", in.read());
     // read() 를 호출할 때마다 이전에 읽은 바이트의 다음 바이트를 읽는다. 

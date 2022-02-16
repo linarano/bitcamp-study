@@ -18,10 +18,10 @@ class H {
       // 3) 바깥 클래스의 인스턴스나 스태틱 필드를 찾는다.
 
       System.out.printf("v1 = %d\n", v1);
-      System.out.printf("this.v1 = %d\n", this.v1); //메서드를 호출할때 넘겨준 X클래스의 객체의 주소 
+      System.out.printf("this.v1 = %d\n", this.v1);
       System.out.printf("H.this.v1 = %d\n", H.this.v1);
 
-      System.out.printf("v2 = %d\n", v2); //가까운데 부터 찾는다. 
+      System.out.printf("v2 = %d\n", v2);
       System.out.printf("v3 = %d\n", v3);
     }
   }
