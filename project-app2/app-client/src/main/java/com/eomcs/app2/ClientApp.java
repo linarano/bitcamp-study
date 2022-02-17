@@ -1,9 +1,7 @@
 package com.eomcs.app2;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
 import com.eomcs.app2.handler.ScoreHandler;
+import com.eomcs.app2.net.ScoreTableProxy;
 import com.eomcs.util.Prompt;
 
 public class ClientApp {
@@ -12,22 +10,17 @@ public class ClientApp {
     new ClientApp().service();
   }
 
-  public void service() {
-    try (Socket socket = new Socket("localhost", 3336);
-        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-        ObjectInputStream in = new ObjectInputStream(socket.getInputStream());) {
-
-      System.out.println("서버와 연결되었음!");
-
-      ScoreHandler scoreHandler = new ScoreHandler(in, out);
+  public void service() { // 이젠 네트워크통신 - 클라이언트에서 안함 
+    try {
+      ScoreTableProxy scoreTableProxy = new ScoreTableProxy("localhost",3336);
+      ScoreHandler scoreHandler = new ScoreHandler(scoreTableProxy); // 서버연결 
 
       while (true) {
         printMenu();
         String input = Prompt.promptString("명령> ");
 
         if (checkQuit(input)) {
-          out.writeUTF("quit");
-          out.flush();
+          scoreTableProxy.close(); // 서버개발자가 만들어준걸 우리는 이용할뿐. 
           break;
         }
 

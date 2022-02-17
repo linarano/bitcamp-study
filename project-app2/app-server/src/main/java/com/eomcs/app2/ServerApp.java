@@ -9,7 +9,7 @@ import com.eomcs.app2.vo.Score;
 
 public class ServerApp {
 
-  ScoreTable scoreHandler = new ScoreTable();
+  //ScoreTable scoreHandler = new ScoreTable(); // 스태틱메서드
 
   public static void main(String[] args) {
     new ServerApp().service();
@@ -20,75 +20,90 @@ public class ServerApp {
       System.out.println("서버 실행 중...");
 
       while (true) {
-        try (
-            Socket socket = serverSocket.accept();
-            ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());) {
-
-
-          System.out.println("클라이언트가 접속했습니다.");
-
-          while (true) {
-            String command = in.readUTF();
-            if (command.equals("quit")) {
-              break;
-            }
-            try {
-              switch (command) {
-                case "insert":
-                  Score score = (Score) in.readObject();
-                  int count = ScoreTable.insert(score);
-                  out.writeUTF("success");
-                  out.writeInt(count);
-                  break;
-                case "selectList":
-                  Score[] scores = ScoreTable.selectList();
-                  out.writeUTF("success");
-                  out.writeObject(scores);
-                  break;
-                case "selectOne":
-                  int no = in.readInt();
-                  score = ScoreTable.selectOne(no);
-                  out.writeUTF("success");
-                  out.writeObject(score);
-                  break;
-                case "update":
-                  no = in.readInt();
-                  score = (Score) in.readObject();
-                  count = ScoreTable.update(no, score);
-                  out.writeUTF("success");
-                  out.writeInt(count);
-                  break;
-                case "delete":
-                  no = in.readInt();
-                  count = ScoreTable.delete(no);
-                  out.writeUTF("success");
-                  out.writeInt(count);
-                  break;
-                default:
-                  out.writeUTF("fail");
-                  out.writeUTF("해당 명령을 지원하지 않습니다.");
-              }
-              out.flush();
-            } catch (Exception e) {
-              out.writeUTF("fail");
-              out.writeUTF("실행 오류: " + e.getMessage());
-              out.flush();
-            }
-          } // while (true)
-          System.out.println("클라이언트와의 연결을 끊었습니다.");
-
-        } catch (Exception e) {
-          System.out.println("클라이언트와 통신 중 오류 발생!");
-        }
-
-      } // while (true)
+        //server socket =  쓸데없이 임시변수 안만들어 
+        new RequestHandler(serverSocket.accept()).start();//run 호출하면 분기하지않음 -> 스타트를 호출해야함 내부적으로 
+      } // while (true) //리턴되기 전까지는 리퀘스트 핸들러 객체 못만듬  -클라이언트가 연결이되기를 기다려
     } catch (Exception e) {
       System.out.println("서버 실행 오류!");
     }
 
     System.out.println("종료!");
   }
+  //스태틱네스티드 클래스 -바깥클래스의 인스턴스 필드를 사용하지않는 것
+  //로컬클래스로 선언할 수있지만, 로컬클래스로 만들기엔 코드 길이가 너무길다 (개념적으로 맞지만), 또 인스턴스안쓴다.
+  private static class RequestHandler extends Thread { // 뺴도되는데 100라인도 안되니까 집어넣자 탑레벨클래스(패키지멤버클래스)안하고
+
+    Socket socket; //run()메서드가 쓸수있게 
+    public RequestHandler(Socket socket) {
+      this.socket= socket;
+    }
+    @Override
+    public void run() { //독립적 수행할 작업을 여기에
+      try (
+          Socket socket2 = socket; //같은 객체 - 클로즈를 자동으로 호출되게 하기 위해서 넣은 코드 오토클로져블 구현체 선언
+          ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+          ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());) {
+
+
+        System.out.println("클라이언트가 접속했습니다.");
+
+        while (true) {
+          String command = in.readUTF();
+          if (command.equals("quit")) {
+            break;
+          }
+          try {
+            switch (command) {
+              case "insert":
+                Score score = (Score) in.readObject();
+                int count = ScoreTable.insert(score);
+                out.writeUTF("success");
+                out.writeInt(count);
+                break;
+              case "selectList":
+                Score[] scores = ScoreTable.selectList();
+                out.writeUTF("success");
+                out.writeObject(scores);
+                break;
+              case "selectOne":
+                int no = in.readInt();
+                score = ScoreTable.selectOne(no);
+                out.writeUTF("success");
+                out.writeObject(score);
+                break;
+              case "update":
+                no = in.readInt();
+                score = (Score) in.readObject();
+                count = ScoreTable.update(no, score);
+                out.writeUTF("success");
+                out.writeInt(count);
+                break;
+              case "delete":
+                no = in.readInt();
+                count = ScoreTable.delete(no);
+                out.writeUTF("success");
+                out.writeInt(count);
+                break;
+              default:
+                out.writeUTF("fail");
+                out.writeUTF("해당 명령을 지원하지 않습니다.");
+            }
+            out.flush();
+          } catch (Exception e) {
+            out.writeUTF("fail");
+            out.writeUTF("실행 오류: " + e.getMessage());
+            out.flush();
+          }
+        } // while (true)
+        System.out.println("클라이언트와의 연결을 끊었습니다.");
+
+      } catch (Exception e) {
+        System.out.println("클라이언트와 통신 중 오류 발생!");
+      }
+    }
+  }
+
+
 }
 
 
@@ -137,10 +152,6 @@ public class ServerApp {
 
 // lang.ex06.450
 
-//직접접근 못하게 필드에 -> 적절하게 조정 . 세밀하게 조정조건을 붙일 수 잇음. 나중에 바꿀려면 다 뜯어고쳐야함 .필드에 직접 엑세스하는 것보다 각 메서드를 통해서 하는게 낫다.
-//값을 맘대로 넣을 수 있느 방법을 막을 방법 이없음 
-//필드에 직접 엑세스하면 유효하지않은 값 설정할 수 있으므로 -> 캡슐화 접근제어 
-//=>  메서드를 ㅇ통해서 넣도록 유됴 - 유효하지않은 값이 들어가는것을 일정부분 막을 수 있음 
 
 //하나의 클래스의 여러게 메서드 -> 분리시키자 
 //프로픔트는 어차피 프로그램 종료6까지 
