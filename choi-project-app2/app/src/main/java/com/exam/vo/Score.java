@@ -1,4 +1,4 @@
-package com.exam;
+package com.exam.vo;
 
 public class Score {
   String name;
@@ -27,6 +27,7 @@ public class Score {
 
   public void setKor(int kor) {
     this.kor = kor;
+    compute();
   }
 
   public int getEng() {
@@ -35,6 +36,7 @@ public class Score {
 
   public void setEng(int eng) {
     this.eng = eng;
+    compute();
   }
 
   public int getMath() {
@@ -43,6 +45,7 @@ public class Score {
 
   public void setMath(int math) {
     this.math = math;
+    compute();
   }
 
   public int getSum() {
@@ -57,6 +60,16 @@ public class Score {
   public String toString() {
     return "Score [name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", sum="
         + sum + ", average=" + average + "]";
+  }
+
+  public char[] toCSV() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  public static Score fromCSV(String line) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
 

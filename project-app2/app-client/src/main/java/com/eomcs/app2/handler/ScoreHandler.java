@@ -38,7 +38,7 @@ public class ScoreHandler {
 
     Score[] scores = (Score[]) scoreTable.selectlist();// 배열을 리턴함 
     int count = 0;
-    for (Score score : scores) {// 배열또는 Iterable  구현체 - 객체리턴 - 반복문을 끝까지 돈다.  index가 필요없어서 편하다.
+    for (Score score : scores) {// 
       System.out.printf("%d: %s, %d, %.1f\n",
           count++, // 먼저 번호 보여주고, 후위연산자 
           score.getName(), 
