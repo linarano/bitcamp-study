@@ -7,7 +7,7 @@ public class Exam0220 {
 
   public static void main(String[] args) throws Exception {
     try {
-      BoardDao boardDao = new BoardDao();
+      BoardDao boardDao = new BoardDao(); // 객체 만들어서 
       List<Board> list = boardDao.findAll();
       System.out.println("번호, 제목, 등록일, 조회수");
       for (Board b : list) {

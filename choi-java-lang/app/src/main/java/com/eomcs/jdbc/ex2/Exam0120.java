@@ -17,10 +17,10 @@ public class Exam0120 {
 
   public static void main(String[] args) throws Exception {
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(
-            "select * from x_board order by board_id desc")) {
+            "select * from x_board order by board_id desc")) {//내림차순 - 항상 최신게시물이 먼저나오게 한다. 
 
       System.out.println("번호, 제목, 등록일, 조회수");
       while (rs.next()) {
@@ -37,4 +37,6 @@ public class Exam0120 {
   }
 }
 
-
+//레코드1개를 가져와서 resultset안에 보관
+//그래서 반복문
+//게시판 만들줄 알면 다할 수 있다

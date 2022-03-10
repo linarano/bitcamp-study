@@ -9,10 +9,6 @@ import java.util.logging.Logger;
 
 public class MyDriver implements java.sql.Driver {
 
-  static {
-    System.out.println("com.eomcs.jdbc.ex1.MyDriver 클래스 로딩!");
-  }
-
   @Override
   public Connection connect(String url, Properties info) throws SQLException {
     // TODO Auto-generated method stub
@@ -55,4 +51,8 @@ public class MyDriver implements java.sql.Driver {
     return null;
   }
 
+
 }
+
+
+//드라이버가 자동로딩되는 것 확인

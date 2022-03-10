@@ -7,7 +7,7 @@ public class Exam0210 {
 
   public static void main(String[] args) throws Exception {
 
-    java.sql.Connection con = null;
+    java.sql.Connection con = null; // 
 
     try {
       // JVM에서 jdbc driver 파일(.jar)을 뒤져서 java.sql.Driver 를 구현한 클래스를 
@@ -19,7 +19,7 @@ public class Exam0210 {
       // => DriverManager에게 DBMS와의 연결을 요청한다. 어느 서버에 접속할 것인지 정보를 제공해야 한다.
       // jdbc url : DBMS 서버 정보. 
       //  예) jdbc:DBMS://서버주소:포트/데이터베이스명
-      //      (포트번호를 지정하지 않으면 기본이 3306 이다.)
+      //      (포트번호를 지정하지 않으면 mysql의 경우, 기본이 3306 이다.)
       // username : DBMS 사용자 아이디
       // password : DBMS 사용자 암호
       //

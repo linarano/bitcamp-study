@@ -35,14 +35,14 @@ public class Exam0140 {
     }
 
     try (Connection con = DriverManager.getConnection( //
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement()) {
 
       // update 문장은 executeUpdate()를 사용하여 서버에 전달한다.
       String sql = String.format(
           "update x_board set title='%s',contents='%s' where board_id=%s",
           title, contents, no);
-      int count = stmt.executeUpdate(sql);
+      int count = stmt.executeUpdate(sql); //업데이트는 0과 양수리턴환다 음수는 없름
 
       if (count == 0) {
         System.out.println("해당 번호의 게시물이 존재하지 않습니다.");

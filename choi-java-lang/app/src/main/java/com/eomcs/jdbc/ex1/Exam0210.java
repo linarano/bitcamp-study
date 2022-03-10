@@ -7,7 +7,7 @@ public class Exam0210 {
 
   public static void main(String[] args) throws Exception {
 
-    java.sql.Connection con = null;
+    java.sql.Connection con = null; // 커넥션객체를 리턴 => 그 커넥션 인터페이스를 구현한 클래스의 구현체 리턴(드라이버)
 
     try {
       // JVM에서 jdbc driver 파일(.jar)을 뒤져서 java.sql.Driver 를 구현한 클래스를 

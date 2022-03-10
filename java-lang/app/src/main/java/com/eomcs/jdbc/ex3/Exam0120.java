@@ -14,7 +14,7 @@ public class Exam0120 {
     String contents = null;
 
     try (Scanner keyboard = new Scanner(System.in)) {
-      System.out.print("번호? ");
+      System.out.print("번호? "); //번호? 4 or 1=1 조건은 무조건 참
       no = keyboard.nextLine();
 
       System.out.print("제목? ");
@@ -25,7 +25,7 @@ public class Exam0120 {
     }
 
     try (Connection con = DriverManager.getConnection( //
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:maraiadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement()) {
 
       // SQL 삽입 공격
@@ -56,3 +56,5 @@ public class Exam0120 {
     }
   }
 }
+//업데이트가 치명적!! 조회수를 만개로 만들어버려
+// 사용자가 입력한 변수를 직접 디비에 넣게 짜면 이런 공격이 생긴다.  조회수조작, 데이터 다 변경 -> 이러케 짜면 안되다.

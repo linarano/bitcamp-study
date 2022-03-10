@@ -28,7 +28,7 @@ public class BoardDao {
 
   public List<Board> findAll() throws Exception {
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select * from x_board order by board_id desc")) {
 
@@ -95,5 +95,6 @@ public class BoardDao {
     }
   }
 }
+
 
 

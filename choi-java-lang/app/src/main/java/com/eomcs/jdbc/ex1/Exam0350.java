@@ -8,7 +8,7 @@ public class Exam0350 {
   public static void main(String[] args) throws Exception {
     try (
         java.sql.Connection con = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+            "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         java.sql.Statement stmt = con.createStatement();
         ) {
 
@@ -24,3 +24,5 @@ public class Exam0350 {
 }
 
 
+//인서트,업데이트,딜릿문은 다 데이터 변경하는 것이므로 사용 
+//=> jdbc 프로그램은 sQL이 핵심

@@ -8,7 +8,7 @@ public class Exam0320 {
   public static void main(String[] args) throws Exception {
     try (
         java.sql.Connection con = DriverManager.getConnection(
-            "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+            "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         java.sql.Statement stmt = con.createStatement();
 
         // executeQuery()
@@ -20,10 +20,11 @@ public class Exam0320 {
         // => 즉 서버의 select 실행 결과를 가져올 때 사용하는 도구이다.
         //
         java.sql.ResultSet rs = stmt.executeQuery(
-            "select * from x_board order by board_id desc");
+            "select * from x_board order by board_id desc"); //=> 와일드 카드를 쓰면, 테이블을 처음에 정의한 순서대로 컬럼값을 가져옴 
 
         ) {
 
+      System.out.println(rs.getClass().getName());
       // ResultSet 객체를 사용하여 서버에서 select의 결과 한 레코드(row)를 가져온다.
       //
       boolean isReceived = rs.next(); // 가져왔으면 true, 가져올 게 없다면 false
@@ -41,7 +42,7 @@ public class Exam0320 {
             rs.getString(4), // created_date
             rs.getString(5)); // view_count
 
-        // getString(컬럼번호):
+        // getString(컬럼번호):***
         // => DBMS에 설정된 컬럼의 값을 문자열로 리턴한다.
         // => select 문에 나열한 컬럼의 순서를 지정한다.
         //    단 번호는 0부터가 아니라 1부터 지정한다.

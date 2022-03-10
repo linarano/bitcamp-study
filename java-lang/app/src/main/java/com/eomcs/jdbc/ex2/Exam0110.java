@@ -40,13 +40,13 @@ public class Exam0110 {
     }
 
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();) {
 
       String sql = String.format(
           "insert into x_board(title,contents) values('%s','%s')",
           title, contents);
-      int count = stmt.executeUpdate(sql);
+      int count = stmt.executeUpdate(sql); //인서트된 갯수를 리턴
       System.out.printf("%d 개 입력 성공!", count);
     }
   }

@@ -8,7 +8,7 @@ public class Exam0310 {
   public static void main(String[] args) throws Exception {
 
     try (java.sql.Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
 
         // java.sql.Statement 구현 객체를 얻는다.
         // - SQL문을 DBMS의 형식에 따라 인코딩하여 서버에 전달하는 일을 하는 객체.
@@ -25,7 +25,7 @@ public class Exam0310 {
       //
       // 2) SELECT 등 DQL 관련 SQL문 전송
       // => executeQuery()
-      // => 리턴값: 서버에서 데이터를 가져오는 일을 할 객체
+      // => 리턴값: 서버에서 데이터를 가져오는 일을 할 객체****
       //
       // 용어정리
       // "DML(Data Manipulation Language)"
@@ -34,10 +34,12 @@ public class Exam0310 {
       // => select처럼 data를 조회하는 sql 명령을 말한다.
       //
       int count = stmt.executeUpdate(
-          "insert into x_board(title,contents) values('제목10','내용')");
+          "insert into x_board(title,contents) values('제목10','내용')");//dbms 클라이언트를 사용할때는 ; 찍었지만 여기서는 메서드통해서 SQL문 실행하므로 안붙여도된다.
       System.out.printf("%d 개 입력 성공!", count);
     }
   }
 }
+
+
 
 

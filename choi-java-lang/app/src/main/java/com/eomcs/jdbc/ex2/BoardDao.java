@@ -15,10 +15,10 @@ import java.util.List;
 public class BoardDao {
   public int delete(int no) throws Exception {
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement()) {
 
-      // 첨부파일 삭제
+      // 첨부파일 삭제 -- on delete cascade 를 사용할건지, 안전하게 갈건지 결정해라  (보통 아키텍트 또는 팀장이 결정)
       stmt.executeUpdate("delete from x_board_file where board_id = " + no);
 
       // 게시글 삭제
@@ -26,14 +26,14 @@ public class BoardDao {
     }
   }
 
-  public List<Board> findAll() throws Exception {
+  public List<Board> findAll() throws Exception { //리스트는 인터페이스 
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select * from x_board order by board_id desc")) {
 
-      ArrayList<Board> list = new ArrayList<>();
-      while (rs.next()) {
+      ArrayList<Board> list = new ArrayList<>();//리스트 구현체중 1개  -링스리스트, 스택,큐 , 벡터 - 구현체를 여러개 리턴할 수 있으므로 인처페이스 사용
+      while (rs.next()) { // 서버에서 데이터 다 가져올때까지 반복문을 돈다
         Board board = new Board();
         board.setNo(rs.getInt("board_id"));
         board.setTitle(rs.getString("title"));
@@ -43,12 +43,12 @@ public class BoardDao {
         list.add(board);
       }
       return list;
-    }
+    } //1나의 객체만 리턴되므로  여러개를 담으로 ->어레이리스트 생성 
   }
 
   public int insert(Board board) throws Exception {
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();) {
 
       String sql = String.format(
@@ -62,7 +62,7 @@ public class BoardDao {
 
   public int update(Board board) throws Exception {
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement()) {
 
       String sql = String.format(
@@ -71,17 +71,17 @@ public class BoardDao {
           board.getContent(),
           board.getNo());
 
-      return stmt.executeUpdate(sql);
+      return stmt.executeUpdate(sql); // 그 갯수리턴
     }
   }
 
   public Board findBy(String no) throws Exception {
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("select * from x_board where board_id = " + no)) {
 
-      if (!rs.next())
+      if (rs.next())
         return null;
 
       Board board = new Board();
@@ -90,8 +90,9 @@ public class BoardDao {
       board.setContent(rs.getString("contents"));
       board.setRegisteredDate(rs.getDate("created_date"));
       board.setViewCount(rs.getInt("view_count"));
-
       return board;
+
+
     }
   }
 }

@@ -19,8 +19,10 @@ create table x_board_file (
   board_file_id int not null primary key auto_increment,
   file_path varchar(255) not null,
   board_id int not null,
-  constraint fk_board_file foreign key (board_id) references x_board(board_id)
-);
+  constraint fk_board_file foreign key (board_id) references x_board(board_id)/* on delete cascade */
+  -- 새로 추가
+);-- 자식테이블의 데이터를 자동으로 날려라. (위험성)_ 실수로 부모테이블 지워버리면 그에 따른 자식까지 삭제 굉장히 위험도가 높음
+-- 회사마다 다름
 
 -- 게시물 데이터 입력 
 insert into x_board(board_id, title, contents)

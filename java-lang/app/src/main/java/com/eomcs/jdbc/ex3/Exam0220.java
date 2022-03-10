@@ -25,11 +25,11 @@ public class Exam0220 {
     }
 
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
 
-        // PreparedStatement는 미리 SQL 문장을 준비하여 값을 삽입하는 기법이다.
+        // PreparedStatement는 미리 SQL 문장을 준비하여 값을 삽입하는 기법이다. *** 무조건 이걸써라
         PreparedStatement stmt = con.prepareStatement(
-            "update x_board set title = ?, contents = ? where board_id = ?")) {
+            "update x_board set title = ?, contents = ? where board_id = ?")) { // ? 인파라미터 써라. SQL문에 입력한 값이 직접 변수에 들어가는 것이 아님 -> 따라서 삽입공격 불가
 
       // SQL 문장을 준비할 때, 값이 들어 갈 자리에 ? 로 표시한다.
       // ? 를 "in-parameter"라 부른다.
@@ -52,6 +52,7 @@ public class Exam0220 {
       stmt.setString(2, contents);
       stmt.setString(3, no);
 
+
       // PreparedStatement에서는 SQL 문을 서버에 보내기 위해
       // executeUpdate()를 호출할 때 파라미터로 전달하지 않는다.
       // 이미 객체를 생성할 때 SQL 문을 준비했기 때문이다.
@@ -62,7 +63,7 @@ public class Exam0220 {
       } else {
         System.out.println("변경하였습니다.");
       }
-      // Statement vs PreparedStatement
+      // Statement vs PreparedStatement****
       // 1) SQL 문장의 간결함
       // [Statement]
       // - 값을 가지고 문자열로 직접 SQL 문을 만들기 때문에 작성하거나 읽기 힘들다.
@@ -75,13 +76,13 @@ public class Exam0220 {
       // [PreparedStatement]
       // - SQL 문장과 값이 분리되어 다뤄지기 때문에 해킹할 수 없다.
       //
-      // 3) 바이너리 데이터 다루기
+      // 3) 바이너리 데이터 다루기****
       // [Statement]
       // - 문자열로 SQL 문장을 만들기 때문에
       //   바이너리 타입의 컬럼 값을 설정할 수 없다.
       // [PreparedStatement]
       // - setXxx() 메서드를 호출하여 값을 설정하기 때문에
-      //   바이너리 타입의 컬럼 값을 설정할 수 있다.
+      //   바이너리 타입의 컬럼 값을 설정할 수 있다. base
       //
       // 4) 실행 속도
       // [Statement]
@@ -98,3 +99,4 @@ public class Exam0220 {
     }
   }
 }
+// 이방식은 바이너리 데이터를 보낼 수 있음, 이전방식은 서버에 바이너리 데이터를 보낼수 없었음

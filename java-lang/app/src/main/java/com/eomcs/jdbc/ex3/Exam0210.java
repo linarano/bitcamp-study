@@ -21,8 +21,8 @@ public class Exam0210 {
     }
 
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
-        PreparedStatement stmt = con.prepareStatement("insert into x_board(title,contents) values(?,?)")) {
+        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
+        PreparedStatement stmt = con.prepareStatement("insert into x_board(title,contents) values(?,?)")) {// 값이 들어갈자리에 인파라미터
 
       // SQL 삽입 공격
       // => 입력 문자열에 SQL 명령을 삽입하여 프로그램의 의도와 다르게 데이터를 조작하는 행위.
@@ -37,15 +37,17 @@ public class Exam0210 {
       // => in-parameter 에 들어갈 값의 타입에 따라 적절한 setXxx() 메서드를 호출한다.
       //
       stmt.setString(1, title);
-      stmt.setString(2, contents);
+      stmt.setString(2, contents); // 값과 SQL을 분리해서 전달한다는 것이 포인트 -> 서버에서도 따로 처리
 
       // => 이미 SQL 을 준비한 상태이기 때문에 실행할 때는 SQL를 줄 필요가 없다.
       // => 서버에 SQL을 전달할 때는 SQL과 값을 분리해서 보내고,
       //    서버에서 분리된 값을 따로 처리할 것이기 때문에
       //    SQL 삽입 공격이 불가능한다.
-      int count = stmt.executeUpdate();
+      int count = stmt.executeUpdate(); // 실행할때 SQL문을 안줌
 
       System.out.println(count + " 개를 입력하였습니다.");
     }
   }
 }
+
+//110번과 비교해라

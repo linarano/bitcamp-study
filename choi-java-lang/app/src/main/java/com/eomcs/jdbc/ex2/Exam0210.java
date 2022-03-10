@@ -7,7 +7,7 @@ public class Exam0210 {
 
   public static void main(String[] args) throws Exception {
 
-    Board board = new Board();
+    Board board = new Board(); // 보드객체에 제목과 내용저장
 
     try (Scanner keyScan = new Scanner(System.in)) {
 
@@ -59,4 +59,16 @@ public class Exam0210 {
   }
 }
 
+//오라클은 오토인클리먼트가 없어서 시퀀스가 대신있어서 글로벌변수로서 자동증가를 대신
+/*
+ * 
+ * 
+       INSERT INTO MYTABLE VALUES( SEQ_ID.NEXTVAL, '홍길동');
 
+       -- CURRVAL : 현재 값을 반환 합니다. .
+       -- NEXTVAL : 현재 시퀀스값의 다음 값을 반환 합니다.
+
+
+
+출처: https://applejara.tistory.com/260 [애플자라]
+ * */

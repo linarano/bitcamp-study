@@ -12,7 +12,18 @@ public interface BookDao {
 
   Book findByNo(int no);
 
-  int update(int no, Book book) throws Exception ;
+  int update(int no, Book book) throws Exception;
 
-  int delete(int no) throws Exception ;
+  int delete(int no) throws Exception;
 }
+
+
+
+
+
+
+
+
+
+
+
