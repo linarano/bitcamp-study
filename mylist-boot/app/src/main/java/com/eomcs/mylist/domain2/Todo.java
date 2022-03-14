@@ -1,4 +1,4 @@
-package com.eomcs.mylist.domain;
+package com.eomcs.mylist.domain2;
 
 public class Todo implements java.io.Serializable {
   String title;
@@ -15,6 +15,7 @@ public class Todo implements java.io.Serializable {
     this.setTitle(values[0]); 
     this.setDone(Boolean.valueOf(values[1]));
   }
+
 
   // 적용기술
   // => 스태틱 메서드 : 특정 인스턴스에 종속되지 않고 사용하는 메서드.

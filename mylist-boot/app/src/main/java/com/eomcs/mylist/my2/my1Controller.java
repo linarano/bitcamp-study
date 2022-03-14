@@ -1,4 +1,4 @@
-package com.eomcs.mylist.my1;
+package com.eomcs.mylist.my2;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.eomcs.mylist.domain;
+package com.eomcs.mylist.domain2;
 
 public class Board {
 
@@ -10,12 +10,6 @@ public class Board {
 
   public Board() {
     System.out.println("Board() 호출됨!");
-  }
-
-  @Override
-  public String toString() {
-    return "Board [no=" + no + ", title=" + title + ", content=" + content + ", viewCount="
-        + viewCount + ", createdDate=" + createdDate + "]";
   }
 
   public int getNo() {
@@ -56,6 +50,12 @@ public class Board {
 
   public void setCreatedDate(java.sql.Date createdDate) {
     this.createdDate = createdDate;
+  }
+
+  @Override
+  public String toString() {
+    return "Board [no=" + no + ", title=" + title + ", content=" + content + ", viewCount="
+        + viewCount + ", createdDate=" + createdDate + "]";
   }
 
 

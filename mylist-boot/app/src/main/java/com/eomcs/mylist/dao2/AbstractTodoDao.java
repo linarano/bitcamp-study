@@ -1,11 +1,11 @@
-package com.eomcs.mylist.dao;
+package com.eomcs.mylist.dao2;
 
 import java.util.ArrayList;
-import com.eomcs.mylist.domain.Todo;
+import com.eomcs.mylist.domain2.Todo;
 
 public abstract class AbstractTodoDao implements TodoDao {
 
-  protected ArrayList<Todo> todoList = new ArrayList<Todo>(); 
+  protected ArrayList todoList = new ArrayList(); 
 
   protected abstract void save() throws Exception;
 
@@ -30,7 +30,7 @@ public abstract class AbstractTodoDao implements TodoDao {
     if (no < 0 || no >= todoList.size()) {
       return null;
     }
-    return todoList.get(no);
+    return (Todo) todoList.get(no);
   }
 
   @Override
@@ -48,7 +48,7 @@ public abstract class AbstractTodoDao implements TodoDao {
     if (no < 0 || no >= todoList.size()) {
       return 0;
     }
-    todoList.get(no).setDone(done);
+    ((Todo) todoList.get(no)).setDone(done);
     save();
     return 1;
   }

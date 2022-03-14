@@ -1,1 +1,8 @@
-# applica
+# application.properties
+#공백주면 안됨
+#현업에서는 정보를 외부파일에 둔다. 
+# 이 값을 자바 프로그램안에서 사용하고 싶으면 @Value
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.url=jdbc:mariadb://localhost:3306/studydb
+spring.datasource.username=study
+spring.datasource.password=1111S

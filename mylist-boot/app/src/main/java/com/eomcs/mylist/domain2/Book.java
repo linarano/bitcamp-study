@@ -1,4 +1,4 @@
-package com.eomcs.mylist.domain;
+package com.eomcs.mylist.domain2;
 
 import java.sql.Date;
 
@@ -29,6 +29,7 @@ public class Book implements java.io.Serializable {
     }
     this.setFeed(values[6]);
   }
+
 
   // 적용기술
   // => 스태틱 메서드 : 특정 인스턴스에 종속되지 않고 사용하는 메서드.
@@ -71,6 +72,7 @@ public class Book implements java.io.Serializable {
         this.getReadDate(),
         this.getFeed());
   }
+
 
   public String getTitle() {
     return title;

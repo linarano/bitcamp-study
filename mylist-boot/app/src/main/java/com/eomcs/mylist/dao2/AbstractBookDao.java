@@ -1,11 +1,11 @@
-package com.eomcs.mylist.dao;
+package com.eomcs.mylist.dao2;
 
 import java.util.ArrayList;
-import com.eomcs.mylist.domain.Book;
+import com.eomcs.mylist.domain2.Book;
 
 public abstract class AbstractBookDao implements BookDao {
 
-  protected ArrayList<Book> bookList = new ArrayList<>(); 
+  protected ArrayList bookList = new ArrayList(); 
 
   protected abstract void save() throws Exception;
 
@@ -30,7 +30,7 @@ public abstract class AbstractBookDao implements BookDao {
     if (no < 0 || no >= bookList.size()) {
       return null;
     }
-    return bookList.get(no);
+    return (Book) bookList.get(no);
   }
 
   @Override

@@ -1,4 +1,4 @@
-package com.eomcs.mylist.domain;
+package com.eomcs.mylist.domain2;
 
 public class Contact implements java.io.Serializable {
   String name;
@@ -13,17 +13,20 @@ public class Contact implements java.io.Serializable {
   public Contact(String csvStr) {
     // 예) csvStr => "홍길동,hong@test.com,010-1111-2222,비트캠프"
 
+    System.out.println("Contact() 호출됨222!");
     String[] values = csvStr.split(","); // 예) ["홍길동","hong@test.com","010-1111-2222","비트캠프"]
+    System.out.println(values);
     this.setName(values[0]); // 배열에 들어 있는 각 항목을 객체의 필드에 저장한다.
     this.setEmail(values[1]);
     this.setTel(values[2]);
     this.setCompany(values[3]);
   }
 
+
   // 적용기술
   // => 스태틱 메서드 : 특정 인스턴스에 종속되지 않고 사용하는 메서드.
   // => GoF의 'Factory Method' 패턴
-  //    객체 생성 과정이 복작할 경우 new 명령을 통해 직접 객체를 생성하는 대신에
+  //    객체 생성 과정이 복잡할 경우 new 명령을 통해 직접 객체를 생성하는 대신에
   //    메서드를 통해 객체를 리턴 받는다.
   //    이렇게 객체를 만들어 주는 메서드를 "공장 메서드(factory method)"라 부른다.
   //    보통 스태틱 메서드로 정의한다.

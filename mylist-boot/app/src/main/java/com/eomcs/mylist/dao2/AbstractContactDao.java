@@ -1,11 +1,11 @@
-package com.eomcs.mylist.dao;
+package com.eomcs.mylist.dao2;
 
 import java.util.ArrayList;
-import com.eomcs.mylist.domain.Contact;
+import com.eomcs.mylist.domain2.Contact;
 
 public abstract class AbstractContactDao implements ContactDao {
 
-  protected ArrayList<Contact> contactList = new ArrayList<>(); 
+  protected ArrayList contactList = new ArrayList(); 
 
   protected abstract void save() throws Exception;
 
@@ -30,7 +30,7 @@ public abstract class AbstractContactDao implements ContactDao {
     int index = indexOf(email);
     if (index == -1)
       return null;
-    return contactList.get(index);
+    return (Contact) contactList.get(index);
   }
 
   @Override
@@ -57,7 +57,7 @@ public abstract class AbstractContactDao implements ContactDao {
 
   private int indexOf(String email) {
     for (int i = 0; i < contactList.size(); i++) {
-      Contact contact =  contactList.get(i);
+      Contact contact =  (Contact) contactList.get(i);
       if (contact.getEmail().equals(email)) { 
         return i;
       }
