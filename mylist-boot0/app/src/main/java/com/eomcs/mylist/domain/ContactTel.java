@@ -13,11 +13,14 @@ public class ContactTel {
   //  this.telTypeNo =telTypeNo;
   //   this.tel = tel;
   // } 
-
-  public ContactTel(int contactNo, int telTypeNo, String tel) {
-    this.contactNo = contactNo;
+  public ContactTel(int telTypeNo, String tel) {
     this.telTypeNo = telTypeNo;
     this.tel = tel;
+  }
+
+  public ContactTel(int contactNo, int telTypeNo, String tel) {
+    this(telTypeNo, tel); // 중복코드해결 - 다른 생성자에서 맡기자 (트럭예제확인 - 상속쪽)
+    this.contactNo = contactNo;
   }
 
 
