@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>세션다루기</title>
+</head>
+<body>
+<h1>1단계</h1>
+<form name="form1">
+이름: <input name="name"><br>
+<button id="btn1" type ="button">입력</button><br>
+</form>
+
+<script>
+document.querySelector("#btn1").onclick = function(){
+	console.log("버튼실행!");
+	//var fd = new FormData(document.forms.namedItem("form1"));
+	//일반 포스트 요청하길 원한다. 변수:값
+	//멀티팟으로 보내지말고 일반   POST 로 보내고 싶음 폼이 뭔지 뽑아보자 
+	//console.log(fd.toString());
+var fd= new FormData(document.forms.namedItem("form1"))
+console.log(new URLSearchParams(fd).toString()); // URL인코딩까지 자동으로 된다?
+
+	fetch("/session/step1", {
+		method:"POST",
+		body: new URLSearchParams(fd) // fd객체를 바로주지말 고 URLSearchParams로 감싸서 포장해서줘라 =>  fetch함수가  
+	}). then(function(response){
+		return response.text(); // 서버응답을 텍스트로 파싱해서 리턴해라 
+	}).then(function(text){
+		console.log(text);
+		location.href = "session-step2.html";
+	}) //요청을 자바스크립트 객체로 넘긴다.
+	
+};
+</script>
+</body>
+</html>

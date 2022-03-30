@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>세션다루기</title>
+</head>
+<body>
+<h1>3단계</h1>
+<form name="form1">
+재직여부: 
+<input type="radio" name="working" value="true">직장인
+<input type="radio" name="working" value="false" checked="checked">미취업자
+<br>
+<button id="btn1" type ="button">입력</button><br>
+</form>
+
+<script>
+document.querySelector("#btn1").onclick = function(){
+	console.log("버튼실행!");
+	var fd = new FormData(document.forms.namedItem("form1"));
+	
+	fetch("/session/step3", {
+		method:"POST",
+		body:new URLSearchParams(fd)
+	}). then(function(response){
+		return response.text(); // 서버응답을 텍스트로 파싱해서 리턴해라 
+	}).then(function(text){
+		console.log(text);
+		location.href = "session-step4.html";
+	}) //요청을 자바스크립트 객체로 넘긴다.
+};
+</script>
+</body>
+</html>

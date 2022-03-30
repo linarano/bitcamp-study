@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>파일 업로드</title>
+</head>
+<body>
+<h1> AJAX POST요청 - 파일업로드 2  </h1>
+
+
+  
+ 
+  <form id ="form1" >
+  이름:<input type ="text" name="name"><br>
+  나이:<input type ="number" name="age"><br>
+  사진:<input type ="file" name="photo" multiple><br>
+  <button id="btn" type="button">요청</button> 
+  </form>
+  
+<script>
+
+var fName= document.querySelector("input[name=name]");
+var fAge = document.querySelector("input[name=age]");
+var fPhoto = document.querySelector("input[type=file]");
+
+document.querySelector("#btn").onclick = function(){ 
+	
+	 //console.log(fPhoto.files);//  이 태그객체에 파일정보가 들어있음 ,  위의 인풋박스가 멀티플 설정이 안되어있기때문에 1개만 선택된다
+
+	var fd = new FormData();
+	  fd.append("name", fName.value);
+	  fd.append("age", fAge.value);
+	  //fd.append("photo",fPhoto.files[0]); // 이건 잘못된 코드임 
+	  
+	  //파일 여러개 
+	 for (var file of fPhoto.files){
+	  fd.append("photo",file); // 명시적으로 줘야함
+	  }
+	
+	var xhr = new XMLHttpRequest();
+	
+	xhr.onreadystatechange = function (e){
+		if (xhr.readyState == 4) {  
+		console.log("==>",xhr.responseText); 
+		}
+	};
+	
+	xhr.open("POST","/html/form/exam32",true);
+
+	//console.log(fName.value, fAge.value);
+	xhr.send(fd); // 서버에 하나의 문자열로 보낼떄의 형식 위
+	
+ 
+};
+</script>
+
+</body>
+</html>

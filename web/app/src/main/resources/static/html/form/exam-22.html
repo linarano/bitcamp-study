@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>파일 업로드</title>
+</head>
+<body>
+<h1> AJAX 비동기</h1>
+
+
+  
+ 
+  <form id ="form1" >
+  이름:<input type ="text" name="name"><br>
+  나이:<input type ="number" age="age"><br>
+  사진:<input type ="file" photo="photo"><br>
+  <button id="btn" type="button">요청</button> 
+  </form>
+  
+
+
+
+
+  
+<script>
+document.querySelector("#btn").onclick = function(){ 
+
+	console.log("okok!");
+
+	//비동기 요청 작업을 수행할 객체를 준비
+	var xhr = new XMLHttpRequest(); //생성자를 통해서 객체 준비, AJAx 관련 변수 함수 들어감 - 일단 기본객체를 만든다음에 설계도 필요없고 , 필요한 변수나 함수를 그때그떄 추가 하는것 => 생성자함수의 역할 
+	//자바는 설계도에 따라서 이미 변수나 함수 존재 
+
+	console.log("okok");
+	//서버에 연결한다.
+	xhr.open("POST",
+			"/html/form/exam21",
+			 true); //비동기여부
+	
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	
+	xhr.send("name=aaa&age=22");
+	
+	//서버의 응답을 꺼낸다.
+	// => 서버가 응답하기도 전에 값을 꺼낸다면 아무런 값도 출력할 수 없을 것이다. 응답전 => 화살표만 나왔음 
+	//=>? 해결책? 서버에서 응답이 왔다고 알려주면 그떄 값을 꺼내도록 하라!
+	console.log("==>",xhr.responseText);  
+};
+</script>
+
+</body>
+</html>

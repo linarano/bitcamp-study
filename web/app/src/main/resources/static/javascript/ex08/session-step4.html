@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>세션다루기</title>
+</head>
+<body>
+<h1>4단계</h1>
+이름:<span id="x-name"></span><br>
+나이:<span id="x-age"></span><br> 
+재직자:<span id="x-working"></span><br>
+</form>
+
+<script>
+
+fetch("/session/step4"). then(function(response){ // 끌고 올때 겟방식 그냥
+		return response.json(); // 
+	}).then(function(obj){
+		//console.log(obj.name);
+		//console.log(obj.age);
+		//console.log(obj.working);
+		document.querySelector("#x-name").innerHTML = obj.name;
+		document.querySelector("#x-age").innerHTML = obj.age;
+		document.querySelector("#x-working").innerHTML = obj.working;
+		});
+	 //요청을 json객체로 넘긴다. 꺼내기 쉽다 서버에서 클라이언트로 데이터를 보냈때는 csv,xml,json으로 보낸다 
+
+</script>
+
+</body>
+</html>

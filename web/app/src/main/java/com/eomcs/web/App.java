@@ -14,6 +14,7 @@ public class App {
   }
 
   @RequestMapping("/hello")
+  // @ResponseBody //클라이언트에게 보내줘야할 데이터야 라는 의미
   String hello() {
     return "Hello World!";
   }
