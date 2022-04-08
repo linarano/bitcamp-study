@@ -20,4 +20,10 @@ public class DefautMemberService implements MemberService {
   public Member get(String email, String password) {
     return memberDao.findByEmailAndPassword(email,password);
   }
+
+  @Override
+  public Member get(String email) {
+    return memberDao.findByEmail(email);
+  }
+
 }

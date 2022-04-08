@@ -11,12 +11,16 @@
 <form name="form1">
 이메일: <input name="email" type="email"><br>
 암호: <input name="password" type="password"><br>
+<input name="saveemail" type="checkbox">이메일저장<br>
 <div>
-<button id="x-add-btn">로그인</button>
-<button id="x-cancel-btn" type="reset">취소</button>
+  <button id="x-add-btn">로그인</button>
+  <button id="x-cancel-btn" type="reset">취소</button>
+  <a href="form.html">회원가입</a>
 </div>
 <div>
- <a href="form.html">회원가입</a>
+  <fb:login-button 
+      scope="public_profile,email" 
+      onlogin="checkLoginState();"></fb:login-button>
 </div>
 </form>
 
@@ -61,7 +65,74 @@ document.querySelector("form[name=form1]").onsubmit = function() {
   document.querySelector("#x-cancel-btn").onclick = function() {
     window.location.href = "../index.html";
   };
+  
+  window.fbAsyncInit = function() {
+	  FB.init({
+	    appId      : '649349599474197', // 개발자가 등록한 앱 ID , 보안 실제는 도메인정보를 등록해서 그것을 접속할때 
+	    cookie     : true,  
+	    xfbml      : true,  
+	    version    : 'v13.0' 
+	  });
+	  FB.AppEvents.logPageView();
+	};
+
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "https://connect.facebook.net/en_US/sdk.js";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+	function checkLoginState() {
+	    FB.getLoginStatus(function(response) { 
+	        if (response.status === 'connected') { // 로그인이 정상적으로 되었을 때,
+	            
+	          var params = new URLSearchParams();
+	          params.append("accessToken", response.authResponse.accessToken);
+
+	          fetch("/member/facebookLogin", {
+	            method: "POST",
+	            body: params 
+	          }).then(function(response) {
+	            return response.json();
+	          }).then(function(result) {
+	            if (result.status == "success") {
+	              console.log(result.data)
+	              location.href = "../index.html";
+	            } else {
+	              window.alert("페이스북 로그인 실패!");
+	              console.log(result.data);
+	            }
+	          });
+	          
+	        } else { // 로그인이 되지 않았을 때,
+	            console.log("로그인 되지 않았음");
+	        }
+	    });
+	}
+	
+	// userEmail 쿠키가 있다면 값을 꺼내서 이메일 입력 상자에 넣는다.
+	console.log(document.cookie);
+
+</script>
+
+<script src="/node_modules/js-cookie/dist/js.cookie.mjs"></script>
+<script>
+//userEmail 쿠키가 있다면 값을 꺼내서 이메일 입력 상자에 넣는다.
+//원래방식은 다 잘라서 썼어야된다.
+//이미 만들어노흔 라이브러리를 쓰는게 더 낫다.
+//뭔가 만들려하지말고 유명한거 있으면 써라 
+  var userEmail = Cookies.get('userEmail');
+  //if (userEmail != undefine){ // 변수 값이 언디파인드면 자바스크립트 기본디폴트값 false
+  if (userEmail != undefine){ // 변수 값이 언디파인드가 아니라면
+	  //console.log("실행 했다!");
+	  Xemail.value=  userEmail;
+  }
+ //console.log(Cookies.get('UserEmail2')); 
+//가져와서 임포트해서 쓰면된다.  
 </script>
 
 </body>
 </html>
+

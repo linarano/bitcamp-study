@@ -16,23 +16,22 @@
 function checkLoginState() {
   
     // 로그인 상태를 가져올 것을 요청한다.
-    // => 그리고 로그인 정보를 가져 왔을 때 호출될 함수를 등록한다.
-    FB.getLoginStatus(function(response) { 
+    // => 그리고 로그인 정보를 가져 왔을 때 호출될 함수를 등록한다. (비동기1)
+    FB.getLoginStatus(function(response) { //파라미터에 로그인 실행여부가 담겨져있음
       // 로그인 상태 정보를 가져왔으면 이 함수가 호출된다. 
       console.log(response);
     });
     
-    console.log("checkLoginState() 호출완료!");
-}
+    console.log("checkLoginState() 호출완료!"); //(비동기2)
+} 
 
 
 window.fbAsyncInit = function() {
-  console.log("window.fbAsyncInit() 호출됨!");
   FB.init({
-    appId      : '1130286854106486', // 개발자가 등록한 앱 ID
+    appId      : '649349599474197', // 개발자가 등록한 앱 ID
     cookie     : true,  
     xfbml      : true,  
-    version    : 'v9.0' 
+    version    : 'v13.0' 
   });
   FB.AppEvents.logPageView();
 };
@@ -41,7 +40,7 @@ window.fbAsyncInit = function() {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  js.src = "https://connect.facebook.net/en_US/sdk.js"; // 이 안에 정의된 FB객체
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 

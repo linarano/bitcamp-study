@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+body {
+  font-size:small;
+  }
+  
+div.container {
+  width: 540px;
+}
+  
+#header {
+  position: relative;
+  background-color: navy;
+  color: white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  }
+
+#footer {
+  font-size:0.8em;
+  background-color: gray;
+  height:20px;
+  padding:10px;
+  margin-top: 10px;
+ }  
+ 
+ #sidebar {
+  position: absolute; /*가장 가까운 조상중에 위치 기준점*/
+  left:0px;
+  top:50px;
+  background-color: yellow;
+  box-sizing: border-box;
+  width : 130px;/* 기본 디폴트가 컨텐츠의 넓이 -패딩을 주면 컨텐츠를 침범하므로 박스사이즈를 주자 */
+  min-height:200px;
+  padding:0px 10px;
+  }
+ 
+  #content {
+    
+  /* border에 따라서 1px 밀리기도함 */ 
+  margin-left:130px;
+  padding:0px 10px;
+  min-height:200px;
+ }
+ 
+ 
+  .container {
+    position: relative; /*기준점을 잡기 위해서 주는 것*/
+    width: 600px;
+    margin: 0px auto; 
+  }
+  
+

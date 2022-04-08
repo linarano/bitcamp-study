@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>페이스북 로그인</h1>
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState()"></fb:login-button>
+<!-- 꼭같은 이름을 할 필요없음 ,로그인이 끝난뒤에 실행될 함수 너무지저분하므로 따로 정의해놓고 여기서 호출만하는 것  -->
+<!-- 자바스크립트 코드의 마지막은 ; 뺴뜨려도됨 페이스북로그인이 끝난후 호출해라  -->
+<!-- 사용자가 공개한 정보를 받을 수 있음  -->
+
+<script type="text/javascript">
+// 페이스북 로그인을 수행한 후 "login" 이벤트 발생
+//=> onlogin에 등록한 코드가 실행된다.
+// => 로그인 버튼을 누르면 페이스북 사이트의 로그인 페이지가 출력된다.
+// => 그 페이지에서 로그인을 수행한 후 onlogin에 등록한 코드가 실행된다.
+//    즉 checkLoginState() 함수가 실행된다.
+function checkLoginState() {
+    console.log("로그인을 수행했음!"); //로그인을 수행, 그러나 실패성공은 안알려줌
+}
+
+window.fbAsyncInit = function() {
+  console.log("window.fbAsyncInit() 호출됨!");
+  FB.init({
+    appId      : '649349599474197', // 개발자가 등록한 앱 ID
+    cookie     : true,  
+    xfbml      : true,  
+    version    : 'v13.0' 
+  });
+  //FB.AppEvents.logPageView();
+};
+
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

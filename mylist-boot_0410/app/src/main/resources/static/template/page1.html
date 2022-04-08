@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MyList!</title>
+  <link href="/css/common.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+<div id="header"></div>
+
+<div id="sidebar"></div>
+
+<div id="content"></div>
+
+<div id="footer"></div>
+
+</div>
+
+
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+"use strict";
+$("#header").load("/header.html"); //스크립트 태그있으면 실행해라. 
+$("#footer").load("/footer.html");
+$("#sidebar").load("/sidebar.html");
+</script>
+
+<script>
+"use strict";
+
+// 1) URL에서 쿼리스트링(query string)을 추출한다.
+var arr = location.href.split("?");
+console.log(arr);
+
+if(arr.length > 1){ //물음표다음에 뭐가 있을때(기존복사해온거 지원안들어올 수도있으니)
+var qs = arr[1];
+
+
+  // 2) 쿼리 스트링에서 content URL 값을 추출한다.
+    var params = new URLSearchParams(qs);
+    var contentUrl = params.get("content");
+   
+    if(contentUrl != null){
+    	$("#content").load(contentUrl);
+    }
+
+}
+   </script>
+
+</body>
+</html>

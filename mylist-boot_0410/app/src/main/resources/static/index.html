@@ -1,0 +1,58 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MyList!</title>
+  <link href="/css/common.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+
+<div id="header"></div>
+
+<div id="sidebar"></div>
+
+<div id="content">
+  <h1>MyList에 오신 걸 환영합니다!</h1>
+  <p>이 프로젝트는 자바 실전 프로그래밍을 경험하기 위해 만든 프로젝트 입니다.</p>
+  <ul>
+    <li><a href="contact/index.html">연락처</a></li>
+    <li><a href="todo/index.html">해야 할 일</a></li>
+    <li><a href="board/index.html">게시글</a></li>
+    <li><a href="book/index.html">독서록</a></li>
+    <li><a href="etc/student-selector/index.html">발표자 추첨</a></li>
+  </ul>
+</div>
+
+<div id="footer"></div>
+
+</div>
+
+
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+//$("#header").load("header.html"); //스크립트 태그있으면 실행해라. 
+//$("#footer").load("footer.html");
+//$("#sidebar").load("sidebar.html");
+
+//10줄코딩을 1줄로 -> 제이쿼리 써라, 브라우저마다 다르게 동작하므로 
+//우리의 원칙 개발자가 빠르고 더 편리하게 코딩하느냐
+//이왕이면 유지보수 > 속도 : 객체지향은 어차피 속도가 떨어지는 것
+
+/*
+fetch("/header.html").then(function(response) {
+	return response.txt();
+
+}).then(function(html) {
+  	//  document.querySelector("#header").innerHTML = html; //스크립트 태그를 따로꺼내야돼
+    	//var s = document.querySelector("#header").querySelector("script");
+  //var s2 = document.createElement("script");
+  //s2.innerHTML = s.innerHTML;
+  //s.parentNode.removeChild(s);
+  //document.body.appendChild(s2);
+});
+*/
+</script>
+
+</body>
+</html>
