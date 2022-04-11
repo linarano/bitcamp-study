@@ -12,23 +12,27 @@ import javax.servlet.annotation.WebServlet;
 // 서블릿 컨테이너가 실행할 클래스를 만드려면 
 // Servlet API 규칙에 따라 작성해야한다. 
 //
-@WebServlet("/hello") // 서블릿컨테이너가 실행할 클래스, 이 클래스를 실행하려면 hello라고 요청해야함
+@WebServlet("/hello") // 서블릿컨테이너가 실행할 클래스, 이 클래스를 실행하려면 hello라고 요청해야함 : 서블릿 컨테이너에게 이 클래스가 요청을 처리하는 서블릿임을 알려준다.
 public class HelloServlet implements Servlet{
 
+  ServletConfig config;
   @Override
   public void init(ServletConfig config) throws ServletException {
-    // TODO Auto-generated method stub
-
+    System.out.println("intint() 호출");
+    this.config = config;
   }
 
   @Override
   public ServletConfig getServletConfig() {
-    return null;
+    System.out.println("getServletConfig() 호출");
+    return  this.config;
   }
 
   @Override
   public void service(ServletRequest req, ServletResponse res)
       throws ServletException, IOException {
+
+    System.out.println("서비스호출");
 
     // HTTP 클라이언트가 name이란 이름으로 보내 온 파라미터 값을 읽는다.
     String name = req.getParameter("name");
@@ -47,12 +51,13 @@ public class HelloServlet implements Servlet{
 
   @Override
   public String getServletInfo() {
-    return null;
+    System.out.println(" getServletInfo()");
+    return "Helloe";
   }
 
   @Override
   public void destroy() {
-
+    System.out.println(" destroy()");
   }
 
 }
