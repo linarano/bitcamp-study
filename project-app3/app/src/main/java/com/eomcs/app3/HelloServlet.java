@@ -46,12 +46,12 @@ public class HelloServlet implements Servlet{
     // HTTP 클라이언트에게 콘텐트를 출력한다.
     out.printf("%s 님 환영합니다!", name);
 
-    System.out.println(name);
+    //System.out.println(name);
   }
 
   @Override
   public String getServletInfo() {
-    System.out.println(" getServletInfo()");
+    System.out.println("getServletInfo()");
     return "Helloe";
   }
 
