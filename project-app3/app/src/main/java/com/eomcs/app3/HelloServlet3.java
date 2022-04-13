@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet({"/hello3","/hello4"}) // 서블릿컨테이너가 실행할 클래스, 이 클래스를 실행하려면 hello라고 요청해야함 : 서블릿 컨테이너에게 이 클래스가 요청을 처리하는 서블릿임을 알려준다.
 public class HelloServlet3 extends HttpServlet { //  가장편한방법 - 그러나 이걸꼭 상속받아서 만드는 방법만 있는게 아님. 인터페이스를 직접 만드는 것보다 상속보다 만드는게 편함
 
-
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {

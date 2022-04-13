@@ -1,8 +1,9 @@
 
 plugins {
     id 'java'
-		id 'eclipse-wtp'
-		id 'war'
+		id 'eclipse-wtp'  // 이클립스 웹 프로젝트를 다룰 수 있는 기능 추가
+		id 'war' // 웹 애플리케이션 배포파일(.war)을 생성할 수 있는 기능 추가
+	  id "io.freefair.lombok" version "6.4.1"
 }
 
 repositories {
@@ -11,8 +12,15 @@ repositories {
 
 dependencies {
 	//Servlet API 라이브러리
-	//=> 컴파일할때만사용 배포할때제외, 이미 서버에 있다.
+	//=> 컴파일할때만사용 배포할때 제외, 이미 서버에 있다.
 		providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
+  
+    // MariaDB JDBC 드라이버
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.0.3'
+  
+   // Mybatis 프레임워크 (직접 구성)
+    implementation 'org.mybatis:mybatis:3.5.9'
+    implementation 'org.mybatis:mybatis-spring:2.0.7'
 
 		testImplementation 'junit:junit:4.13.2'
     implementation 'com.google.guava:guava:30.1.1-jre'
