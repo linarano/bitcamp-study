@@ -30,7 +30,7 @@ console.log("window.fbAsyncInit() 함수를 등록했음!");
   js = d.createElement(s); js.id = id;
   js.src = "https://connect.facebook.net/en_US/sdk.js"; 
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));//함수를 정의하고 바로호출(function{})()(function{}())
+}(document, 'script', 'facebook-jssdk'));//함수를 정의하고 바로호출(function(){})()
 	
 console.log("<script> 태그 추가 및 sdk.js 로딩!"); // 이때 함수가 호출된다 자바스크립트를 서버에서 다운받아서 사용하려면  앱등록한게 먼저 실행되어야함 => 실행순서
 // 순서가 중요함 함수실행순서 호출되는 순서 

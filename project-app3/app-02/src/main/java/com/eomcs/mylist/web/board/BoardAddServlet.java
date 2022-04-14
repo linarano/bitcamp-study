@@ -12,12 +12,9 @@ import com.eomcs.mylist.domain.Board;
 import com.eomcs.mylist.domain.Member;
 import com.eomcs.mylist.service.BoardService;
 
-// 서블릿 컨테이너가 실행할 클래스를 만드려면 
-//Servlet API 규칙에 따라 작성해야한다. 
-//
 @SuppressWarnings("serial")
 @WebServlet("/board/add") 
-public class BoardaddServlet extends HttpServlet { 
+public class BoardAddServlet extends HttpServlet {
 
   BoardService boardService;
 
@@ -28,12 +25,11 @@ public class BoardaddServlet extends HttpServlet {
     boardService = (BoardService) 웹애플리케이션보관소.getAttribute("boardService");
   }
 
-
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    resp.setContentType("text/html;charset=UTF-8"); // 응답한 데이터 
+    resp.setContentType("text/html;charset=UTF-8");
     PrintWriter out = resp.getWriter();
 
     out.println("<!DOCTYPE html>");
@@ -99,11 +95,11 @@ public class BoardaddServlet extends HttpServlet {
     out.println("<div id=\"content\">");
     out.println("<h1>게시글 등록</h1>");
 
-    out.println("<form  method='post'>");//action='add' 같은 URL요청
-    out.println("제목*: <input name=\"title\" type=\"text\" ><br>");
-    out.println("내용*: <textarea name=\"content\" cols=\"50\" rows=\"10\"></textarea><br>");//2rorkqtdmf qhsoTek
+    out.println("<form method='post'>");
+    out.println("제목*: <input name=\"title\" type=\"text\"><br>");
+    out.println("내용*: <textarea name=\"content\" cols=\"50\" rows=\"10\"></textarea><br>");
     out.println("별표(*) 항목은 필수 입력입니다.<br>");
-    out.println("<button>등록</button>"); // 서브밋버튼 브라우저가 요청 ()
+    out.println("<button>등록</button>");
     out.println("<button id='cancel-btn' type=\"button\">취소</button>");
     out.println("</form>");
     out.println("</div>");
@@ -128,8 +124,9 @@ public class BoardaddServlet extends HttpServlet {
 
     out.println("</div>");
     out.println("<script>");
-    out.println(" document.querySelector('#cancel-btn').onclick = () => { alert('호출')");
-    out.println("   location.href = 'list';");
+    out.println("document.querySelector('#cancel-btn').onclick = () => {");
+    out.println("  location.href = 'list';");
+    out.println("}");
     out.println("</script>");
     out.println("</body>");
     out.println("</html>");
@@ -139,9 +136,13 @@ public class BoardaddServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
 
-    //웹브라우저가 POST 요청으로(GET요청은 안해도된다.) 문자열을 보낼 떄 어떤 문자집합으로 인코딩했는지 알려줘야한다. 
-    //그래야만 getParameter() 메서드에서 웹브라우저가 보낸 파라미터 값을 올바르게 꺼낼 수 있다.
-    //즉 UTF-8로 인코딩 된 문자열을 자바에서 사용하는  UTF-16으로 인코딩해서 리턴한다.
+    // 웹브라우저가 POST 요청으로 문자열을 보낼 때 어떤 문자집합으로 인코딩 했는지 알려줘야 한다.
+    // 그래야만 getParameter() 메서드에서 웹브라우저가 보낸 파라미터 값을 올바르게 꺼낼 수 있다.
+    // 즉 웹브라우저에서 웹서버에게 데이터를 보낼 때 UTF-8 로 인코딩 해서 보낸다.
+    // 그렇게 인코딩 해서 보낸 문자열을 자바에서 사용하는 UTF-16 으로 바꿔서 리턴하는 것이다.
+    // 주의!
+    // 반드시 getParaemeter() 호출하기 전에 설정해야 한다. 
+    // 단 한 번이라도 getParameter() 호출한 후 설정하게 되면 이 설정은 무시된다.
     req.setCharacterEncoding("UTF-8");
 
     Board board = new Board();
@@ -153,6 +154,18 @@ public class BoardaddServlet extends HttpServlet {
 
     boardService.add(board);
 
-    resp.sendRedirect("list");//현재 URL board/list를 요청하라고 브라우저에게 이야기함 
+    resp.sendRedirect("list");
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
