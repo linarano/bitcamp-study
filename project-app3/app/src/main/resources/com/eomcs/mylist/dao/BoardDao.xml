@@ -37,6 +37,9 @@
       inner join ml_member m on (b.writer = m.no) 
     order by 
       b.board_no desc
+    limit #{offset}, #{rowCount}  <!-- 
+   xml파일이 바뀌면 서버 다시켜야함 , 변수명이 아님, DAO 파라미터에서 지정해준값
+   -->
   </select>
   
   <!-- 

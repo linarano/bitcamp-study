@@ -30,9 +30,9 @@ public class BoardDeleteServlet extends HttpServlet {
 
     try {
       Board board = new Board();
-      board.setNo(Integer.parseInt(req.getParameter("no")));
+      board.setNo(Integer.parseInt(req.getParameter("no")));//번호
 
-      Member loginUser = (Member) req.getSession().getAttribute("loginUser");
+      Member loginUser = (Member) req.getSession().getAttribute("loginUser");//작성
       board.setWriter(loginUser);
 
       boardService.delete(board);

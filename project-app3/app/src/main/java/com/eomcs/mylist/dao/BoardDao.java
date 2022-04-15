@@ -2,6 +2,7 @@ package com.eomcs.mylist.dao;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import com.eomcs.mylist.domain.Board;
 
 @Mapper  
@@ -15,7 +16,7 @@ public interface BoardDao {
 
   int countAll();
 
-  List<Board> findAll();
+  List<Board> findAll(@Param("rowCount") int rowCount, @Param("offset") int offset); // 여기서 디비에서 꺼내니까 , @Param("aaaa")-> 파라미터를 가리키는 것, 파라미터 여러개 넘길때는 @Param 이러케 안해주면 못찾음
 
   int insert(Board board);
 

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 //서블릿 실행 전/후에 수행할 작업이 있다면 필터에서 처리
 
-@WebFilter("/hello3") // 어떤 요청에 대해 필터를 적용할 것인지 지정 - 모든 요청 * 
+@WebFilter("/hello3") // 어떤 요청에 대해 필터를 적용할 것인지 지정 
 public class Filter2 implements Filter {
   @Override
   public void init(FilterConfig filterConfig) throws ServletException {

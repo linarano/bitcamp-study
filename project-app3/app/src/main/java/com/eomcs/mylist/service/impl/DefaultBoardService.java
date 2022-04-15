@@ -33,10 +33,13 @@ public class DefaultBoardService implements BoardService {
   }
 
   @Override
-  public List<Board> list() {
-    SqlSession session = sqlSessionFactory.openSession();
-    BoardDao boardDao = session.getMapper(BoardDao.class);
-    return boardDao.findAll();
+  public List<Board> list(int pageSize, int pageNo) {
+    try (SqlSession session = sqlSessionFactory.openSession();) {
+      BoardDao boardDao = session.getMapper(BoardDao.class);
+      return boardDao.findAll(pageSize, ((pageNo - 1) * pageSize));//페이지사이즈가 3이면 오프셋 몇개?, 규칙이 보이지?
+    } catch (RuntimeException e) {
+      throw e;
+    }
   }
 
   @Override
@@ -76,6 +79,17 @@ public class DefaultBoardService implements BoardService {
       session.commit();
       return count;
 
+    } catch (RuntimeException e) {
+      throw e;
+    }
+  }
+
+
+  @Override
+  public int size() {
+    try (SqlSession session = sqlSessionFactory.openSession();) {
+      BoardDao boardDao = session.getMapper(BoardDao.class);
+      return boardDao.countAll();
     } catch (RuntimeException e) {
       throw e;
     }

@@ -38,12 +38,12 @@
 BoardService boardService = (BoardService) application.getAttribute("boardService");
 
 int pageNo = 1;
-int pageSize = 5; //페이지 게시글 수 // 파라미터값이 안들어온다면 디폴트값 
-int totalPageSize = 0;// 총 게시글 수 
+int pageSize = 5;
+int totalPageSize = 0;
 
 try { // pageSize 파라미터 값이 있다면 기본 값을 변경한다.
   pageSize = Integer.parseInt(request.getParameter("pageSize"));
-  if (pageSize < 5 || pageSize > 100) {  //5개이상 100개미만 페이지에 대해서는 유효 //디도스공격 - 서버에 많은 일을 시켜서 제기능을 하지못하게 하여 이용자의 이용을 막음
+  if (pageSize < 5 || pageSize > 100) {
     pageSize = 5;
   }
 } catch (Exception e) {}
@@ -60,8 +60,7 @@ try { // pageNo 파라미터 값이 있다면 기본 값을 변경한다.
   if (pageNo < 1 || pageNo > totalPageSize) {// pageNo 유효성 검증
     pageNo = 1;
   }
-} catch (Exception e) {
-}
+} catch (Exception e) {}
 
 List<Board> boards = boardService.list(pageSize, pageNo);
 for (Board board : boards) {
@@ -78,20 +77,6 @@ for (Board board : boards) {
 %>
 </tbody>
 </table>
-<div>
-<%if (pageNo > 1){%>
-<a href="list.jsp?pageNo=<%=pageNo - 1%>&pageSize=<%=pageSize%>">[이전]</a>
-<%} else {%>
-[이전]
-<%} %>
-<%=pageNo%>
-<%if (pageNo < totalPageSize) { %>
-
-<a href="list.jsp?pageNo=<%=pageNo + 1 %>&pageSize=<%=pageSize%>">[다음]</a>
-<%} else { %>
-[다음]
-<%} %>
-<div>
 </div>
 
 <div id="footer">
