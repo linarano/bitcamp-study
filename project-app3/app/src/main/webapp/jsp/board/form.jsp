@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>MyList!</title>
-  <link href="/css/common.css" rel="stylesheet">
+  <link href="/app/css/common.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -38,6 +38,8 @@
 document.querySelector('#cancel-btn').onclick = () => {
   location.href = 'list';
 }
+
+console.l
 </script>
 
 </body>

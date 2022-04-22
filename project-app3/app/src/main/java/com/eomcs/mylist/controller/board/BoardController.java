@@ -5,20 +5,20 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.eomcs.mylist.controller.Component;
-import com.eomcs.mylist.controller.RequestMapping;
-import com.eomcs.mylist.controller.RequestParam;
+import org.springframework.stereotype.Controller; //스프링
+import org.springframework.web.bind.annotation.RequestMapping; //스프링
+import org.springframework.web.bind.annotation.RequestParam; //스프링
 import com.eomcs.mylist.domain.Board;
 import com.eomcs.mylist.domain.Member;
 import com.eomcs.mylist.service.BoardService;
 
-@Component
+@Controller// 페이지컨트럴러에게 붙인다.- 리턴값은 JSP주소 //@RestController - 메서드의 리턴값은 제이슨을 변환해서 보낸다. 
 @RequestMapping("/board/")
 public class BoardController {
 
   BoardService boardService;
 
-  public BoardController(BoardService boardService) {
+  public BoardController(BoardService boardService) { // 생성자에서 보드서비스를 요구하는데  애노테이션붙은게 없다. 애노테이션이 없으면 관리할 대상이없으므로 못찾음 
     this.boardService = boardService;
   }
 
@@ -58,7 +58,7 @@ public class BoardController {
     model.put("pageSize", pageSize);
     model.put("totalPageSize", totalPageSize);
 
-    return "/jsp/board/list.jsp";
+    return "/jsp/board/list.jsp"; // 프런트 컨트럴러가 실행할 jsp주소냐 json에 따라서 애노테이션을 결정해야하는 것  - 우리는 JSP를 하고있기때문에
   }
 
   @RequestMapping("detail")

@@ -19,7 +19,7 @@
   right: 90px;
 }
 </style>
-<a href="/index.html"><span id="app-title">MyList</span></a> 
+<a href="/app/index.html"><span id="app-title">MyList</span></a> 
 <button id="login-btn" type="button" class="not-login">로그인</button>
 <span id="user-name" class="login"></span>
 <button id="logout-btn" type="button" class="login">로그아웃</button>  

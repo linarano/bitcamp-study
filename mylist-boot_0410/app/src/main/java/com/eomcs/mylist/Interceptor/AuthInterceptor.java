@@ -1,14 +1,12 @@
 package com.eomcs.mylist.Interceptor;
+import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.eomcs.mylist.conf.MvcConfiguration;
 import com.eomcs.mylist.controller.ResultMap;
 import com.eomcs.mylist.domain.Member;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,9 +30,9 @@ public class AuthInterceptor implements HandlerInterceptor {
     if(loginUser == null) {
       //로그인을 하지않았으면 오류 메시지를 JSON  형식으로 직접응답한다. 
 
-      String json = new ObjectMapper().writeValueAsString(new ResultMap().setStatus(ResultMap.FAIL).setData("로그인하지않았습니다!");
+      String json = new ObjectMapper().writeValueAsString(new ResultMap().setStatus(ResultMap.FAIL).setData("로그인하지않았습니다!"));
       response.setContentType("application/json:charset=UTF-8");
-      PrinWriter out = response.getWriter();
+      PrintWriter out = response.getWriter();
       out.write(json);
       return false;// 페이지 컨트럴러를 실행하지말고 즉시응답하라 
     }

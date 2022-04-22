@@ -71,7 +71,7 @@ public class BookController {
   @RequestMapping("/book/add")
   public Object add(Book book, MultipartFile file) {
     log.info("게시글 등록!"); // 운영자관점에서 확인 - 게시글등록이 되었나 확인
-    log.debug(book); // 개발자 관점에서 확인
+    log.debug(book.toString()); // 개발자 관점에서 확인
 
     try {
       book.setPhoto(saveFile(file));
@@ -81,7 +81,7 @@ public class BookController {
       // e.printStackTrace();
       // 개발자 운영자 모두봐야할 메세지
       StringWriter out = new StringWriter();
-      e.printStack(new PrintWriter(out));
+      e.printStackTrace(new PrintWriter(out));
       log.error(out.toString());
       return "error!";
     }
