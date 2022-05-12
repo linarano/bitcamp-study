@@ -12,6 +12,7 @@ import com.eomcs.mylist.domain.Board;
 // => 인터페이스의 메서드가 호출될 때 사용할 SQL ID는 메서드 이름과 일치해야 한다.
 //    예) <select id="countAll">...</select>
 //
+//
 public interface BoardDao {
 
   int countAll();

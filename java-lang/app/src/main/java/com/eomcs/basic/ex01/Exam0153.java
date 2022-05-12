@@ -63,6 +63,7 @@ public class Exam0153 {
     // 다른 key 객체를 사용하여 값을 꺼내보자.
     MyKey2 k6 = new MyKey2("haha");
 
+
     System.out.println(map.get(k6)); // OK! 값을 정상적으로 꺼낼 수 있다.
     // k3와 k6는
     // hashCode()의 리턴 값이 같다
