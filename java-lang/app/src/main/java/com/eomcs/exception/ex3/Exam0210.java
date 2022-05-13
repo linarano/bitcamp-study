@@ -4,7 +4,7 @@ package com.eomcs.exception.ex3;
 import java.io.FileNotFoundException;
 
 public class Exam0210 {
-
+  //
   // throw 명령어를 사용하여 예외 정보를 호출자에게 던진다.
   // => throw [java.lang.Throwable 타입의 객체];
   //
